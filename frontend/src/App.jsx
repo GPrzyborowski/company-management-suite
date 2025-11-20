@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import './App.css'
-import Hello from './components/Hello'
+import ApiTester from './components/ApiTester'
 
 function App() {
   return (
     <>
-        <Hello></Hello>
+        <ApiTester></ApiTester>
     </>
   )
 }
