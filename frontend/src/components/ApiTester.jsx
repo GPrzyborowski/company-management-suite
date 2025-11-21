@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 
 function ApiTester() {
 	const [message, setMessage] = useState('')
-	const endpoint = ''
+	const endpoint = 'http://localhost:5000/api/test'
 
 	useEffect(() => {
 		fetch(endpoint)
