@@ -18,3 +18,9 @@ model Employee {
   createdAt DateTime @default(now())
 }
 
+model User {
+  id        Int      @id @default(autoincrement())
+  login     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+}
