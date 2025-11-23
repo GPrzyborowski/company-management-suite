@@ -1,14 +1,16 @@
-import { useState } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Home from './pages/Home'
+import Login from './pages/Login'
 import './App.css'
-import ApiTester from './components/ApiTester'
-import EmployeeList from './components/EmployeeList'
 
 function App() {
   return (
-    <>
-        <ApiTester></ApiTester>
-        <EmployeeList></EmployeeList>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Home />}></Route>
+        <Route path='/login' element={<Login />}></Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
