@@ -21,12 +21,30 @@ router.post('/register', async (req, res) => {
                 password: hashedPassword
             }
         })
-        console.log("Auth endpoint works")
         res.send("Registered successfully.")
     } catch(err) {
         console.error(err)
         res.status(400).json({error: "Registration failed."})
     }
+})
+
+router.post('/login', async (req, res) => {
+    const {login, password} = req.body
+
+        const user = await prisma.user.findUnique({where: {login: login}})
+        if(!user) {
+            res.status(400).json({error: "Invalid login or password."})
+        }
+        const valid = await bcrypt.compare(password, user.password)
+        if(!valid) {
+            res.status(400).json({error: "Invalid login or password."})
+        }
+        const jwtToken = jwt.sign(
+            {id: user.id, email: user.email},
+            process.env.JWT_SECRET,
+            {expiresIn: "1d"}
+        )
+        res.json({jwtToken})
 })
 
 export default router
