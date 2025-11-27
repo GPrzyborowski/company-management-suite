@@ -1,18 +1,21 @@
 .main {
-    padding: 15rem 4rem 0;
-    text-align: center;
-    height: 100vh;
+	padding: 15rem 4rem 0;
+	text-align: center;
+	height: 100vh;
+	background: linear-gradient(21deg, rgba(0, 51, 102, 1), rgba(15, 82, 186, 1));
+	-webkit-background: linear-gradient(21deg, rgba(0, 51, 102, 1), rgba(15, 82, 186, 1));
+	-moz-background: linear-gradient(21deg, rgba(0, 51, 102, 1), rgba(15, 82, 186, 1));
 }
 
 .main-header {
-    font-size: 3.6rem;
-    line-height: 7.2rem;
-    color: #007bff;
+	font-size: 3.6rem;
+	line-height: 7.2rem;
+	color: #FFFFFF;
 }
 
 .main-paragraph {
-    padding-top: 5rem;
-    font-size: 1.6rem;
-    line-height: 3.2rem;
-    color: black;
+	padding-top: 5rem;
+	font-size: 1.6rem;
+	line-height: 3.2rem;
+	color: #FFFFFF;
 }
