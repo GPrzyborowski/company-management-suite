@@ -1,0 +1,18 @@
+.main {
+    padding: 15rem 4rem 0;
+    text-align: center;
+    height: 100vh;
+}
+
+.main-header {
+    font-size: 3.6rem;
+    line-height: 7.2rem;
+    color: #007bff;
+}
+
+.main-paragraph {
+    padding-top: 5rem;
+    font-size: 1.6rem;
+    line-height: 3.2rem;
+    color: black;
+}
