@@ -1,11 +1,11 @@
-import HomeMain from '../components/HomeMain'
+import HomeMainViewport from '../components/HomeMainViewport'
 import Navigation from '../components/Navigation'
 
 function Home() {
     return(
         <>
             <Navigation />
-            <HomeMain />
+            <HomeMainViewport />
         </>
     )
 }
