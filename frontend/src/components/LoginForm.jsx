@@ -1,3 +1,5 @@
+import classes from './LoginForm.module.css'
+
 function LoginForm({ onSubmit, login, setLogin, password, setPassword }) {
 	
     const handleSubmit = e => {
@@ -6,15 +8,15 @@ function LoginForm({ onSubmit, login, setLogin, password, setPassword }) {
 	}
 
 	return (
-		<>
-			<form onSubmit={handleSubmit}>
-				<label htmlFor="login"></label>
-				<input type="text" id="login" value={login} onChange={e => setLogin(e.target.value)} /> <br />
-				<label htmlFor="password"></label>
-				<input type="password" id="password" value={password} onChange={e => setPassword(e.target.value)} /> <br />
-				<button type="submit">Login</button>
+		<div className={classes.container}>
+			<form onSubmit={handleSubmit} className={classes.form}>
+				<label htmlFor="login" className={classes['form-label']}>Login:</label>
+				<input type="text" id="login" className={classes['form-input']} value={login} onChange={e => setLogin(e.target.value)} /> <br />
+				<label htmlFor="password" className={classes['form-label']}>Password:</label>
+				<input type="password" id="password" className={classes['form-input']} value={password} onChange={e => setPassword(e.target.value)} /> <br />
+				<button type="submit" className={classes['form-btn']}>Log in</button>
 			</form>
-		</>
+		</div>
 	)
 }
 
