@@ -23,7 +23,9 @@
 
 .form-input {
     padding: 0.6rem;
+    border: none;
     font-size: 1.6rem;
+    border-radius: 5px;
 }
 
 .form-btn {
