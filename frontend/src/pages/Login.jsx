@@ -19,6 +19,7 @@ function Login() {
 
 		if (res.ok) {
 			localStorage.setItem('token', data.jwtToken)
+			window.location.href = '/dashboard'
 		} else {
 			console.error(data.error)
 		}
