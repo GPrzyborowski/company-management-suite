@@ -16,14 +16,6 @@
     outline: 2px dashed black;
 }
 
-.default {
-    background-color: #0043d3;
-}
-
-.default:hover {
-    background-color: #0039b4;
-}
-
 .success {
     background-color: #005e2f;
 }
