@@ -35,4 +35,10 @@
     padding: 1em;
     border-radius: 5px;
     background-color: #FFFFFF;
+    transition: background-color .3s;
+}
+
+.form-btn:hover {
+    cursor: pointer;
+    background-color: #ffffffcc;
 }
