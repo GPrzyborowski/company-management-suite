@@ -18,11 +18,6 @@ function Navigation() {
 					</Link>
 				</li>
 				<li className={classes['list-item']}>
-					<Link to="/register" className={classes['list-item-link']}>
-						Register
-					</Link>
-				</li>
-				<li className={classes['list-item']}>
 					<Link to="/login" className={classes['list-item-link']}>
 						Login
 					</Link>
