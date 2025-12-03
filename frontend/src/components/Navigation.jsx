@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { useState } from 'react'
 import classes from './Navigation.module.css'
 import BurgerIcon from '../assets/burger_icon.svg'
@@ -13,14 +13,14 @@ function Navigation() {
 			</button>
 			<ul className={`${classes.list} ${open ? `${classes.opened}` : `${classes.closed}`}`}>
 				<li className={classes['list-item']}>
-					<Link to="/" className={classes['list-item-link']}>
+					<NavLink to="/" className={({isActive}) => `${classes['list-item-link']} ${isActive ? classes.active : ''}`}>
 						Home
-					</Link>
+					</NavLink>
 				</li>
 				<li className={classes['list-item']}>
-					<Link to="/login" className={classes['list-item-link']}>
+					<NavLink to="/login" className={({isActive}) => `${classes['list-item-link']} ${isActive ? classes.active : ''}`}>
 						Login
-					</Link>
+					</NavLink>
 				</li>
 			</ul>
 		</nav>
