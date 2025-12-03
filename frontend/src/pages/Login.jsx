@@ -1,10 +1,12 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { Navigate } from 'react-router-dom'
 import Navigation from '../components/Navigation'
 import LoginForm from '../components/LoginForm'
 
 function Login() {
 	const [login, setLogin] = useState('')
 	const [password, setPassword] = useState('')
+	const [hasToken, setHasToken] = useState('')
 
 	const tempEndpoint = 'http://localhost:5000/api/auth/login'
 
@@ -25,10 +27,28 @@ function Login() {
 		}
 	}
 
+	useEffect(() => {
+		const token = localStorage.getItem('token')
+		token ? setHasToken(true) : setHasToken(false)
+	}, [])
+
 	return (
 		<>
-			<Navigation />
-			<LoginForm onSubmit={submit} login={login} setLogin={setLogin} password={password} setPassword={setPassword} />
+			{!hasToken && (
+				<>
+					<Navigation />
+					<LoginForm
+						onSubmit={submit}
+						login={login}
+						setLogin={setLogin}
+						password={password}
+						setPassword={setPassword}
+					/>
+				</>
+			)}
+			{hasToken && (
+				<Navigate to='/dashboard' replace={true}/>
+			)}
 		</>
 	)
 }
