@@ -34,6 +34,13 @@ function Navigation() {
 								Login
 							</NavLink>
 						</li>
+						<li className={classes['list-item']}>
+							<NavLink
+								to="/register"
+								className={({ isActive }) => `${classes['list-item-link']} ${isActive ? classes.active : ''}`}>
+								Register
+							</NavLink>
+						</li>
 					</>
 				)}
 
