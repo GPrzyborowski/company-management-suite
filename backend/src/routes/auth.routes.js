@@ -28,6 +28,30 @@ router.post('/register', async (req, res) => {
     }
 })
 
+router.post('/registeradmin', async (req, res) => {
+    const {login, password, phone} = req.body
+    try {
+        const userExists = await prisma.user.findUnique({where: {login: login}})
+
+        if(userExists) {
+            return res.status(400).json({error: "User already exists."})
+        }
+
+        const hashedPassword = await bcrypt.hash(password, 10)
+        const user = await prisma.user.create({
+            data: {
+                login: login, 
+                password: hashedPassword,
+                phone: phone
+            }
+        })
+        res.send("Registered successfully.")
+    } catch(err) {
+        console.error(err)
+        res.status(400).json({error: "Registration failed."})
+    }
+})
+
 router.post('/login', async (req, res) => {
     const {login, password} = req.body
 
