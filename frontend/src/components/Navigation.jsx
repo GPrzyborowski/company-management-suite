@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import classes from './Navigation.module.css'
 import BurgerIcon from '../assets/burger_icon.svg'
@@ -11,6 +11,13 @@ function Navigation() {
 		const token = localStorage.getItem('token')
 		token ? setIsLoggedIn(true) : setIsLoggedIn(false)
 	}, [])
+
+	const navigate = useNavigate()
+
+	function logoutHandler() {
+		localStorage.removeItem('token')
+		navigate('/')
+	}
 
 	return (
 		<nav className={classes.nav}>
@@ -59,6 +66,12 @@ function Navigation() {
 								className={({ isActive }) => `${classes['list-item-link']} ${isActive ? classes.active : ''}`}>
 								New employee
 							</NavLink>
+						</li>
+						<li className={classes['list-item']}>
+							<button
+								className={`${classes['list-item-link']} ${classes['list-item-link-logout']}`} onClick={logoutHandler}>
+								Log out
+							</button>
 						</li>
 					</>
 				)}
