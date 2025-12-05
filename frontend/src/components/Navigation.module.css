@@ -42,15 +42,18 @@
 	transition: right 0.3s ease-out;
 }
 
-.list-item {
-	margin: 5rem 0;
-}
-
 .list-item-link {
 	padding: 1em 2em;
 	color: white;
 	font-size: 2.4rem;
 	text-decoration: none;
+}
+
+.list-item-link-logout {
+	padding: 0 1em;
+	background: none;
+	border: none;
+	cursor: pointer;
 }
 
 .opened {
@@ -63,6 +66,7 @@
 @media (min-width: 992px) {
 	.list {
 		flex-direction: row;
+		justify-content: flex-start;
 		right: 0;
 		height: 8rem;
 		background: transparent;
@@ -78,7 +82,7 @@
 
 	.list-item-link::before {
 		position: absolute;
-		bottom: -1.2rem;
+		bottom: -1.5rem;
 		left: 0;
 		width: 100%;
 		height: 2px;
@@ -99,4 +103,5 @@
 	.list-item-link.active:hover::before {
 		transform: scaleX(1);
 	}
+	
 }
