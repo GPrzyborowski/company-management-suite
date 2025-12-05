@@ -22,5 +22,6 @@ model User {
   id        Int      @id @default(autoincrement())
   login     String   @unique
   password  String
+  phone     String   @default("")
   createdAt DateTime @default(now())
 }
