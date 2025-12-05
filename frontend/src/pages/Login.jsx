@@ -8,10 +8,10 @@ function Login() {
 	const [password, setPassword] = useState('')
 	const [hasToken, setHasToken] = useState('')
 
-	const tempEndpoint = 'http://localhost:5000/api/auth/login'
+	const localEndpoint = 'http://localhost:5000/api/auth/login'
 
 	async function submit() {
-		const res = await fetch(tempEndpoint, {
+		const res = await fetch(localEndpoint, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ login, password }),
