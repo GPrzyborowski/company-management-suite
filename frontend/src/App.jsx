@@ -3,6 +3,7 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Dashboard from './pages/Dashboard'
+import NewEmployee from './pages/NewEmployee'
 import ProtectedRoute from './components/ProtectedRoute'
 import './App.css'
 
@@ -16,6 +17,13 @@ function App() {
 					element={
 						<ProtectedRoute>
 							<Dashboard />
+						</ProtectedRoute>
+					}></Route>
+				<Route
+					path="/newemployee"
+					element={
+						<ProtectedRoute>
+							<NewEmployee />
 						</ProtectedRoute>
 					}></Route>
 				<Route path="/login" element={<Login />}></Route>
