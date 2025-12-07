@@ -1,0 +1,60 @@
+.main {
+	position: relative;
+	height: 100vh;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: linear-gradient(21deg, rgba(0, 51, 102, 1), rgba(15, 82, 186, 1));
+	-webkit-background: linear-gradient(21deg, rgba(0, 51, 102, 1), rgba(15, 82, 186, 1));
+	-moz-background: linear-gradient(21deg, rgba(0, 51, 102, 1), rgba(15, 82, 186, 1));
+}
+
+.header {
+	position: absolute;
+	top: 11rem;
+	text-align: center;
+	font-size: 3rem;
+	color: #ffffff;
+}
+
+.form {
+    margin-top: 12rem;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(7, 1fr);
+	padding: 5rem;
+}
+
+.form-label {
+	font-size: 1.6rem;
+	color: #ffffff;
+}
+
+.form-input {
+	padding: 0.6rem;
+	border: none;
+	font-size: 1.6rem;
+	border-radius: 5px;
+}
+
+.form-btn {
+	width: 50%;
+	margin: 2rem auto 1rem;
+	border: none;
+	padding: 1em;
+	border-radius: 5px;
+	background-color: #ffffff;
+	transition: background-color 0.3s;
+}
+
+.form-btn:hover {
+	cursor: pointer;
+	background-color: #ffffffcc;
+}
+
+@media (min-width: 992px) {
+	.header {
+		top: 16rem;
+	}
+}
