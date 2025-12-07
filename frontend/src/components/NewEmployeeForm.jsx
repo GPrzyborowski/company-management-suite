@@ -13,7 +13,7 @@ function NewEmployeeForm() {
 
 	return (
 		<main className={classes.main}>
-			<h1 className={classes.header}>Register a new admin account.</h1>
+			<h1 className={classes.header}>Register a new employee.</h1>
 			<form onSubmit={handleSubmit} className={classes.form}>
 				<label htmlFor="name" className={classes['form-label']}>
 					First name:
