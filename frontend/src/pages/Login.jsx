@@ -46,9 +46,7 @@ function Login() {
 					/>
 				</>
 			)}
-			{hasToken && (
-				<Navigate to='/dashboard' replace={true}/>
-			)}
+			{hasToken && <Navigate to="/dashboard" replace={true} />}
 		</>
 	)
 }
