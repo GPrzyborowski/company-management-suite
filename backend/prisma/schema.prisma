@@ -38,3 +38,14 @@ model Employee {
   addressId     Int?
   address       Address?      @relation(fields: [addressId], references: [id])
 }
+
+model Admin {
+  id            Int           @id @default(autoincrement())
+  login         String
+  password      String
+}
+
+model AllowedPhones {
+  id            Int           @id @default(autoincrement())
+  number        String        @unique
+}
