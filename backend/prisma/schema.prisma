@@ -41,8 +41,9 @@ model Employee {
 
 model Admin {
   id            Int           @id @default(autoincrement())
-  login         String
+  login         String        @unique
   password      String
+  phoneNumber   String        @unique
 }
 
 model AllowedPhones {
