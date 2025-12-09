@@ -8,18 +8,31 @@ const router = express.Router()
 router.post('/registeradmin', async (req, res) => {
     const {login, password, phone} = req.body
     try {
-        const userExists = await prisma.user.findUnique({where: {login: login}})
+        const userExists = await prisma.admin.findUnique({where: {login: login}})
 
         if(userExists) {
             return res.status(400).json({error: "User already exists."})
         }
 
+        const userPhoneExists = await prisma.admin.findUnique({where: {phoneNumber: phone}})
+
+        if(userPhoneExists) {
+            return res.status(400).json({error: "User with the provided phone number already exists."})
+        }
+        
+        const phoneNumberAllowed = await prisma.allowedPhones.findUnique({where: {number: phone}})
+
+
+        if(!phoneNumberAllowed) {
+            return res.status(400).json({error: "Provided phone number is not allowed."})
+        }
+
         const hashedPassword = await bcrypt.hash(password, 10)
-        const user = await prisma.user.create({
+        const user = await prisma.admin.create({
             data: {
                 login: login, 
                 password: hashedPassword,
-                phone: phone
+                phoneNumber: phone
             }
         })
         res.send("Registered successfully.")
@@ -32,13 +45,13 @@ router.post('/registeradmin', async (req, res) => {
 router.post('/login', async (req, res) => {
     const {login, password} = req.body
 
-        const user = await prisma.user.findUnique({where: {login: login}})
+        const user = await prisma.admin.findUnique({where: {login: login}})
         if(!user) {
-            res.status(400).json({error: "Invalid login or password."})
+            return res.status(400).json({error: "Invalid login or password."})
         }
         const valid = await bcrypt.compare(password, user.password)
         if(!valid) {
-            res.status(400).json({error: "Invalid login or password."})
+            return res.status(400).json({error: "Invalid login or password."})
         }
         const jwtToken = jwt.sign(
             {id: user.id, login: user.login},
