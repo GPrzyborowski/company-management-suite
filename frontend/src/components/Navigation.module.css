@@ -67,6 +67,10 @@
 	transform-origin: 0;
 }
 
+.hidden {
+	display: none;
+}
+
 @media (min-width: 992px) {
 	.list {
 		flex-direction: row;
