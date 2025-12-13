@@ -6,6 +6,7 @@ import BurgerIcon from '../assets/burger_icon.svg'
 function Navigation() {
 	const [open, setOpen] = useState(false)
 	const [isLoggedIn, setIsLoggedIn] = useState(false)
+	const [visible, setVisible] = useState(true)
 
 	useEffect(() => {
 		const token = localStorage.getItem('token')
@@ -19,8 +20,15 @@ function Navigation() {
 		navigate('/')
 	}
 
+	let previousScrollPosition = window.pageYOffset
+
+	window.onscroll = () => {
+		const currentScrollPosition = window.pageYOffset
+		previousScrollPosition > currentScrollPosition ? setVisible(true) : setVisible(false)
+	}
+
 	return (
-		<nav className={classes.nav}>
+		<nav className={`${classes.nav} ${visible ? '' : classes.hidden}`}>
 			<button className={classes.burger} onClick={() => setOpen(!open)}>
 				<img src={BurgerIcon} alt="burger icon" className={classes['burger-bars']} />
 			</button>
