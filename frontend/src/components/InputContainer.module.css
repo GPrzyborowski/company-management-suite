@@ -7,10 +7,17 @@
 }
 
 .form-input {
+	width: 100%;
 	padding: 0.6em;
-    border: none;
-    font-size: 1.6rem;
-    border-radius: 5px;
+	border: none;
+	font-size: 1.6rem;
+	border-radius: 5px;
 	align-self: center;
 	margin-bottom: 2.4rem;
+}
+
+@media (min-width: 992px) {
+	input {
+		height: 4rem;
+	}
 }
