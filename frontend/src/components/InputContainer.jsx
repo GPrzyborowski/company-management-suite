@@ -1,9 +1,9 @@
 import classes from './InputContainer.module.css'
 
-function InputContainer({htmlFor, labelText, type, id, value, onChange}) {
+function InputContainer({htmlFor, labelText, type, id, value, onChange, className}) {
 
 	return (
-		<>
+		<div className={className}>
 			<label htmlFor={htmlFor} className={classes['form-label']}>
 				{labelText}
 			</label>
@@ -14,7 +14,7 @@ function InputContainer({htmlFor, labelText, type, id, value, onChange}) {
 				value={value}
 				onChange={onChange}
 			/>
-		</>
+		</div>
 	)
 }
 
