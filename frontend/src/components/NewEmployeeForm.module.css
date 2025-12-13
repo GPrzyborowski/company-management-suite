@@ -129,6 +129,7 @@
 		grid-column: 1 / 4;
 	}
 	.form-btn {
-		text-align: center;
+		grid-column: 2 / 3;
+		width: 90%;
 	}
 }
