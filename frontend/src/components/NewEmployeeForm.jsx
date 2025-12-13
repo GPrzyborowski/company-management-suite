@@ -58,6 +58,7 @@ function NewEmployeeForm({ onSubmit }) {
 					id="firstName"
 					value={firstName}
 					onChange={e => setFirstName(e.target.value)}
+					className={classes['first-name']}
 				/>
 
 				<InputContainer
@@ -67,6 +68,7 @@ function NewEmployeeForm({ onSubmit }) {
 					id="lastName"
 					value={lastName}
 					onChange={e => setLastName(e.target.value)}
+					className={classes['last-name']}
 				/>
 
 				<InputContainer
@@ -76,6 +78,7 @@ function NewEmployeeForm({ onSubmit }) {
 					id="birthDate"
 					value={birthDate}
 					onChange={e => setBirthDate(e.target.value)}
+					className={classes['birth-date']}
 				/>
 
 				<InputContainer
@@ -85,6 +88,7 @@ function NewEmployeeForm({ onSubmit }) {
 					id="jobStartDate"
 					value={jobStartDate}
 					onChange={e => setJobStartDate(e.target.value)}
+					className={classes['job-start']}
 				/>
 
 				<InputContainer
@@ -94,6 +98,7 @@ function NewEmployeeForm({ onSubmit }) {
 					id="email"
 					value={email}
 					onChange={e => setEmail(e.target.value)}
+					className={classes['email']}
 				/>
 
 				<InputContainer
@@ -103,6 +108,7 @@ function NewEmployeeForm({ onSubmit }) {
 					id="phone"
 					value={phone}
 					onChange={e => setPhone(e.target.value)}
+					className={classes['phone']}
 				/>
 
 				<InputContainer
@@ -112,6 +118,7 @@ function NewEmployeeForm({ onSubmit }) {
 					id="socialSecurity"
 					value={socialSecurity}
 					onChange={e => setSocialSecurity(e.target.value)}
+					className={classes['social-security']}
 				/>
 
 				<InputContainer
@@ -121,6 +128,7 @@ function NewEmployeeForm({ onSubmit }) {
 					id="country"
 					value={country}
 					onChange={e => setCountry(e.target.value)}
+					className={classes['country']}
 				/>
 
 				<InputContainer
@@ -130,6 +138,7 @@ function NewEmployeeForm({ onSubmit }) {
 					id="city"
 					value={city}
 					onChange={e => setCity(e.target.value)}
+					className={classes['city']}
 				/>
 
 				<InputContainer
@@ -139,6 +148,7 @@ function NewEmployeeForm({ onSubmit }) {
 					id="postalCode"
 					value={postalCode}
 					onChange={e => setPostalCode(e.target.value)}
+					className={classes['postal-code']}
 				/>
 
 				
@@ -149,6 +159,7 @@ function NewEmployeeForm({ onSubmit }) {
 					id="street"
 					value={street}
 					onChange={e => setStreet(e.target.value)}
+					className={classes['street']}
 				/>
 
 				
@@ -159,6 +170,7 @@ function NewEmployeeForm({ onSubmit }) {
 					id="buildingNumber"
 					value={buildingNumber}
 					onChange={e => setBuildingNumber(e.target.value)}
+					className={classes['building-number']}
 				/>
 
 				<InputContainer
@@ -168,6 +180,7 @@ function NewEmployeeForm({ onSubmit }) {
 					id="apartmentNumber"
 					value={apartmentNumber}
 					onChange={e => setApartmentNumber(e.target.value)}
+					className={classes['apartment-number']}
 				/>
 
 				<InputContainer
@@ -177,6 +190,7 @@ function NewEmployeeForm({ onSubmit }) {
 					id="bankNumber"
 					value={bankNumber}
 					onChange={e => setBankNumber(e.target.value)}
+					className={classes['bank-account']}
 				/>
 
 				<InputContainer
@@ -186,6 +200,7 @@ function NewEmployeeForm({ onSubmit }) {
 					id="salaryRate"
 					value={salaryRate}
 					onChange={e => setSalaryRate(e.target.value)}
+					className={classes['salary-rate']}
 				/>
 
 				<InputContainer
@@ -195,6 +210,7 @@ function NewEmployeeForm({ onSubmit }) {
 					id="contractType"
 					value={contractType}
 					onChange={e => setContractType(e.target.value)}
+					className={classes['contract-type']}
 				/>
 
 				<InputContainer
@@ -204,6 +220,7 @@ function NewEmployeeForm({ onSubmit }) {
 					id="role"
 					value={role}
 					onChange={e => setRole(e.target.value)}
+					className={classes['role']}
 				/>
 
 				<button type="submit" className={classes['form-btn']}>
