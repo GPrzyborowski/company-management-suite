@@ -70,6 +70,13 @@ function Navigation() {
 						</li>
 						<li className={classes['list-item']}>
 							<NavLink
+								to="/employees"
+								className={({ isActive }) => `${classes['list-item-link']} ${isActive ? classes.active : ''}`}>
+								Employees
+							</NavLink>
+						</li>
+						<li className={classes['list-item']}>
+							<NavLink
 								to="/newemployee"
 								className={({ isActive }) => `${classes['list-item-link']} ${isActive ? classes.active : ''}`}>
 								New employee
@@ -77,7 +84,8 @@ function Navigation() {
 						</li>
 						<li className={classes['list-item']}>
 							<button
-								className={`${classes['list-item-link']} ${classes['list-item-link-logout']}`} onClick={logoutHandler}>
+								className={`${classes['list-item-link']} ${classes['list-item-link-logout']}`}
+								onClick={logoutHandler}>
 								Log out
 							</button>
 						</li>
