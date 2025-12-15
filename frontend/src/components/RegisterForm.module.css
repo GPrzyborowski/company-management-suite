@@ -3,6 +3,7 @@
 	height: 100vh;
 	width: 100%;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	background: linear-gradient(21deg, rgba(0, 51, 102, 1), rgba(15, 82, 186, 1));
@@ -22,16 +23,18 @@
 	margin-top: 12rem;
 	display: grid;
 	grid-template-columns: 1fr;
-	grid-template-rows: repeat(7, 1fr);
-	padding: 5rem;
+	grid-template-rows: auto;
+	padding: 5rem 5rem 0 5rem;
 }
 
 .form-label {
+	margin-bottom: 1rem;
 	font-size: 1.6rem;
 	color: #ffffff;
 }
 
 .form-input {
+	margin-bottom: 2rem;
 	padding: 0.6rem;
 	border: none;
 	font-size: 1.6rem;
@@ -40,7 +43,7 @@
 
 .form-btn {
 	width: 50%;
-	margin: 2rem auto 1rem;
+	margin: 1rem auto 1rem;
 	border: none;
 	padding: 1em;
 	border-radius: 5px;
@@ -51,6 +54,14 @@
 .form-btn:hover {
 	cursor: pointer;
 	background-color: #ffffffcc;
+}
+
+.warning {
+	height: 1.6rem;
+	margin-top: 3rem;
+	font-size: 1.6rem;
+	text-align: center;
+	color: rgb(228, 24, 24);
 }
 
 @media (min-width: 992px) {
