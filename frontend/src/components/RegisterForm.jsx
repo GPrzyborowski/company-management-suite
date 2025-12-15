@@ -1,10 +1,10 @@
 import classes from './RegisterForm.module.css'
 
-function RegisterForm({ onSubmit, login, setLogin, password, setPassword, phone, setPhone }) {
+function RegisterForm({ onSubmit, login, setLogin, password, setPassword, phone, setPhone, warningMsg }) {
 
     const handleSubmit = e => {
 		e.preventDefault()
-		onSubmit()
+		onSubmit(e)
 	}
 
     return (
@@ -19,6 +19,7 @@ function RegisterForm({ onSubmit, login, setLogin, password, setPassword, phone,
                 <input type="text" id="phone" className={classes['form-input']} value={phone} onChange={e => setPhone(e.target.value)} /> <br />
                 <button type="submit" className={classes['form-btn']}>Register</button>
             </form>
+                <p className={classes.warning}>{warningMsg}</p>
         </main>
     )
 }
