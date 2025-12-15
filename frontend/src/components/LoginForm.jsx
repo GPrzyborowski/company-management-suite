@@ -1,16 +1,14 @@
 import { useState } from 'react'
 import classes from './LoginForm.module.css'
 
-function LoginForm({ onSubmit, login, setLogin, password, setPassword }) {
-	
-	const [errMsg, setErrMsg] = useState('')
+function LoginForm({ onSubmit, login, setLogin, password, setPassword, warningMsg }) {
 
     const handleSubmit = e => {
 		e.preventDefault()
 		if(login != '' && password != '') {
-			onSubmit()
+			onSubmit(e)
 		} else {
-			setErrMsg("Login data not provided.")
+			setWarningMsg("Login data not provided.")
 		}
 	}
 
@@ -22,8 +20,8 @@ function LoginForm({ onSubmit, login, setLogin, password, setPassword }) {
 				<label htmlFor="password" className={classes['form-label']}>Password:</label>
 				<input type="password" id="password" className={classes['form-input']} value={password} onChange={e => setPassword(e.target.value)} /> <br />
 				<button type="submit" className={classes['form-btn']}>Log in</button>
-				<p className={classes.warning}>{'' || errMsg}</p>
 			</form>
+				<p className={classes.warning}>{warningMsg}</p>
 		</main>
 	)
 }
