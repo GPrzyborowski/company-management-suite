@@ -7,10 +7,12 @@ function Login() {
 	const [login, setLogin] = useState('')
 	const [password, setPassword] = useState('')
 	const [hasToken, setHasToken] = useState('')
+	const [warningMsg, setWarningMsg] = useState('')
 
 	const localEndpoint = 'http://localhost:5000/api/auth/login'
 
-	async function submit() {
+	async function submit(e) {
+		e.preventDefault()
 		const res = await fetch(localEndpoint, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
@@ -23,7 +25,7 @@ function Login() {
 			localStorage.setItem('token', data.jwtToken)
 			window.location.href = '/dashboard'
 		} else {
-			console.error(data.error)
+			setWarningMsg('Invalid login or password.')
 		}
 	}
 
@@ -43,6 +45,7 @@ function Login() {
 						setLogin={setLogin}
 						password={password}
 						setPassword={setPassword}
+						warningMsg={warningMsg}
 					/>
 				</>
 			)}
