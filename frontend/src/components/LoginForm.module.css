@@ -12,11 +12,12 @@
 .form {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(6, 1fr);
+    grid-template-rows: auto;
     padding: 5rem;
 }
 
 .form-label {
+    margin-bottom: 1rem;
     font-size: 1.6rem;
     color: #FFFFFF;
 }
@@ -40,7 +41,11 @@
 
 .form-btn:hover {
     cursor: pointer;
-    background-color: #ffffff;
+    background-color: #ffffffcc;
+}
+
+.login {
+    margin-bottom: 2rem;
 }
 
 .warning {
