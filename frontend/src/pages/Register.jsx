@@ -3,26 +3,31 @@ import Navigation from '../components/Navigation'
 import RegisterForm from '../components/RegisterForm'
 
 function Register() {
-
 	const [login, setLogin] = useState('')
 	const [password, setPassword] = useState('')
 	const [phone, setPhone] = useState('')
+	const [warningMsg, setWarningMsg] = useState('')
 
-        const localEndpoint = 'http://localhost:5000/api/auth/registeradmin'
+	const localEndpoint = 'http://localhost:5000/api/auth/registeradmin'
 
-    	async function submit() {
-		const res = await fetch(localEndpoint, {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({ login, password, phone }),
-		})
+	async function submit(e) {
+		e.preventDefault()
+		try {
+			const res = await fetch(localEndpoint, {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ login, password, phone }),
+			})
 
-		const data = await res
+			const data = await res.json()
 
-		if (res.ok) {
-			window.location.href = '/'
-		} else {
-			console.error(data.error)
+			if (res.ok) {
+				window.location.href = '/'
+			} else {
+				setWarningMsg("Unable to create an account with the provided data.")
+			}
+		} catch (error) {
+			console.error(error)
 		}
 	}
 
@@ -37,6 +42,7 @@ function Register() {
 				setPassword={setPassword}
 				phone={phone}
 				setPhone={setPhone}
+				warningMsg={warningMsg}
 			/>
 		</>
 	)
