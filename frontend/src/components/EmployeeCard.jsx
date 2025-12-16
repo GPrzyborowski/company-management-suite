@@ -1,14 +1,20 @@
 import classes from './EmployeeCard.module.css'
+import { useNavigate } from 'react-router-dom'
 
-function EmployeeCard() {
+function EmployeeCard({employee}) {
+
+	const navigate = useNavigate()
+
 	return (
-		<div className={classes.card}>
-			<p className={classes.name}>Name Surname</p>
+		<div className={classes.card} onClick={() => {
+			navigate(`/employees/${employee.id}`)
+		}}>
+			<p className={classes.name}>{employee.firstName} {employee.lastName}</p>
 			<div className={classes['card-role-phone']}>
-				<p className={classes.role}>Software Engineer</p>
+				<p className={classes.role}>{employee.position}</p>
 				<div className={classes['card-phone']}>
                     <img src="/phone.svg" alt="phone icon" className={classes['phone-icon']}/>
-					<p>123456789</p>
+					<p>{employee.phoneNumber}</p>
 				</div>
 			</div>
 		</div>
