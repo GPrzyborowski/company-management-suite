@@ -1,16 +1,11 @@
 import express from 'express'
-import prisma from '../config/prisma.js'
 import auth from '../middleware/auth.js'
+import { getEmployees, getEmployeeById, updateEmployee } from '../../controllers/employees.controller.js'
 
 const router = express.Router()
 
-router.get('/employees', auth, async (req, res) => {
-    try {
-        const employees = await prisma.employee.findMany()
-        res.json(employees)
-    } catch(err) {
-        res.status(500)
-    }
-})
+router.get('/', auth, getEmployees)
+// router.get('/:id', auth, getEmployeeById)
+// router.put('/:id', auth, updateEmployee)
 
 export default router
