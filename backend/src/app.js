@@ -12,6 +12,6 @@ app.use(express.json())
 
 app.use('/api/auth', authRoutes)
 app.use('/api', testRoutes)
-app.use('/api', employeesRoutes)
+app.use('/api/employees', employeesRoutes)
 
 app.listen(5000, () => console.log("Server running"))
