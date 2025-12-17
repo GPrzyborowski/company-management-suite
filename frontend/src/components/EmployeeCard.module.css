@@ -1,18 +1,18 @@
 .card {
 	position: relative;
-    top: 0;
 	padding: 1.2em 2.4em;
+	margin-bottom: 1.5rem;
 	background-color: rgba(15, 82, 186, 1);
 	box-shadow: 1px 0px 26px 2px rgba(0, 51, 102, 1);
 	border-radius: 8px;
 	font-size: 1.6rem;
 	color: white;
-    transition: top .2s;
+	transition: top 0.2s;
 }
 
 .card:hover {
-    top: -5px;
-    cursor: pointer;
+	top: -5px;
+	cursor: pointer;
 }
 
 .card-role-phone {
@@ -20,20 +20,73 @@
 	justify-content: space-around;
 }
 
-.card-phone {
-    display: flex;
-}
-
 .name {
-	margin-bottom: 2rem;
-    font-size: 2.4rem;
+	position: absolute;
+	top: 2rem;
+	left: 3rem;
+	font-size: 2.4rem;
 }
 
 .role {
+	position: absolute;
+	bottom: 2rem;
+	left: 3rem;
 	margin-right: 3.6rem;
 }
 
+.card-phone {
+	position: absolute;
+	bottom: 2rem;
+	right: 3rem;
+	display: flex;
+}
+
 .phone-icon {
-    max-width: 1.6rem;
-    margin-right: 0.4rem;
+	max-width: 1.6rem;
+	margin-right: 0.4rem;
+}
+
+@media (min-width: 768px) {
+	.name {
+		top: 4rem;
+		left: 5rem;
+		font-size: 2rem;
+	}
+	.role {
+		bottom: 4rem;
+		left: 5rem;
+		font-size: 1.8rem;
+	}
+	.card-phone {
+		bottom: 4rem;
+		right: 5rem;
+		font-size: 1.8rem;
+	}
+	.phone-icon {
+		max-width: 1.6rem;
+		margin-right: 0.8rem;
+	}
+}
+
+
+@media (min-width: 992px) {
+	.name {
+		top: 4rem;
+		left: 5rem;
+		font-size: 2.4rem;
+	}
+	.role {
+		bottom: 4rem;
+		left: 5rem;
+		font-size: 2.2rem;
+	}
+	.card-phone {
+		bottom: 4rem;
+		right: 5rem;
+		font-size: 2.2rem;
+	}
+	.phone-icon {
+		max-width: 1.8rem;
+		margin-right: 0.8rem;
+	}
 }
