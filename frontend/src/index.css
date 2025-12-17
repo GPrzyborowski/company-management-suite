@@ -1,14 +1,17 @@
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
 html {
-  font-size: 62.5%;
+	font-size: 62.5%;
 }
 
 body {
-  background-color: #FFFFFF;
-  font-family: 'Roboto', sans-serif;
+	background-color: #ffffff;
+	font-family: 'Roboto', sans-serif;
+	background: linear-gradient(21deg, rgba(0, 51, 102, 1), rgba(15, 82, 186, 1));
+	-webkit-background: linear-gradient(21deg, rgba(0, 51, 102, 1), rgba(15, 82, 186, 1));
+	-moz-background: linear-gradient(21deg, rgba(0, 51, 102, 1), rgba(15, 82, 186, 1));
 }
