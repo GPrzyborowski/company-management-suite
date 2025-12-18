@@ -7,11 +7,11 @@
 	border-radius: 8px;
 	font-size: 1.6rem;
 	color: white;
-	transition: top 0.2s;
+	transition: transform 0.2s ease;
 }
 
 .card:hover {
-	top: -5px;
+	transform: translateY(-5px);
 	cursor: pointer;
 }
 
