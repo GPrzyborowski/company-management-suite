@@ -1,3 +1,4 @@
+import Wrapper from '../components/Wrapper'
 import Navigation from '../components/Navigation'
 import EmployeesViewport from '../components/EmployeesViewport'
 import EmployeeCard from '../components/EmployeeCard'
@@ -35,14 +36,17 @@ function Employees() {
 	}, [])
 
 	return (
-		<>
+
+		<Wrapper>
 			<Navigation />
 			<EmployeesViewport>
 				{employees.map(element => {
 					return <EmployeeCard key={element.id} employee={element} />
 				})}
 			</EmployeesViewport>
-		</>
+		</Wrapper>
+
+
 	)
 }
 
