@@ -44,6 +44,7 @@
 
 .list-item {
 	margin: 5rem 0;
+	text-wrap: nowrap;
 }
 
 .list-item-link {
@@ -111,5 +112,10 @@
 	.list-item-link.active:hover::before {
 		transform: scaleX(1);
 	}
-	
+}
+
+@media((min-width: 992px) and (max-width: 1200px)) {
+	.list-item {
+		margin: 0 2rem; 
+	}
 }
