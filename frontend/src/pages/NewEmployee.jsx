@@ -1,3 +1,4 @@
+import Wrapper from '../components/Wrapper'
 import NewEmployeeForm from '../components/NewEmployeeForm'
 import Navigation from '../components/Navigation'
 
@@ -21,10 +22,10 @@ function NewEmployee() {
 	}
 
 	return (
-		<>
+		<Wrapper>
 			<Navigation />
 			<NewEmployeeForm onSubmit={submit}/>
-		</>
+		</Wrapper>
 	)
 }
 
