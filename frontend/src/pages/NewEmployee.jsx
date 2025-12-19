@@ -1,9 +1,12 @@
 import Wrapper from '../components/Wrapper'
 import NewEmployeeForm from '../components/NewEmployeeForm'
 import Navigation from '../components/Navigation'
+import { useState } from 'react'
 
 function NewEmployee() {
 	const localEndpoint = 'http://localhost:5000/api/auth/registeremployee'
+
+	const [formKey, setFormKey] = useState(0)
 
 	async function submit(dataToSend) {
 		const res = await fetch(localEndpoint, {
@@ -16,6 +19,7 @@ function NewEmployee() {
 
 		if (res.ok) {
 			console.log('Success.')
+			setFormKey(prev => prev + 1)
 		} else {
 			console.error(data)
 		}
@@ -24,7 +28,7 @@ function NewEmployee() {
 	return (
 		<Wrapper>
 			<Navigation />
-			<NewEmployeeForm onSubmit={submit}/>
+			<NewEmployeeForm onSubmit={submit} key={formKey}/>
 		</Wrapper>
 	)
 }
