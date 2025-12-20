@@ -15,3 +15,7 @@ body {
 	-webkit-background: linear-gradient(21deg, rgba(0, 51, 102, 1), rgba(15, 82, 186, 1));
 	-moz-background: linear-gradient(21deg, rgba(0, 51, 102, 1), rgba(15, 82, 186, 1));
 }
+
+:focus {
+	outline: 1px dashed #FFFFFF;
+}
