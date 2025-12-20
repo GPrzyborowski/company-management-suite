@@ -16,6 +16,6 @@ body {
 	-moz-background: linear-gradient(21deg, rgba(0, 51, 102, 1), rgba(15, 82, 186, 1));
 }
 
-:focus {
+:focus-visible {
 	outline: 1px dashed #FFFFFF;
 }
