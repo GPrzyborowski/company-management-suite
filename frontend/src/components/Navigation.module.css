@@ -54,6 +54,10 @@
 	text-decoration: none;
 }
 
+.list-item-link:focus {
+	outline: 1px dashed #FFFFFF;
+}
+
 .list-item-link-logout {
 	padding: 0 1em;
 	background: none;
