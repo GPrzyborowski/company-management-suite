@@ -5,7 +5,9 @@ import Register from './pages/Register'
 import Dashboard from './pages/Dashboard'
 import NewEmployee from './pages/NewEmployee'
 import Employees from './pages/Employees'
+import EmployeeInformation from './pages/EmployeeInformation'
 import ProtectedRoute from './components/ProtectedRoute'
+
 import './App.css'
 
 function App() {
@@ -32,6 +34,13 @@ function App() {
 					element={
 						<ProtectedRoute>
 							<Employees />
+						</ProtectedRoute>
+					}></Route>
+				<Route
+					path="/employees/:id"
+					element={
+						<ProtectedRoute>
+							<EmployeeInformation />
 						</ProtectedRoute>
 					}></Route>
 				<Route path="/login" element={<Login />}></Route>
