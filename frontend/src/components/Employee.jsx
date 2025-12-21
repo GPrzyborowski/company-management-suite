@@ -1,5 +1,4 @@
 import EmployeeCard from './EmployeeCard'
-import classes from './Employee.module.css'
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
