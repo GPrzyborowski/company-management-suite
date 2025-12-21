@@ -1,10 +1,11 @@
 import EmployeeCard from './EmployeeCard'
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 function Employee() {
 	const { id } = useParams()
 
+	const [employee, setEmployee] = useState('')
 	const localEndpoint = `http://localhost:5000/api/employees/${id}`
 
 	useEffect(() => {
@@ -14,12 +15,12 @@ function Employee() {
 			},
 		})
 			.then(res => res.json())
-			.then(data => console.log(data))
+			.then(data => setEmployee(data))
 	}, [id])
 
 	return (
 		<main>
-			{/* <EmployeeCard /> */}
+			<EmployeeCard employee={employee}/>
 		</main>
 	)
 }
