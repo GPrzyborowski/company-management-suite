@@ -1,6 +1,6 @@
-import EmployeeCard from './EmployeeCard'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import classes from './Employee.module.css'
 
 function Employee() {
 	const { id } = useParams()
@@ -15,12 +15,15 @@ function Employee() {
 			},
 		})
 			.then(res => res.json())
-			.then(data => setEmployee(data))
+			.then((data) => {
+				setEmployee(data)
+				console.log(data);
+			})
 	}, [id])
 
 	return (
-		<main>
-			<EmployeeCard employee={employee}/>
+		<main className={classes.main}>
+			<h1 className={classes.name}>{employee.firstName} {employee.lastName}</h1>
 		</main>
 	)
 }
