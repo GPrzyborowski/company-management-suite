@@ -4,11 +4,30 @@
     width: 100%;
 }
 
-.name {
+.box {
     position: absolute;
     top: 15rem;
-    left: 50%;
-    transform: translateX(-50%);
+    width: 100%;
+    height: calc(100vh - 15rem);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    text-align: center;
+}
+
+.info-box {
+
+}
+
+.work-box {
+
+}
+
+.docs-box {
+
+}
+
+.name {
     font-size: 2.8rem;
     color: #FFFFFF;
 }
