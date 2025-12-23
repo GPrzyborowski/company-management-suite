@@ -15,15 +15,27 @@ function Employee() {
 			},
 		})
 			.then(res => res.json())
-			.then((data) => {
+			.then(data => {
 				setEmployee(data)
-				console.log(data);
+				console.log(data)
 			})
 	}, [id])
 
 	return (
 		<main className={classes.main}>
-			<h1 className={classes.name}>{employee.firstName} {employee.lastName}</h1>
+			<div className={classes.box}>
+				<div className={classes['info-box']}>
+					<h1 className={classes.name}>
+						{employee.firstName} {employee.lastName}
+					</h1>
+				</div>
+				<div className={classes['work-box']}>
+					<p>test</p>
+				</div>
+				<div className={classes['docs-box']}>
+					<p>test</p>
+				</div>
+			</div>
 		</main>
 	)
 }
