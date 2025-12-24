@@ -79,6 +79,22 @@ function Employee() {
 						<span className={classes['info-label']}>Contract type: </span>
 						{employee.contractType}
 					</p>
+					<p className={classes.info}>
+						<span className={classes['info-label']}>Country: </span>
+						{employee?.address?.country}
+					</p>
+					<p className={classes.info}>
+						<span className={classes['info-label']}>City: </span>
+						{employee?.address?.city}
+					</p>
+					<p className={classes.info}>
+						<span className={classes['info-label']}>Street: </span>
+						{employee?.address?.street} {employee?.address?.buildingNumber} / {employee?.address?.apartmentNumber}
+					</p>
+					<p className={classes.info}>
+						<span className={classes['info-label']}>Postal code: </span>
+						{employee?.address?.postalCode}
+					</p>
 				</div>
 				<div className={classes['work-box']}>
 					<p>test</p>
