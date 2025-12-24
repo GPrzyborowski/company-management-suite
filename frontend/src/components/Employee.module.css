@@ -14,6 +14,16 @@
 }
 
 .info-box {
+	margin: 0 auto;
+	padding: 0 2em;
+	text-align: center;
+}
+
+.info-header {
+	margin-bottom: 4rem;
+	font-size: 2.4rem;
+	text-align: center;
+	color: #FFFFFF;
 }
 
 .info-label {
@@ -27,6 +37,7 @@
 }
 
 .info {
+	margin-bottom: 1rem;
     font-size: 2rem;
 	color: #ffffff;
 }
