@@ -12,7 +12,13 @@ export const getEmployees = async (req, res) => {
 
 export const getEmployeeById = async (req, res) => {
     const id = Number(req.params.id)
-    const employee = await prisma.employee.findUnique({where: {id}})
+    const employee = await prisma.employee.findUnique({
+        where: {id},
+        include: {
+            address: true
+        }
+    })
+    
     if(!employee) {
         return res.status(404).json({message: 'User not found.'})
     }
