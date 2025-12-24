@@ -25,18 +25,60 @@ function Employee() {
 	const birthDateFormatted = birthDate.toLocaleDateString('pl-PL', {
 		day: 'numeric',
 		month: 'long',
-		year: 'numeric'
+		year: 'numeric',
+	})
+
+	const jobStart = new Date(employee.jobStart)
+	const jobStartFormatted = jobStart.toLocaleDateString('pl-PL', {
+		day: 'numeric',
+		month: 'long',
+		year: 'numeric',
 	})
 
 	return (
 		<main className={classes.main}>
 			<div className={classes.box}>
 				<div className={classes['info-box']}>
+					<h2 className={classes['info-header']}>Employee information</h2>
 					<p className={classes.info}>
 						<span className={classes['info-label']}>Name:</span> {employee.firstName} {employee.lastName}
 					</p>
-					<p className={classes.info}><span className={classes['info-label']}>Birth date: </span>{birthDateFormatted}</p>
-					<p className={classes.info}><span className={classes['info-label']}>Social number: </span>{employee.socialNumber}</p>
+					<p className={classes.info}>
+						<span className={classes['info-label']}>Birth date: </span>
+						{birthDateFormatted}
+					</p>
+					<p className={classes.info}>
+						<span className={classes['info-label']}>Social number: </span>
+						{employee.socialNumber}
+					</p>
+					<p className={classes.info}>
+						<span className={classes['info-label']}>Phone number: </span>
+						{employee.phoneNumber}
+					</p>
+					<p className={classes.info}>
+						<span className={classes['info-label']}>Email: </span>
+						{employee.email}
+					</p>
+					<p className={classes.info}>
+						<span className={classes['info-label']}>Bank account: </span>
+						{employee.bankAccount}
+					</p>
+					<p className={classes.info}>
+						<span className={classes['info-label']}>Registered: </span>
+						{jobStartFormatted}
+					</p>
+					<p className={classes.info}>
+						<span className={classes['info-label']}>Salary rate: </span>
+						{employee.salaryRate}pln / hour
+					</p>
+					<p className={classes.info}>
+						<span className={classes['info-label']}>Position: </span>
+						{employee.position}
+					</p>
+					<p className={classes.info}>
+						<span className={classes['info-label']}>Contract type: </span>
+						{employee.contractType}
+					</p>
 				</div>
 				<div className={classes['work-box']}>
 					<p>test</p>
