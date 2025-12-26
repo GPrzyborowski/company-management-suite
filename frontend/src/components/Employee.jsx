@@ -39,7 +39,9 @@ function Employee() {
 		<main className={classes.main}>
 			<div className={classes.box}>
 				<div className={classes['info-box']}>
-					<h2 className={classes['info-header']}>Employee information</h2>
+					<h2 className={classes['info-header']}>
+						Employee: {employee.firstName} {employee.lastName}
+					</h2>
 					<p className={classes.info}>
 						<span className={classes['info-label']}>Name:</span> {employee.firstName} {employee.lastName}
 					</p>
@@ -96,10 +98,10 @@ function Employee() {
 						{employee?.address?.postalCode}
 					</p>
 				</div>
-				<div className={classes['work-box']}>
+				<div className={classes['docs-box']}>
 					<p>test</p>
 				</div>
-				<div className={classes['docs-box']}>
+				<div className={classes['work-box']}>
 					<p>test</p>
 				</div>
 			</div>
