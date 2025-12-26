@@ -1,12 +1,53 @@
 .container {
-	border: 1px solid #ffffff;
-    width: 80%;
-    min-height: 12rem;
+	width: 80%;
+	min-height: 12rem;
+	position: relative;
+	padding: 1.2em 2.4em;
+	margin-bottom: 1.5rem;
+	background-color: rgba(15, 82, 186, 1);
+	box-shadow: 1px 0px 26px 2px rgba(0, 51, 102, 1);
+	border-radius: 8px;
+	font-size: 1.6rem;
+	color: white;
+	transition: transform 0.2s ease;
+}
+
+.header {
+	position: absolute;
+    top: 2rem;
+    left: 2rem;
+}
+
+.date {
+	position: absolute;
+    top: 5rem;
+    left: 2rem;
+}
+
+.icon {
+	height: 2rem;
+	width: 2rem;
+	position: absolute;
+	bottom: 1rem;
+}
+
+.icon-download {
+	left: 2rem;
+}
+
+.icon-delete {
+	right: 2rem;
 }
 
 @media (min-width: 576px) {
 	.container {
-        width: 90%;
-        min-height: 16rem;
+		width: 90%;
+		min-height: 16rem;
+	}
+}
+
+@media (min-width: 992px) {
+	.icon-delete {
+		left: 6rem;
 	}
 }
