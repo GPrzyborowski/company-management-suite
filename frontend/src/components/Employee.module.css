@@ -38,6 +38,12 @@
     margin-right: .5rem;
 }
 
+.docs-box {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: auto;
+}
+
 @media (min-width: 992px) {
 	.box {
         top: 15rem;
