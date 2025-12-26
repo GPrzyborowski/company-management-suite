@@ -101,16 +101,10 @@ function Employee() {
 				</div>
 				<div className={classes['docs-box']}>
 					<h2 className={`${classes['info-header']} ${classes['docs-header']}`}>Documents</h2>
-					<div className={classes['docs-container']}>
-						<EmployeeDoc />
-						<EmployeeDoc />
-						<EmployeeDoc />
-						<EmployeeDoc />
-						<EmployeeDoc />
-					</div>
+					<div className={classes['docs-container']}></div>
 				</div>
 				<div className={classes['work-box']}>
-					<p>test</p>
+					<h2 className={`${classes['info-header']} ${classes['work-header']}`}>Work information</h2>
 				</div>
 			</div>
 		</main>
