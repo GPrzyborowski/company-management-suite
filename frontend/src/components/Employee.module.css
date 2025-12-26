@@ -101,6 +101,10 @@
 	.work-box {
 		grid-column: 1 / 3;
 	}
+
+	.work-header {
+		margin-top: 4rem;
+	}
 }
 
 @media (min-width: 1200px) {
