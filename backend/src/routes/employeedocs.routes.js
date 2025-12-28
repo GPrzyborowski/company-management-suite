@@ -1,7 +1,7 @@
 import express from 'express'
 import fs from 'fs'
 import prisma from '../config/prisma.js'
-import { auth } from '../middleware/auth.js'
+import auth from '../middleware/auth.js'
 import { uploadEmployeeDoc } from '../middleware/uploademployeedoc.js'
 
 const router = express.Router()
