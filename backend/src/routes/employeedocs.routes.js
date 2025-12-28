@@ -44,4 +44,13 @@ router.post('/employees/:id/documents', auth, uploadEmployeeDoc.single('file'), 
     res.status(201).json(document)
 })
 
+router.get('/documents/:documentId', auth, async (req, res) => {
+    const documentId = req.params.documentId
+    const document = await prisma.employeeDocument.findUnique({where: {id: documentId}})
+    if(!document) {
+        return res.status(404)
+    }
+    res.download(document.filePath, document.fileName)
+})
+
 export default router
