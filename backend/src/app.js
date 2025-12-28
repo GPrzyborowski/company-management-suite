@@ -3,6 +3,7 @@ import cors from 'cors'
 import testRoutes from './routes/test.routes.js'
 import employeesRoutes from './routes/employees.routes.js'
 import authRoutes from './routes/auth.routes.js'
+import employeeDocumentsRoutes from './routes/employeedocs.routes.js'
 
 const app = express()
 
@@ -13,5 +14,6 @@ app.use(express.json())
 app.use('/api/auth', authRoutes)
 app.use('/api', testRoutes)
 app.use('/api/employees', employeesRoutes)
+app.use('/api', employeeDocumentsRoutes)
 
 app.listen(5000, () => console.log("Server running"))
