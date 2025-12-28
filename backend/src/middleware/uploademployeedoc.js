@@ -6,7 +6,7 @@ const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         const employeeId = req.params.id
         const dir = path.join(process.cwd(), 'uploads', 'employees', employeeId)
-        fs.mkdirSync(dir, {resursive: true})
+        fs.mkdirSync(dir, {recursive: true})
         cb(null, dir)
     },
     filename: (req, file, cb) => {
