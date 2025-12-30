@@ -5,12 +5,11 @@ import auth from '../middleware/auth.js'
 import { uploadEmployeeDoc } from '../middleware/upload.js'
 
 const router = express.Router()
-
 router.use(auth)
 
 router.get('/employees/:id/documents', async (req, res) => {
-    const employeeId = req.params.id
-    const documents = await prisma.employeedocument.findMany({
+    const employeeId = Number(req.params.id)
+    const documents = await prisma.employeeDocument.findMany({
         where: {employeeId},
         orderBy: {uploadedAt: 'desc'},
         select: {
@@ -25,7 +24,7 @@ router.get('/employees/:id/documents', async (req, res) => {
 })
 
 router.post('/employees/:id/documents', uploadEmployeeDoc.single('file'), async (req, res) => {
-    const employeeId = req.params.id
+    const employeeId = Number(req.params.id)
     const document = await prisma.employeedocument.create({
         data: {
             employeeId,
@@ -47,7 +46,7 @@ router.post('/employees/:id/documents', uploadEmployeeDoc.single('file'), async 
 })
 
 router.get('/documents/:documentId', async (req, res) => {
-    const documentId = req.params.documentId
+    const documentId = Number(req.params.documentId)
     const document = await prisma.employeeDocument.findUnique({where: {id: documentId}})
     if(!document) {
         return res.status(404)
