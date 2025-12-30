@@ -7,10 +7,13 @@ function Employee() {
 	const { id } = useParams()
 
 	const [employee, setEmployee] = useState('')
-	const localEndpoint = `http://localhost:5000/api/employees/${id}`
+	const [documents, setDocuments] = useState([])
+
+	const employeeEndpoint = `http://localhost:5000/api/employees/${id}`
+	const documentsEndpoint = `http://localhost:5000/api/employees/${id}/documents`
 
 	useEffect(() => {
-		fetch(localEndpoint, {
+		fetch(employeeEndpoint, {
 			headers: {
 				Authorization: `Bearer ${localStorage.getItem('token')}`,
 			},
@@ -20,6 +23,16 @@ function Employee() {
 				setEmployee(data)
 				console.log(data)
 			})
+	}, [id])
+
+	useEffect(() => {
+		fetch(documentsEndpoint, {
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem('token')}`,
+			},
+		})
+			.then(res => res.json())
+			.then(data => setDocuments(data))
 	}, [id])
 
 	const birthDate = new Date(employee.birthDate)
