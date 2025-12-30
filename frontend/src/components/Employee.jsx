@@ -21,7 +21,6 @@ function Employee() {
 			.then(res => res.json())
 			.then(data => {
 				setEmployee(data)
-				console.log(data)
 			})
 	}, [id])
 
