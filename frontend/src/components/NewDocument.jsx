@@ -4,10 +4,12 @@ import classes from './NewDocument.module.css'
 function NewDocument() {
 	return (
 		<div className={classes.container}>
-			<label>
-				Upload a new document
+			<label className={classes.label}>
+				<span className={classes.highlight}>Add file</span> or drag it to this field.
 				<input type="file" className={classes.upload} />
-                <img src="/upload.svg" alt="" />
+                <div className={classes['icon-container']}>
+					<img src="/upload.svg" alt="upload icon" className={classes.icon}/>
+				</div>
 			</label>
 		</div>
 	)
