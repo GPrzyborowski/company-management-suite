@@ -7,6 +7,7 @@ function NewDocument() {
 			<label>
 				Upload a new document
 				<input type="file" className={classes.upload} />
+                <img src="/upload.svg" alt="" />
 			</label>
 		</div>
 	)
