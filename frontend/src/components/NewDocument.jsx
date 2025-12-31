@@ -5,7 +5,7 @@ function NewDocument() {
 	return (
 		<div className={classes.container}>
 			<label>
-				Upload
+				Upload a new document
 				<input type="file" className={classes.upload} />
 			</label>
 		</div>
