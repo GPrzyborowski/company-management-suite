@@ -1,4 +1,5 @@
 import EmployeeDoc from './EmployeeDoc'
+import NewDocument from './NewDocument'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import classes from './Employee.module.css'
@@ -113,7 +114,13 @@ function Employee() {
 				</div>
 				<div className={classes['docs-box']}>
 					<h2 className={`${classes['info-header']} ${classes['docs-header']}`}>Documents</h2>
-					<div className={classes['docs-container']}></div>
+					<div className={classes['docs-container']}>
+						<EmployeeDoc />
+						<EmployeeDoc />
+						<EmployeeDoc />
+						<EmployeeDoc />
+						<NewDocument />
+					</div>
 				</div>
 				<div className={classes['work-box']}>
 					<h2 className={`${classes['info-header']} ${classes['work-header']}`}>Work information</h2>
