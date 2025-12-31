@@ -1,4 +1,8 @@
 .container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 	width: 80%;
 	min-height: 12rem;
 	position: relative;
@@ -10,10 +14,28 @@
 	font-size: 1.6rem;
 	color: white;
 	transition: transform 0.2s ease;
+	text-align: center;
 }
 
 .upload {
-    display: none;
+	display: none;
+}
+
+.highlight {
+	font-weight: bold;
+}
+
+.highlight:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.icon-container {
+	margin-top: 1.5rem;
+}
+
+.icon {
+	width: 3rem;
 }
 
 @media (min-width: 576px) {
