@@ -14,14 +14,18 @@
 
 .header {
 	position: absolute;
-    top: 2rem;
-    left: 2rem;
+	top: 2rem;
+	left: 2rem;
+	right: 2rem;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .date {
 	position: absolute;
-    top: 5rem;
-    left: 2rem;
+	top: 5rem;
+	left: 2rem;
 }
 
 .icon {
