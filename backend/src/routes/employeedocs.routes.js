@@ -25,7 +25,7 @@ router.get('/employees/:id/documents', async (req, res) => {
 
 router.post('/employees/:id/documents', uploadEmployeeDoc.single('file'), async (req, res) => {
     const employeeId = Number(req.params.id)
-    const document = await prisma.employeedocument.create({
+    const document = await prisma.employeeDocument.create({
         data: {
             employeeId,
             fileName: req.file.originalname,
