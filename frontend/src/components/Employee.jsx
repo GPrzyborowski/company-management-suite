@@ -115,7 +115,16 @@ function Employee() {
 				<div className={classes['docs-box']}>
 					<h2 className={`${classes['info-header']} ${classes['docs-header']}`}>Documents</h2>
 					<div className={classes['docs-container']}>
-						<NewDocument />
+						{documents.map(element => {
+							const documentDate = new Date(element.uploadedAt)
+							const documentDateFormatted = documentDate.toLocaleDateString('pl-PL', {
+								day: 'numeric',
+								month: 'numeric',
+								year: 'numeric',
+							})
+							return <EmployeeDoc key={element.id} header={element.fileName} date={documentDateFormatted} />
+						})}
+						<NewDocument id={id} />
 					</div>
 				</div>
 				<div className={classes['work-box']}>
