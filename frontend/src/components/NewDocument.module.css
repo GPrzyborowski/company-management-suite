@@ -15,6 +15,7 @@
 	color: white;
 	transition: transform 0.2s ease;
 	text-align: center;
+	transition: background-color .2s;
 }
 
 .upload {
@@ -36,6 +37,10 @@
 
 .icon {
 	width: 3rem;
+}
+
+.dragging {
+	background-color: rgb(12, 71, 159);
 }
 
 @media (min-width: 576px) {
