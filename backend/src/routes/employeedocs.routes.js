@@ -45,7 +45,7 @@ router.post('/employees/:id/documents', uploadEmployeeDoc.single('file'), async 
     res.status(201).json(document)
 })
 
-router.get('/documents/:documentId', async (req, res) => {
+router.get('/documents/:documentId/download', async (req, res) => {
     const documentId = Number(req.params.documentId)
     const document = await prisma.employeeDocument.findUnique({where: {id: documentId}})
     if(!document) {
