@@ -49,6 +49,27 @@ function Employee() {
 		year: 'numeric',
 	})
 
+	const downloadFile = async (id, fileName) => {
+		const res = await fetch(`http://localhost:5000/api/documents/${id}/download`, {
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem('token')}`,
+			},
+		})
+		if (!res.ok) {
+			console.error('Downloading the file resulted in failure.')
+			return
+		}
+		const blob = await res.blob()
+		const url = window.URL.createObjectURL(blob)
+		const a = document.createElement('a')
+		a.href = url
+		a.download = fileName
+		document.body.appendChild(a)
+		a.click()
+		a.remove()
+		window.URL.revokeObjectURL(url)
+	}
+
 	return (
 		<main className={classes.main}>
 			<div className={classes.box}>
@@ -122,7 +143,16 @@ function Employee() {
 								month: 'numeric',
 								year: 'numeric',
 							})
-							return <EmployeeDoc key={element.id} header={element.fileName} date={documentDateFormatted} />
+							return (
+								<EmployeeDoc
+									key={element.id}
+									header={element.fileName}
+									date={documentDateFormatted}
+									onDownload={() => {
+										downloadFile(element.id, element.fileName)
+									}}
+								/>
+							)
 						})}
 						<NewDocument id={id} />
 					</div>
