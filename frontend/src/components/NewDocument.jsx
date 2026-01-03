@@ -47,7 +47,7 @@ function NewDocument({ id, onUploaded }) {
 			onDragOver={onDragOver}
 			onDragLeave={onDragLeave}>
 			<label className={classes.label}>
-				<span className={classes.highlight} onClick={() => inputRef.current.click()}>
+				<span className={classes.highlight}>
 					Add file
 				</span>{' '}
 				or drag it to this field.
