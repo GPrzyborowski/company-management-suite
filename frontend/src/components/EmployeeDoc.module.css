@@ -1,4 +1,7 @@
-button {
+.btn {
+	border: none;
+	background: transparent;
+	outline: none;
 	cursor: pointer;
 }
 
