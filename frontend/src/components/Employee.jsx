@@ -75,6 +75,10 @@ function Employee() {
 	}
 
 	const deleteFile = async id => {
+		const confirmed = window.confirm("Are you sure you want to delete this file?")
+		if(!confirmed) {
+			return
+		}
 		const res = await fetch(`http://localhost:5000/api/documents/${id}`, {
 			method: 'DELETE',
 			headers: {
