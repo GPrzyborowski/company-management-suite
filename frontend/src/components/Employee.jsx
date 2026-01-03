@@ -70,6 +70,18 @@ function Employee() {
 		window.URL.revokeObjectURL(url)
 	}
 
+	const deleteFile = async id => {
+		const res = await fetch(`http://localhost:5000/api/documents/${id}`, {
+			method: 'DELETE',
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem('token')}`
+			},
+		})
+		if(res.ok) {
+			console.log('The document was successfully deleted.')
+		}
+	}
+
 	return (
 		<main className={classes.main}>
 			<div className={classes.box}>
@@ -150,6 +162,9 @@ function Employee() {
 									date={documentDateFormatted}
 									onDownload={() => {
 										downloadFile(element.id, element.fileName)
+									}}
+									onDelete={() => {
+										deleteFile(element.id)
 									}}
 								/>
 							)
