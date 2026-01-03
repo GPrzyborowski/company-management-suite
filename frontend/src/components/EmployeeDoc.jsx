@@ -5,8 +5,8 @@ function EmployeeDoc({header, date, onDownload, onDelete}) {
 		<div className={classes.container}>
 			<p className={classes.header}>{header}</p>
 			<p className={classes.date}>Uploaded: {date}</p>
-			<button onClick={onDownload}><img src="/download.svg" alt="" className={`${classes.icon} ${classes['icon-download']}`}/></button>
-			<button onClick={onDelete}><img src="/delete.svg" alt="" className={`${classes.icon} ${classes['icon-delete']}`}/></button>
+			<button onClick={onDownload} className={classes.btn}><img src="/download.svg" alt="" className={`${classes.icon} ${classes['icon-download']}`}/></button>
+			<button onClick={onDelete} className={classes.btn}><img src="/delete.svg" alt="" className={`${classes.icon} ${classes['icon-delete']}`}/></button>
 		</div>
 	)
 }
