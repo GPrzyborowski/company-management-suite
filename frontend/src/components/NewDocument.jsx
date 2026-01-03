@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react'
 import classes from './NewDocument.module.css'
 
-function NewDocument({ id }) {
+function NewDocument({ id, onUploaded }) {
 	const inputRef = useRef(null)
 	const [isDragging, setIsDragging] = useState(false)
 
@@ -14,8 +14,7 @@ function NewDocument({ id }) {
 			body: form,
 		})
 		if (res.ok) {
-			const created = await res.json()
-			console.log(created)
+			onUploaded()
 		}
 	}
 
