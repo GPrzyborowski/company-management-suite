@@ -54,4 +54,19 @@ router.get('/documents/:documentId/download', async (req, res) => {
     res.download(document.filePath, document.fileName)
 })
 
+router.delete('/documents/:documentId', auth, async (req, res) => {
+    const documentId = Number(req.params.documentId)
+    const document = await prisma.employeeDocument.findUnique({where: {id: documentId}})
+    if(!document) {
+        return res.status(404)
+    }
+    try {
+        fs.unlinkSync(document.filePath)
+    } catch(error) {
+        console.error(error)
+    }
+    await prisma.employeeDocument.delete({where: {id: documentId}})
+    res.sendStatus(204)
+})
+
 export default router
