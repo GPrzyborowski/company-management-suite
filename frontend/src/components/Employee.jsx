@@ -25,7 +25,7 @@ function Employee() {
 			})
 	}, [id])
 
-	useEffect(() => {
+	const loadDocuments = async () => {
 		fetch(documentsEndpoint, {
 			headers: {
 				Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -33,6 +33,10 @@ function Employee() {
 		})
 			.then(res => res.json())
 			.then(data => setDocuments(data))
+	}
+
+	useEffect(() => {
+		loadDocuments()
 	}, [id])
 
 	const birthDate = new Date(employee.birthDate)
@@ -74,11 +78,11 @@ function Employee() {
 		const res = await fetch(`http://localhost:5000/api/documents/${id}`, {
 			method: 'DELETE',
 			headers: {
-				Authorization: `Bearer ${localStorage.getItem('token')}`
+				Authorization: `Bearer ${localStorage.getItem('token')}`,
 			},
 		})
-		if(res.ok) {
-			console.log('The document was successfully deleted.')
+		if (res.ok) {
+			loadDocuments()
 		}
 	}
 
@@ -169,7 +173,7 @@ function Employee() {
 								/>
 							)
 						})}
-						<NewDocument id={id} />
+						<NewDocument id={id} onUploaded={loadDocuments}/>
 					</div>
 				</div>
 				<div className={classes['work-box']}>
