@@ -168,6 +168,7 @@ function Employee() {
 									key={element.id}
 									header={element.fileName}
 									date={documentDateFormatted}
+									size={`${(element.size / 1000000).toFixed(1)} MB`}
 									onDownload={() => {
 										downloadFile(element.id, element.fileName)
 									}}
