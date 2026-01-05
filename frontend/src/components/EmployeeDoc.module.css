@@ -35,6 +35,13 @@
 	left: 2rem;
 }
 
+.size {
+	position: absolute;
+	bottom: 1rem;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
 .icon {
 	height: 2rem;
 	width: 2rem;
@@ -58,6 +65,11 @@
 }
 
 @media (min-width: 992px) {
+	.size {
+		transform: none;
+		left: auto;
+		right: 2rem;
+	}
 	.icon-delete {
 		left: 6rem;
 	}
