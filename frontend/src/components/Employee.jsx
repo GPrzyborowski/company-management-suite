@@ -43,14 +43,14 @@ function Employee() {
 	const birthDateFormatted = birthDate.toLocaleDateString('pl-PL', {
 		day: 'numeric',
 		month: 'long',
-		year: 'numeric',
+		year: 'numeric'
 	})
 
 	const jobStart = new Date(employee.jobStart)
 	const jobStartFormatted = jobStart.toLocaleDateString('pl-PL', {
 		day: 'numeric',
 		month: 'long',
-		year: 'numeric',
+		year: 'numeric'
 	})
 
 	const downloadFile = async (id, fileName) => {
@@ -82,7 +82,7 @@ function Employee() {
 		const res = await fetch(`http://localhost:5000/api/documents/${id}`, {
 			method: 'DELETE',
 			headers: {
-				Authorization: `Bearer ${localStorage.getItem('token')}`,
+				Authorization: `Bearer ${localStorage.getItem('token')}`
 			},
 		})
 		if (res.ok) {
