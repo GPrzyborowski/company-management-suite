@@ -161,7 +161,7 @@ function Employee() {
 							const documentDateFormatted = documentDate.toLocaleDateString('pl-PL', {
 								day: 'numeric',
 								month: 'numeric',
-								year: 'numeric',
+								year: 'numeric'
 							})
 							return (
 								<EmployeeDoc
