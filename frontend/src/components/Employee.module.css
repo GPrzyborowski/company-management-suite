@@ -17,11 +17,35 @@
 	text-align: center;
 }
 
-.info-header {
+.header-box {
+	position: relative;
 	margin-bottom: 4rem;
+}
+
+.info-header {
 	font-size: 2.4rem;
 	text-align: center;
 	color: #ffffff;
+}
+
+.edit {
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: .2rem;
+	border: none;
+	outline: none;
+	background: none;
+	cursor: pointer;
+}
+
+.edit-icon {
+	width: 2.4rem;
+	transition: transform .3s;
+}
+
+.edit-icon:hover {
+	transform: scale(1.05);
 }
 
 .info-label {
@@ -83,6 +107,10 @@
 		padding: 0;
 		margin-left: 5rem;
 		text-align: left;
+	}
+
+	.edit {
+		left: auto;
 	}
 
 	.info-header {
