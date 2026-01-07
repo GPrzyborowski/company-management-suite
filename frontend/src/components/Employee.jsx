@@ -43,14 +43,14 @@ function Employee() {
 	const birthDateFormatted = birthDate.toLocaleDateString('pl-PL', {
 		day: 'numeric',
 		month: 'long',
-		year: 'numeric'
+		year: 'numeric',
 	})
 
 	const jobStart = new Date(employee.jobStart)
 	const jobStartFormatted = jobStart.toLocaleDateString('pl-PL', {
 		day: 'numeric',
 		month: 'long',
-		year: 'numeric'
+		year: 'numeric',
 	})
 
 	const downloadFile = async (id, fileName) => {
@@ -75,14 +75,14 @@ function Employee() {
 	}
 
 	const deleteFile = async id => {
-		const confirmed = window.confirm("Are you sure you want to delete this file?")
-		if(!confirmed) {
+		const confirmed = window.confirm('Are you sure you want to delete this file?')
+		if (!confirmed) {
 			return
 		}
 		const res = await fetch(`http://localhost:5000/api/documents/${id}`, {
 			method: 'DELETE',
 			headers: {
-				Authorization: `Bearer ${localStorage.getItem('token')}`
+				Authorization: `Bearer ${localStorage.getItem('token')}`,
 			},
 		})
 		if (res.ok) {
@@ -94,9 +94,13 @@ function Employee() {
 		<main className={classes.main}>
 			<div className={classes.box}>
 				<div className={classes['info-box']}>
-					<h2 className={classes['info-header']}>
-						Employee: {employee.firstName} {employee.lastName}
-					</h2>
+					<div className={classes['header-box']}>
+						<h2 className={classes['info-header']}>
+							Employee: {employee.firstName} {employee.lastName}
+						</h2>
+						<button className={classes.edit}><img src="/edit.svg" alt="edit icon" className={classes['edit-icon']}/></button>
+					</div>
+
 					<p className={classes.info}>
 						<span className={classes['info-label']}>Name:</span> {employee.firstName} {employee.lastName}
 					</p>
@@ -161,7 +165,7 @@ function Employee() {
 							const documentDateFormatted = documentDate.toLocaleDateString('pl-PL', {
 								day: 'numeric',
 								month: 'numeric',
-								year: 'numeric'
+								year: 'numeric',
 							})
 							return (
 								<EmployeeDoc
@@ -178,7 +182,7 @@ function Employee() {
 								/>
 							)
 						})}
-						<NewDocument id={id} onUploaded={loadDocuments}/>
+						<NewDocument id={id} onUploaded={loadDocuments} />
 					</div>
 				</div>
 				<div className={classes['work-box']}>
