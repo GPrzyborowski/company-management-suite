@@ -6,6 +6,6 @@ const router = express.Router()
 
 router.get('/', auth, getEmployees)
 router.get('/:id', auth, getEmployeeById)
-// router.put('/:id', auth, updateEmployee)
+router.put('/:id', auth, updateEmployee)
 
 export default router
