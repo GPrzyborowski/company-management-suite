@@ -17,11 +17,11 @@
 }
 
 .success {
-    background-color: #005e2f;
+	background-color: #008141;
 }
 
 .success:hover {
-    background-color: #004d26;
+	background-color: #006432;
 }
 
 .danger {
