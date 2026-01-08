@@ -1,0 +1,40 @@
+.box {
+	display: inline-block;
+	position: relative;
+	padding: 1.5rem 3rem;
+	margin-left: 50px;
+	border-radius: 8px;
+	background-color: rgba(15, 82, 186, 1);
+	border: 2px solid rgba(0, 51, 102, 1);
+}
+
+.paragraph {
+	text-align: center;
+	font-size: 1.6rem;
+    color: #FFFFFF;
+}
+
+.btn {
+	margin: 0 1rem;
+	padding: 1rem 2rem;
+	border: none;
+	border-radius: 8px;
+	background: none;
+	outline: none;
+	cursor: pointer;
+	color: #ffffff;
+}
+
+.btn-box {
+	margin-top: 3rem;
+	display: flex;
+	justify-content: center;
+}
+
+.cancel {
+	background-color: #9c2727;
+}
+
+.confirm {
+	background-color: #008141;
+}
