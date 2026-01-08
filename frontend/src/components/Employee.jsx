@@ -1,5 +1,6 @@
 import EmployeeDoc from './EmployeeDoc'
 import NewDocument from './NewDocument'
+import ConfirmModal from './ConfirmModal'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import classes from './Employee.module.css'
@@ -98,7 +99,9 @@ function Employee() {
 						<h2 className={classes['info-header']}>
 							Employee: {employee.firstName} {employee.lastName}
 						</h2>
-						<button className={classes.edit}><img src="/edit.svg" alt="edit icon" className={classes['edit-icon']}/></button>
+						<button className={classes.edit}>
+							<img src="/edit.svg" alt="edit icon" className={classes['edit-icon']} />
+						</button>
 					</div>
 
 					<p className={classes.info}>
