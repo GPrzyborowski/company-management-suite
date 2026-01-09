@@ -3,6 +3,14 @@
 	margin-top: 50vh;
 	margin-left: 50%;
 	transform: translate(calc(-50% - 2.5rem), -50%);
+	z-index: 1001;
+}
+
+.modal-overlay {
+	position: fixed;
+	height: 100vh;
+	width: 100%;
+	background-color: rgba(0, 0, 0, .7);
 	z-index: 1000;
 }
 
