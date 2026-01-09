@@ -10,6 +10,8 @@ function Employee() {
 
 	const [employee, setEmployee] = useState('')
 	const [documents, setDocuments] = useState([])
+	const [visible, setVisible] = useState(false)
+	const [docToDelete, setDocToDelete] = useState(null)
 
 	const employeeEndpoint = `http://localhost:5000/api/employees/${id}`
 	const documentsEndpoint = `http://localhost:5000/api/employees/${id}/documents`
@@ -75,12 +77,18 @@ function Employee() {
 		window.URL.revokeObjectURL(url)
 	}
 
-	const deleteFile = async id => {
-		const confirmed = window.confirm('Are you sure you want to delete this file?')
-		if (!confirmed) {
-			return
-		}
-		const res = await fetch(`http://localhost:5000/api/documents/${id}`, {
+	const deleteFile = (id) => {
+		setDocToDelete(id)
+		setVisible(true)
+	}
+
+	const cancelDelete = () => {
+		setVisible(false)
+		setDocToDelete(null)
+	}
+
+	const confirmDelete = async () => {
+		const res = await fetch(`http://localhost:5000/api/documents/${docToDelete}`, {
 			method: 'DELETE',
 			headers: {
 				Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -89,10 +97,13 @@ function Employee() {
 		if (res.ok) {
 			loadDocuments()
 		}
+		setVisible(false)
+		setDocToDelete(null)
 	}
 
 	return (
 		<>
+			<ConfirmModal visible={visible} onConfirm={confirmDelete} onCancel={cancelDelete}/>
 			<main className={classes.main}>
 				<div className={classes.box}>
 					<div className={classes['info-box']}>
