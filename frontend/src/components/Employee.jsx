@@ -92,107 +92,109 @@ function Employee() {
 	}
 
 	return (
-		<main className={classes.main}>
-			<div className={classes.box}>
-				<div className={classes['info-box']}>
-					<div className={classes['header-box']}>
-						<h2 className={classes['info-header']}>
-							Employee: {employee.firstName} {employee.lastName}
-						</h2>
-						<button className={classes.edit}>
-							<img src="/edit.svg" alt="edit icon" className={classes['edit-icon']} />
-						</button>
-					</div>
+		<>
+			<main className={classes.main}>
+				<div className={classes.box}>
+					<div className={classes['info-box']}>
+						<div className={classes['header-box']}>
+							<h2 className={classes['info-header']}>
+								Employee: {employee.firstName} {employee.lastName}
+							</h2>
+							<button className={classes.edit}>
+								<img src="/edit.svg" alt="edit icon" className={classes['edit-icon']} />
+							</button>
+						</div>
 
-					<p className={classes.info}>
-						<span className={classes['info-label']}>Name:</span> {employee.firstName} {employee.lastName}
-					</p>
-					<p className={classes.info}>
-						<span className={classes['info-label']}>Birth date: </span>
-						{birthDateFormatted}
-					</p>
-					<p className={classes.info}>
-						<span className={classes['info-label']}>Social number: </span>
-						{employee.socialNumber}
-					</p>
-					<p className={classes.info}>
-						<span className={classes['info-label']}>Phone number: </span>
-						{employee.phoneNumber}
-					</p>
-					<p className={classes.info}>
-						<span className={classes['info-label']}>Email: </span>
-						{employee.email}
-					</p>
-					<p className={classes.info}>
-						<span className={classes['info-label']}>Bank account: </span>
-						{employee.bankAccount}
-					</p>
-					<p className={classes.info}>
-						<span className={classes['info-label']}>Registered: </span>
-						{jobStartFormatted}
-					</p>
-					<p className={classes.info}>
-						<span className={classes['info-label']}>Salary rate: </span>
-						{employee.salaryRate}pln / hour
-					</p>
-					<p className={classes.info}>
-						<span className={classes['info-label']}>Position: </span>
-						{employee.position}
-					</p>
-					<p className={classes.info}>
-						<span className={classes['info-label']}>Contract type: </span>
-						{employee.contractType}
-					</p>
-					<p className={classes.info}>
-						<span className={classes['info-label']}>Country: </span>
-						{employee?.address?.country}
-					</p>
-					<p className={classes.info}>
-						<span className={classes['info-label']}>City: </span>
-						{employee?.address?.city}
-					</p>
-					<p className={classes.info}>
-						<span className={classes['info-label']}>Street: </span>
-						{employee?.address?.street} {employee?.address?.buildingNumber} / {employee?.address?.apartmentNumber}
-					</p>
-					<p className={classes.info}>
-						<span className={classes['info-label']}>Postal code: </span>
-						{employee?.address?.postalCode}
-					</p>
-				</div>
-				<div className={classes['docs-box']}>
-					<h2 className={`${classes['info-header']} ${classes['docs-header']}`}>Documents</h2>
-					<div className={classes['docs-container']}>
-						{documents.map(element => {
-							const documentDate = new Date(element.uploadedAt)
-							const documentDateFormatted = documentDate.toLocaleDateString('pl-PL', {
-								day: 'numeric',
-								month: 'numeric',
-								year: 'numeric',
-							})
-							return (
-								<EmployeeDoc
-									key={element.id}
-									header={element.fileName}
-									date={documentDateFormatted}
-									size={`${(element.size / 1000000).toFixed(1)} MB`}
-									onDownload={() => {
-										downloadFile(element.id, element.fileName)
-									}}
-									onDelete={() => {
-										deleteFile(element.id)
-									}}
-								/>
-							)
-						})}
-						<NewDocument id={id} onUploaded={loadDocuments} />
+						<p className={classes.info}>
+							<span className={classes['info-label']}>Name:</span> {employee.firstName} {employee.lastName}
+						</p>
+						<p className={classes.info}>
+							<span className={classes['info-label']}>Birth date: </span>
+							{birthDateFormatted}
+						</p>
+						<p className={classes.info}>
+							<span className={classes['info-label']}>Social number: </span>
+							{employee.socialNumber}
+						</p>
+						<p className={classes.info}>
+							<span className={classes['info-label']}>Phone number: </span>
+							{employee.phoneNumber}
+						</p>
+						<p className={classes.info}>
+							<span className={classes['info-label']}>Email: </span>
+							{employee.email}
+						</p>
+						<p className={classes.info}>
+							<span className={classes['info-label']}>Bank account: </span>
+							{employee.bankAccount}
+						</p>
+						<p className={classes.info}>
+							<span className={classes['info-label']}>Registered: </span>
+							{jobStartFormatted}
+						</p>
+						<p className={classes.info}>
+							<span className={classes['info-label']}>Salary rate: </span>
+							{employee.salaryRate}pln / hour
+						</p>
+						<p className={classes.info}>
+							<span className={classes['info-label']}>Position: </span>
+							{employee.position}
+						</p>
+						<p className={classes.info}>
+							<span className={classes['info-label']}>Contract type: </span>
+							{employee.contractType}
+						</p>
+						<p className={classes.info}>
+							<span className={classes['info-label']}>Country: </span>
+							{employee?.address?.country}
+						</p>
+						<p className={classes.info}>
+							<span className={classes['info-label']}>City: </span>
+							{employee?.address?.city}
+						</p>
+						<p className={classes.info}>
+							<span className={classes['info-label']}>Street: </span>
+							{employee?.address?.street} {employee?.address?.buildingNumber} / {employee?.address?.apartmentNumber}
+						</p>
+						<p className={classes.info}>
+							<span className={classes['info-label']}>Postal code: </span>
+							{employee?.address?.postalCode}
+						</p>
+					</div>
+					<div className={classes['docs-box']}>
+						<h2 className={`${classes['info-header']} ${classes['docs-header']}`}>Documents</h2>
+						<div className={classes['docs-container']}>
+							{documents.map(element => {
+								const documentDate = new Date(element.uploadedAt)
+								const documentDateFormatted = documentDate.toLocaleDateString('pl-PL', {
+									day: 'numeric',
+									month: 'numeric',
+									year: 'numeric',
+								})
+								return (
+									<EmployeeDoc
+										key={element.id}
+										header={element.fileName}
+										date={documentDateFormatted}
+										size={`${(element.size / 1000000).toFixed(1)} MB`}
+										onDownload={() => {
+											downloadFile(element.id, element.fileName)
+										}}
+										onDelete={() => {
+											deleteFile(element.id)
+										}}
+									/>
+								)
+							})}
+							<NewDocument id={id} onUploaded={loadDocuments} />
+						</div>
+					</div>
+					<div className={classes['work-box']}>
+						<h2 className={`${classes['info-header']} ${classes['work-header']}`}>Work information</h2>
 					</div>
 				</div>
-				<div className={classes['work-box']}>
-					<h2 className={`${classes['info-header']} ${classes['work-header']}`}>Work information</h2>
-				</div>
-			</div>
-		</main>
+			</main>
+		</>
 	)
 }
 export default Employee
