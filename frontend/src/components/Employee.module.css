@@ -116,8 +116,8 @@
 	}
 
 	.employee-header {
+		margin-right: 8rem;
 		text-align: left;
-		text-wrap: nowrap;
 	}
 
 	.edit {
