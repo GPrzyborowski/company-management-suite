@@ -18,21 +18,24 @@
 }
 
 .header-box {
+	width: 100%;
 	position: relative;
-	margin-bottom: 4rem;
+	margin-bottom: 2rem;
 }
 
 .info-header {
+	display: block;
 	font-size: 2.4rem;
 	text-align: center;
 	color: #ffffff;
 }
 
 .edit {
-	position: absolute;
-	top: 0;
-	left: 0;
-	padding: .2rem;
+	margin-top: 2rem;
+	margin-left: 50%;
+	transform: translateX(-50%);
+	display: block;
+	padding: 0.2rem;
 	border: none;
 	outline: none;
 	background: none;
@@ -104,12 +107,28 @@
 		text-align: left;
 	}
 
-	.edit {
-		left: auto;
-	}
-
 	.info-header {
 		text-align: center;
+	}
+
+	.header-box {
+		margin-bottom: 2rem;
+	}
+
+	.employee-header {
+		text-align: left;
+		text-wrap: nowrap;
+	}
+
+	.edit {
+		position: absolute;
+		top: -2rem;
+		right: 0;
+		padding: 0.2rem;
+		border: none;
+		outline: none;
+		background: none;
+		cursor: pointer;
 	}
 
 	.docs-box {
