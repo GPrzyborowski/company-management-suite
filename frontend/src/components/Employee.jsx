@@ -108,7 +108,7 @@ function Employee() {
 				<div className={classes.box}>
 					<div className={classes['info-box']}>
 						<div className={classes['header-box']}>
-							<h2 className={classes['info-header']}>
+							<h2 className={`${classes['info-header']} ${classes['employee-header']}`}>
 								Employee: {employee.firstName} {employee.lastName}
 							</h2>
 							<button className={classes.edit}>
