@@ -10,7 +10,7 @@
 	position: fixed;
 	height: 100vh;
 	width: 100%;
-	background-color: rgba(0, 0, 0, .7);
+	background-color: rgba(0, 0, 0, 0.7);
 	z-index: 1000;
 }
 
@@ -27,7 +27,7 @@
 .paragraph {
 	text-align: center;
 	font-size: 1.6rem;
-    color: #FFFFFF;
+	color: #ffffff;
 }
 
 .btn {
@@ -49,8 +49,18 @@
 
 .cancel {
 	background-color: #9c2727;
+	transition: background-color .2s;
+}
+
+.cancel:hover {
+	background-color: #8f1b1b;
 }
 
 .confirm {
 	background-color: #008141;
+	transition: background-color .2s;
+}
+
+.confirm:hover {
+	background-color: #00753b;
 }
