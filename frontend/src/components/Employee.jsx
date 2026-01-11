@@ -1,6 +1,7 @@
 import EmployeeDoc from './EmployeeDoc'
 import NewDocument from './NewDocument'
 import ConfirmModal from './ConfirmModal'
+import EditModal from './EditModal'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import classes from './Employee.module.css'
