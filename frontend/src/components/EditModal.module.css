@@ -101,6 +101,7 @@
 
 .paragraph {
 	margin-top: 2.5rem;
+	padding: 0 4rem;
 	text-align: center;
 	font-size: 2.4rem;
 	font-weight: bold;
@@ -139,6 +140,19 @@
 
 .confirm:hover {
 	background-color: #00753b;
+}
+
+.close-icon {
+	position: absolute;
+	width: 3.6rem;
+	top: 3.5rem;
+	left: 2.5rem;
+	cursor: pointer;
+	transition: scale .2s;;
+}
+
+.close-icon:hover {
+	scale: 1.05;
 }
 
 @media (min-width: 1200px) {
