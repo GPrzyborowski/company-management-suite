@@ -2,7 +2,8 @@ import classes from './EditModal.module.css'
 import { useState } from 'react'
 import InputContainer from './InputContainer'
 
-function EditModal({ visible, onConfirm, onCancel }) {
+function EditModal({ visible, onSubmit, onCancel }) {
+
 	const handleSubmit = e => {
 		e.preventDefault()
 		const dataToSend = {
@@ -51,6 +52,7 @@ function EditModal({ visible, onConfirm, onCancel }) {
 		<div className={classes['modal-overlay']} onClick={onCancel}>
 			<div className={classes.modal} onClick={e => e.stopPropagation()}>
 				<div className={classes.box}>
+					<img src="/close.svg" alt="close icon" className={classes['close-icon']}/>
 					<p className={classes.paragraph}>Edit employee information.</p>
 					<form onSubmit={handleSubmit} className={classes.form}>
 						<InputContainer
