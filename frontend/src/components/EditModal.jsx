@@ -1,9 +1,8 @@
 import classes from './EditModal.module.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import InputContainer from './InputContainer'
 
-function EditModal({ visible, onSubmit, onCancel }) {
-
+function EditModal({ editVisible, onClose, onSubmit }) {
 	const handleSubmit = e => {
 		e.preventDefault()
 		const dataToSend = {
@@ -48,11 +47,28 @@ function EditModal({ visible, onSubmit, onCancel }) {
 	const [contractType, setContractType] = useState('')
 	const [role, setRole] = useState('')
 
+	useEffect(() => {
+		if (editVisible) {
+			document.body.style.overflow = 'hidden'
+		} else {
+			document.body.style.overflow = ''
+		}
+		return () => {
+			document.body.style.overflow = ''
+		}
+	}, [editVisible])
+
+	if (!editVisible) {
+		return null
+	}
+
 	return (
-		<div className={classes['modal-overlay']} onClick={onCancel}>
+		<div className={classes['modal-overlay']} onClick={onClose}>
 			<div className={classes.modal} onClick={e => e.stopPropagation()}>
 				<div className={classes.box}>
-					<img src="/close.svg" alt="close icon" className={classes['close-icon']}/>
+					<button className={classes.btn} onClick={onClose}>
+						<img src="/close.svg" alt="close icon" className={classes['close-icon']} />
+					</button>
 					<p className={classes.paragraph}>Edit employee information.</p>
 					<form onSubmit={handleSubmit} className={classes.form}>
 						<InputContainer
