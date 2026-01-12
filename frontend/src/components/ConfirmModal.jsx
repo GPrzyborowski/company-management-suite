@@ -1,9 +1,9 @@
 import classes from './ConfirmModal.module.css'
 import { useEffect } from 'react'
 
-function ConfirmModal({ visible, onConfirm, onCancel }) {
+function ConfirmModal({ confirmVisible, onConfirm, onCancel }) {
 	useEffect(() => {
-		if (visible) {
+		if (confirmVisible) {
 			document.body.style.overflow = 'hidden'
 		} else {
 			document.body.style.overflow = ''
@@ -11,9 +11,9 @@ function ConfirmModal({ visible, onConfirm, onCancel }) {
 		return () => {
 			document.body.style.overflow = ''
 		}
-	}, [visible])
+	}, [confirmVisible])
 
-	if (!visible) {
+	if (!confirmVisible) {
 		return null
 	}
 	return (
