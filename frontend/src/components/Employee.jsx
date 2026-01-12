@@ -11,7 +11,7 @@ function Employee() {
 
 	const [employee, setEmployee] = useState('')
 	const [documents, setDocuments] = useState([])
-	const [visible, setVisible] = useState(false)
+	const [confirmVisible, setConfirmVisible] = useState(false)
 	const [editVisible, setEditVisible] = useState(false)
 	const [docToDelete, setDocToDelete] = useState(null)
 
@@ -81,11 +81,11 @@ function Employee() {
 
 	const deleteFile = id => {
 		setDocToDelete(id)
-		setVisible(true)
+		setConfirmVisible(true)
 	}
 
 	const cancelDelete = () => {
-		setVisible(false)
+		setConfirmVisible(false)
 		setDocToDelete(null)
 	}
 
@@ -99,7 +99,7 @@ function Employee() {
 		if (res.ok) {
 			loadDocuments()
 		}
-		setVisible(false)
+		setConfirmVisible(false)
 		setDocToDelete(null)
 	}
 
@@ -113,7 +113,7 @@ function Employee() {
 
 	return (
 		<>
-			<ConfirmModal visible={visible} onConfirm={confirmDelete} onCancel={cancelDelete} />
+			<ConfirmModal confirmVisible={confirmVisible} onConfirm={confirmDelete} onCancel={cancelDelete} />
 			<EditModal editVisible={editVisible} onClose={closeEdit}></EditModal>
 			<main className={classes.main}>
 				<div className={classes.box}>
