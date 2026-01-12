@@ -105,6 +105,7 @@ function Employee() {
 	return (
 		<>
 			<ConfirmModal visible={visible} onConfirm={confirmDelete} onCancel={cancelDelete}/>
+			<EditModal></EditModal>
 			<main className={classes.main}>
 				<div className={classes.box}>
 					<div className={classes['info-box']}>
