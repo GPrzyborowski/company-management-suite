@@ -12,6 +12,7 @@ function Employee() {
 	const [employee, setEmployee] = useState('')
 	const [documents, setDocuments] = useState([])
 	const [visible, setVisible] = useState(false)
+	const [editVisible, setEditVisible] = useState(false)
 	const [docToDelete, setDocToDelete] = useState(null)
 
 	const employeeEndpoint = `http://localhost:5000/api/employees/${id}`
@@ -78,7 +79,7 @@ function Employee() {
 		window.URL.revokeObjectURL(url)
 	}
 
-	const deleteFile = (id) => {
+	const deleteFile = id => {
 		setDocToDelete(id)
 		setVisible(true)
 	}
@@ -102,10 +103,18 @@ function Employee() {
 		setDocToDelete(null)
 	}
 
+	const openEdit = async () => {
+		setEditVisible(true)
+	}
+
+	const closeEdit = async () => {
+		setEditVisible(false)
+	}
+
 	return (
 		<>
-			<ConfirmModal visible={visible} onConfirm={confirmDelete} onCancel={cancelDelete}/>
-			<EditModal></EditModal>
+			<ConfirmModal visible={visible} onConfirm={confirmDelete} onCancel={cancelDelete} />
+			<EditModal editVisible={editVisible} onClose={closeEdit}></EditModal>
 			<main className={classes.main}>
 				<div className={classes.box}>
 					<div className={classes['info-box']}>
@@ -113,7 +122,7 @@ function Employee() {
 							<h2 className={`${classes['info-header']} ${classes['employee-header']}`}>
 								Employee: {employee.firstName} {employee.lastName}
 							</h2>
-							<button className={classes.edit}>
+							<button className={classes.edit} onClick={openEdit}>
 								<img src="/edit.svg" alt="edit icon" className={classes['edit-icon']} />
 							</button>
 						</div>
