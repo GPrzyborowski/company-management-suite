@@ -27,25 +27,25 @@ function EditModal({
 	const handleSubmit = e => {
 		e.preventDefault()
 		const dataToSend = {
-			firstName,
-			lastName,
-			birthDate,
-			jobStartDate,
-			email,
-			phone,
-			socialSecurity,
+			firstName: firstNameEdit,
+			lastName: lastNameEdit,
+			birthDate: birthDateEdit,
+			jobStartDate: jobStartDateEdit,
+			email: emailEdit,
+			phoneNumber: phoneEdit,
+			socialNumber: socialSecurityEdit,
+			bankAccount: bankNumberEdit,
+			salaryRate: salaryRateEdit,
+			contractType: contractTypeEdit,
+			position: roleEdit,
 			address: {
-				country: country,
-				city: city,
-				postalCode: postalCode,
-				street: street,
-				buildingNumber: buildingNumber,
-				apartmentNumber: apartmentNumber,
+				country: countryEdit,
+				city: cityEdit,
+				postalCode: postalCodeEdit,
+				street: streetEdit,
+				buildingNumber: buildingNumberEdit,
+				apartmentNumber: apartmentNumberEdit,
 			},
-			bankNumber,
-			salaryRate,
-			contractType,
-			role,
 		}
 		onSubmit(dataToSend)
 	}
