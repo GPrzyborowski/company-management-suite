@@ -112,16 +112,16 @@ function Employee() {
 		setEditVisible(false)
 	}
 
-	const submitEdit = async (data) => {
+	const submitEdit = async data => {
 		const res = await fetch(editEndpoint, {
 			method: 'PUT',
 			headers: {
 				'Content-type': 'application/json',
-				Authorization: `Bearer ${localStorage.getItem('token')}`
+				Authorization: `Bearer ${localStorage.getItem('token')}`,
 			},
-			body: JSON.stringify(data) 
+			body: JSON.stringify(data),
 		})
-		if(!res.ok) {
+		if (!res.ok) {
 			console.error('Update failed.')
 			return
 		}
@@ -215,7 +215,8 @@ function Employee() {
 						</p>
 						<p className={classes.info}>
 							<span className={classes['info-label']}>Street: </span>
-							{employee?.address?.street} {employee?.address?.buildingNumber} / {employee?.address?.apartmentNumber}
+							{employee?.address?.street} {employee?.address?.buildingNumber}
+							{employee?.address?.apartmentNumber ? ` / ${employee.address.apartmentNumber}` : ''}
 						</p>
 						<p className={classes.info}>
 							<span className={classes['info-label']}>Postal code: </span>
