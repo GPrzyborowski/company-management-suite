@@ -2,7 +2,28 @@ import classes from './EditModal.module.css'
 import { useState, useEffect } from 'react'
 import InputContainer from './InputContainer'
 
-function EditModal({ editVisible, onClose, onSubmit }) {
+function EditModal({
+	editVisible,
+	onClose,
+	onSubmit,
+	firstName,
+	lastName,
+	birthDate,
+	jobStartDate,
+	email,
+	phone,
+	socialSecurity,
+	country,
+	city,
+	postalCode,
+	street,
+	buildingNumber,
+	apartmentNumber,
+	bankNumber,
+	salaryRate,
+	contractType,
+	role,
+}) {
 	const handleSubmit = e => {
 		e.preventDefault()
 		const dataToSend = {
@@ -29,23 +50,49 @@ function EditModal({ editVisible, onClose, onSubmit }) {
 		onSubmit(dataToSend)
 	}
 
-	const [firstName, setFirstName] = useState('')
-	const [lastName, setLastName] = useState('')
-	const [birthDate, setBirthDate] = useState('')
-	const [jobStartDate, setJobStartDate] = useState('')
-	const [email, setEmail] = useState('')
-	const [phone, setPhone] = useState('')
-	const [socialSecurity, setSocialSecurity] = useState('')
-	const [country, setCountry] = useState('')
-	const [city, setCity] = useState('')
-	const [postalCode, setPostalCode] = useState('')
-	const [street, setStreet] = useState('')
-	const [buildingNumber, setBuildingNumber] = useState('')
-	const [apartmentNumber, setApartmentNumber] = useState('')
-	const [bankNumber, setBankNumber] = useState('')
-	const [salaryRate, setSalaryRate] = useState('')
-	const [contractType, setContractType] = useState('')
-	const [role, setRole] = useState('')
+	const [firstNameEdit, setFirstNameEdit] = useState('')
+	const [lastNameEdit, setLastNameEdit] = useState('')
+	const [birthDateEdit, setBirthDateEdit] = useState('')
+	const [jobStartDateEdit, setJobStartDateEdit] = useState('')
+	const [emailEdit, setEmailEdit] = useState('')
+	const [phoneEdit, setPhoneEdit] = useState('')
+	const [socialSecurityEdit, setSocialSecurityEdit] = useState('')
+	const [countryEdit, setCountryEdit] = useState('')
+	const [cityEdit, setCityEdit] = useState('')
+	const [postalCodeEdit, setPostalCodeEdit] = useState('')
+	const [streetEdit, setStreetEdit] = useState('')
+	const [buildingNumberEdit, setBuildingNumberEdit] = useState('')
+	const [apartmentNumberEdit, setApartmentNumberEdit] = useState('')
+	const [bankNumberEdit, setBankNumberEdit] = useState('')
+	const [salaryRateEdit, setSalaryRateEdit] = useState('')
+	const [contractTypeEdit, setContractTypeEdit] = useState('')
+	const [roleEdit, setRoleEdit] = useState('')
+
+	const formatDateForInput = dateString => {
+		if (!dateString) return ''
+		return dateString.split('T')[0]
+	}
+
+	useEffect(() => {
+		if (!editVisible) return
+		setFirstNameEdit(firstName ?? '')
+		setLastNameEdit(lastName ?? '')
+		setBirthDateEdit(formatDateForInput(birthDate))
+		setJobStartDateEdit(formatDateForInput(jobStartDate))
+		setEmailEdit(email ?? '')
+		setPhoneEdit(phone ?? '')
+		setSocialSecurityEdit(socialSecurity ?? '')
+		setCountryEdit(country ?? '')
+		setCityEdit(city ?? '')
+		setPostalCodeEdit(postalCode ?? '')
+		setStreetEdit(street ?? '')
+		setBuildingNumberEdit(buildingNumber ?? '')
+		setApartmentNumberEdit(apartmentNumber ?? '')
+		setBankNumberEdit(bankNumber ?? '')
+		setSalaryRateEdit(salaryRate ?? '')
+		setContractTypeEdit(contractType ?? '')
+		setRoleEdit(role ?? '')
+	}, [editVisible, birthDate, jobStartDate])
 
 	useEffect(() => {
 		if (editVisible) {
@@ -76,8 +123,8 @@ function EditModal({ editVisible, onClose, onSubmit }) {
 							labelText="First name:"
 							type="text"
 							id="firstName"
-							value={firstName}
-							onChange={e => setFirstName(e.target.value)}
+							value={firstNameEdit}
+							onChange={e => setFirstNameEdit(e.target.value)}
 							className={classes['first-name']}
 						/>
 
@@ -86,8 +133,8 @@ function EditModal({ editVisible, onClose, onSubmit }) {
 							labelText="Last name:"
 							type="text"
 							id="lastName"
-							value={lastName}
-							onChange={e => setLastName(e.target.value)}
+							value={lastNameEdit}
+							onChange={e => setLastNameEdit(e.target.value)}
 							className={classes['last-name']}
 						/>
 
@@ -96,8 +143,8 @@ function EditModal({ editVisible, onClose, onSubmit }) {
 							labelText="Birth date:"
 							type="date"
 							id="birthDate"
-							value={birthDate}
-							onChange={e => setBirthDate(e.target.value)}
+							value={birthDateEdit}
+							onChange={e => setBirthDateEdit(e.target.value)}
 							className={classes['birth-date']}
 						/>
 
@@ -106,8 +153,8 @@ function EditModal({ editVisible, onClose, onSubmit }) {
 							labelText="Job start date:"
 							type="date"
 							id="jobStartDate"
-							value={jobStartDate}
-							onChange={e => setJobStartDate(e.target.value)}
+							value={jobStartDateEdit}
+							onChange={e => setJobStartDateEdit(e.target.value)}
 							className={classes['job-start']}
 						/>
 
@@ -116,8 +163,8 @@ function EditModal({ editVisible, onClose, onSubmit }) {
 							labelText="Email:"
 							type="text"
 							id="email"
-							value={email}
-							onChange={e => setEmail(e.target.value)}
+							value={emailEdit}
+							onChange={e => setEmailEdit(e.target.value)}
 							className={classes['email']}
 						/>
 
@@ -126,8 +173,8 @@ function EditModal({ editVisible, onClose, onSubmit }) {
 							labelText="Phone number:"
 							type="text"
 							id="phone"
-							value={phone}
-							onChange={e => setPhone(e.target.value)}
+							value={phoneEdit}
+							onChange={e => setPhoneEdit(e.target.value)}
 							className={classes['phone']}
 						/>
 
@@ -136,8 +183,8 @@ function EditModal({ editVisible, onClose, onSubmit }) {
 							labelText="Social security number:"
 							type="text"
 							id="socialSecurity"
-							value={socialSecurity}
-							onChange={e => setSocialSecurity(e.target.value)}
+							value={socialSecurityEdit}
+							onChange={e => setSocialSecurityEdit(e.target.value)}
 							className={classes['social-security']}
 						/>
 
@@ -146,8 +193,8 @@ function EditModal({ editVisible, onClose, onSubmit }) {
 							labelText="Country:"
 							type="text"
 							id="country"
-							value={country}
-							onChange={e => setCountry(e.target.value)}
+							value={countryEdit}
+							onChange={e => setCountryEdit(e.target.value)}
 							className={classes['country']}
 						/>
 
@@ -156,8 +203,8 @@ function EditModal({ editVisible, onClose, onSubmit }) {
 							labelText="City:"
 							type="text"
 							id="city"
-							value={city}
-							onChange={e => setCity(e.target.value)}
+							value={cityEdit}
+							onChange={e => setCityEdit(e.target.value)}
 							className={classes['city']}
 						/>
 
@@ -166,8 +213,8 @@ function EditModal({ editVisible, onClose, onSubmit }) {
 							labelText="Postal code:"
 							type="text"
 							id="postalCode"
-							value={postalCode}
-							onChange={e => setPostalCode(e.target.value)}
+							value={postalCodeEdit}
+							onChange={e => setPostalCodeEdit(e.target.value)}
 							className={classes['postal-code']}
 						/>
 
@@ -176,8 +223,8 @@ function EditModal({ editVisible, onClose, onSubmit }) {
 							labelText="Street:"
 							type="text"
 							id="street"
-							value={street}
-							onChange={e => setStreet(e.target.value)}
+							value={streetEdit}
+							onChange={e => setStreetEdit(e.target.value)}
 							className={classes['street']}
 						/>
 
@@ -186,8 +233,8 @@ function EditModal({ editVisible, onClose, onSubmit }) {
 							labelText="Building number:"
 							type="text"
 							id="buildingNumber"
-							value={buildingNumber}
-							onChange={e => setBuildingNumber(e.target.value)}
+							value={buildingNumberEdit}
+							onChange={e => setBuildingNumberEdit(e.target.value)}
 							className={classes['building-number']}
 						/>
 
@@ -196,8 +243,8 @@ function EditModal({ editVisible, onClose, onSubmit }) {
 							labelText="Apartment number:"
 							type="text"
 							id="apartmentNumber"
-							value={apartmentNumber}
-							onChange={e => setApartmentNumber(e.target.value)}
+							value={apartmentNumberEdit}
+							onChange={e => setApartmentNumberEdit(e.target.value)}
 							className={classes['apartment-number']}
 						/>
 
@@ -206,8 +253,8 @@ function EditModal({ editVisible, onClose, onSubmit }) {
 							labelText="Bank account number:"
 							type="text"
 							id="bankNumber"
-							value={bankNumber}
-							onChange={e => setBankNumber(e.target.value)}
+							value={bankNumberEdit}
+							onChange={e => setBankNumberEdit(e.target.value)}
 							className={classes['bank-account']}
 						/>
 
@@ -216,8 +263,8 @@ function EditModal({ editVisible, onClose, onSubmit }) {
 							labelText="Salary rate:"
 							type="text"
 							id="salaryRate"
-							value={salaryRate}
-							onChange={e => setSalaryRate(e.target.value)}
+							value={salaryRateEdit}
+							onChange={e => setSalaryRateEdit(e.target.value)}
 							className={classes['salary-rate']}
 						/>
 
@@ -226,8 +273,8 @@ function EditModal({ editVisible, onClose, onSubmit }) {
 							labelText="Contract type:"
 							type="text"
 							id="contractType"
-							value={contractType}
-							onChange={e => setContractType(e.target.value)}
+							value={contractTypeEdit}
+							onChange={e => setContractTypeEdit(e.target.value)}
 							className={classes['contract-type']}
 						/>
 
@@ -236,8 +283,8 @@ function EditModal({ editVisible, onClose, onSubmit }) {
 							labelText="Role:"
 							type="text"
 							id="role"
-							value={role}
-							onChange={e => setRole(e.target.value)}
+							value={roleEdit}
+							onChange={e => setRoleEdit(e.target.value)}
 							className={classes['role']}
 						/>
 
