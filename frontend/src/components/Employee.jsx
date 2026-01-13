@@ -16,6 +16,7 @@ function Employee() {
 	const [docToDelete, setDocToDelete] = useState(null)
 
 	const employeeEndpoint = `http://localhost:5000/api/employees/${id}`
+	const editEndpoint = `http://localhost:5000/api/employees/${id}`
 	const documentsEndpoint = `http://localhost:5000/api/employees/${id}/documents`
 
 	useEffect(() => {
@@ -111,12 +112,31 @@ function Employee() {
 		setEditVisible(false)
 	}
 
+	const submitEdit = async (data) => {
+		const res = await fetch(editEndpoint, {
+			method: 'PUT',
+			headers: {
+				'Content-type': 'application/json',
+				Authorization: `Bearer ${localStorage.getItem('token')}`
+			},
+			body: JSON.stringify(data) 
+		})
+		if(!res.ok) {
+			console.error('Update failed.')
+			return
+		}
+		const updatedEmployee = await res.json()
+		setEmployee(updatedEmployee)
+		setEditVisible(false)
+	}
+
 	return (
 		<>
 			<ConfirmModal confirmVisible={confirmVisible} onConfirm={confirmDelete} onCancel={cancelDelete} />
 			<EditModal
 				editVisible={editVisible}
 				onClose={closeEdit}
+				onSubmit={submitEdit}
 				firstName={employee.firstName}
 				lastName={employee.lastName}
 				birthDate={employee.birthDate}
