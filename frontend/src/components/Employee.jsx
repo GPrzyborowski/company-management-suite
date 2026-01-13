@@ -114,7 +114,26 @@ function Employee() {
 	return (
 		<>
 			<ConfirmModal confirmVisible={confirmVisible} onConfirm={confirmDelete} onCancel={cancelDelete} />
-			<EditModal editVisible={editVisible} onClose={closeEdit}></EditModal>
+			<EditModal
+				editVisible={editVisible}
+				onClose={closeEdit}
+				firstName={employee.firstName}
+				lastName={employee.lastName}
+				birthDate={employee.birthDate}
+				jobStartDate={employee.jobStart}
+				email={employee.email}
+				phone={employee.phoneNumber}
+				socialSecurity={employee.socialNumber}
+				country={employee?.address?.country}
+				city={employee?.address?.city}
+				postalCode={employee?.address?.postalCode}
+				street={employee?.address?.street}
+				buildingNumber={employee?.address?.buildingNumber}
+				apartmentNumber={employee?.address?.apartmentNumber}
+				bankNumber={employee.bankAccount}
+				salaryRate={employee.salaryRate}
+				contractType={employee.contractType}
+				role={employee.position}></EditModal>
 			<main className={classes.main}>
 				<div className={classes.box}>
 					<div className={classes['info-box']}>
