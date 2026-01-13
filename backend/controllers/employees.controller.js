@@ -37,8 +37,11 @@ export const updateEmployee = async (req, res) => {
                 birthDate: birthDate ? new Date(birthDate) : undefined,
                 jobStart: jobStartDate ? new Date(jobStartDate) : undefined,
                 address: {
-                    update: address
-                }
+                    upsert: {
+                        update: address,
+                        create: address,
+                    },
+                },
 			},
 			include: {
 				address: true,
