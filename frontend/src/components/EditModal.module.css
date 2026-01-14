@@ -112,7 +112,7 @@
 	position: absolute;
 	width: 3.6rem;
 	top: 3.9rem;
-	left: 2.5rem;
+	right: 2.5rem;
 	cursor: pointer;
 	transition: scale .2s;;
 }
