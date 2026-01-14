@@ -117,10 +117,6 @@
 	transition: scale .2s;;
 }
 
-.close-icon:hover {
-	scale: 1.05;
-}
-
 .btn {
 	border: none;
 	border-radius: 8px;
