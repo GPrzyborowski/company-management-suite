@@ -15,9 +15,22 @@
 	cursor: pointer;
 }
 
-.card-role-phone {
+.card-mail-phone {
 	display: flex;
 	justify-content: space-around;
+}
+
+.card-email {
+	position: absolute;
+	display: flex;
+	bottom: 7rem;
+	left: 4rem;
+	font-size: 2.2rem;
+}
+
+.mail-icon {
+	max-width: 2rem;
+	margin-right: 0.4rem;
 }
 
 .name {
@@ -27,18 +40,12 @@
 	font-size: 2.4rem;
 }
 
-.role {
-	position: absolute;
-	bottom: 2rem;
-	left: 3rem;
-	margin-right: 3.6rem;
-}
-
 .card-phone {
 	position: absolute;
 	bottom: 2rem;
-	right: 3rem;
+	left: 4rem;
 	display: flex;
+	font-size: 2.2rem;
 }
 
 .phone-icon {
@@ -57,17 +64,11 @@
 		left: 4rem;
 		font-size: 1.8rem;
 	}
-	.card-phone {
-		bottom: 3rem;
-		right: 4rem;
-		font-size: 1.8rem;
-	}
 	.phone-icon {
 		max-width: 1.6rem;
 		margin-right: 0.8rem;
 	}
 }
-
 
 @media (min-width: 992px) {
 	.name {
@@ -80,12 +81,8 @@
 		left: 4rem;
 		font-size: 2.2rem;
 	}
-	.card-phone {
-		bottom: 3rem;
-		right: 4rem;
-		font-size: 2.2rem;
-	}
-	.phone-icon {
+	.phone-icon,
+	.mail-icon {
 		max-width: 1.8rem;
 		margin-right: 0.8rem;
 	}
