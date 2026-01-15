@@ -25,7 +25,7 @@
 	display: flex;
 	bottom: 7rem;
 	left: 4rem;
-	font-size: 2.2rem;
+	font-size: 1.8rem;
 }
 
 .mail-icon {
@@ -36,7 +36,7 @@
 .name {
 	position: absolute;
 	top: 2rem;
-	left: 3rem;
+	left: 4rem;
 	font-size: 2.4rem;
 }
 
@@ -45,7 +45,7 @@
 	bottom: 2rem;
 	left: 4rem;
 	display: flex;
-	font-size: 2.2rem;
+	font-size: 1.8rem;
 }
 
 .phone-icon {
@@ -57,7 +57,7 @@
 	.name {
 		top: 3rem;
 		left: 4rem;
-		font-size: 2rem;
+		font-size: 2.2rem;
 	}
 	.role {
 		bottom: 3rem;
@@ -67,6 +67,10 @@
 	.phone-icon {
 		max-width: 1.6rem;
 		margin-right: 0.8rem;
+	}
+	.card-phone,
+	.card-email {
+		font-size: 2rem;
 	}
 }
 
@@ -85,5 +89,9 @@
 	.mail-icon {
 		max-width: 1.8rem;
 		margin-right: 0.8rem;
+	}
+	.card-phone,
+	.card-email {
+		font-size: 2.2rem;
 	}
 }
