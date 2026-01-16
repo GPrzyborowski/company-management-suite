@@ -1,6 +1,5 @@
 import express from 'express'
 import cors from 'cors'
-import testRoutes from './routes/test.routes.js'
 import employeesRoutes from './routes/employees.routes.js'
 import authRoutes from './routes/auth.routes.js'
 import employeeDocumentsRoutes from './routes/employeedocs.routes.js'
@@ -12,7 +11,6 @@ app.use(cors())
 app.use(express.json())
 
 app.use('/api/auth', authRoutes)
-app.use('/api', testRoutes)
 app.use('/api/employees', employeesRoutes)
 app.use('/api', employeeDocumentsRoutes)
 
