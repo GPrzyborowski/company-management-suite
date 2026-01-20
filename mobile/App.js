@@ -14,16 +14,8 @@ export default function App() {
 			<Stack.Navigator initialRouteName="Home">
 				<Stack.Screen name="Home" component={HomeScreen} />
 				<Stack.Screen name="Login" component={LoginScreen} />
+				<Stack.Screen name="Host" component={HostScreen} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	)
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: '#fff',
-		alignItems: 'center',
-		justifyContent: 'center',
-	},
-})
