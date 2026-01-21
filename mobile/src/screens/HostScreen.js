@@ -6,7 +6,7 @@ function HostScreen() {
 	return (
 		<View>
 			<Banner text={'Please provide a host code.'} />
-			<InputBox text="Host code" placeholder="Provide host code here..." />
+			<InputBox text="Host code" placeholder="Enter your host code..." />
 			<TouchableOpacity style={styles.btn}>
 				<Text style={styles.btnText}>Submit</Text>
 			</TouchableOpacity>
