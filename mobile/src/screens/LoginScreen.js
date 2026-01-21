@@ -5,8 +5,9 @@ import InputBox from '../components/InputBox'
 function LoginScreen() {
 	return (
 		<View>
-			<Banner text={'Please provide login code.'} />
-			<InputBox text="Login code" placeholder="Provide login code here..." />
+			<Banner text={'Please provide a login code.'} />
+			<Text style={styles.info}>If you don't have a login code yet, contact your employer.</Text>
+			<InputBox text="Login code" placeholder="Enter your login code..." />
 			<TouchableOpacity style={styles.btn}>
 				<Text style={styles.btnText}>Log in</Text>
 			</TouchableOpacity>
@@ -16,9 +17,9 @@ function LoginScreen() {
 
 const styles = StyleSheet.create({
 	btn: {
-        alignSelf: 'center',
+		alignSelf: 'center',
 		backgroundColor: '#0f52ba',
-        marginTop: 32,
+		marginTop: 32,
 		paddingVertical: 22,
 		paddingHorizontal: 10,
 		borderRadius: 8,
@@ -33,6 +34,12 @@ const styles = StyleSheet.create({
 	btnText: {
 		color: '#FFF',
 	},
+    info: {
+        marginTop: 16,
+        textAlign: 'center',
+        fontSize: 12,
+        fontStyle: 'italic'
+    }
 })
 
 export default LoginScreen
