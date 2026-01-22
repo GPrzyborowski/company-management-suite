@@ -1,3 +1,4 @@
+import crypto from 'crypto'
 import bcrypt from 'bcrypt'
 
 const BYTES = 5
