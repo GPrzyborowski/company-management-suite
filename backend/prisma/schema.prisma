@@ -38,6 +38,7 @@ model Employee {
   addressId     Int?
   address       Address?      @relation(fields: [addressId], references: [id])
   documents     EmployeeDocument[]
+  loginCodes    LoginCode[]
 }
 
 model Admin {
@@ -62,4 +63,14 @@ model EmployeeDocument {
   mimeType      String
   size          Int
   uploadedAt    DateTime      @default(now())
+}
+
+model LoginCode {
+  id          Int         @id @default(autoincrement())
+  codeHash    String
+  expiresAt   DateTime
+  usedAt      DateTime?
+  employeeId  Int
+  employee    Employee @relation(fields: [employeeId], references: [id])
+  createdAt   DateTime @default(now())
 }
