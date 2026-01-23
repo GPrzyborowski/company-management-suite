@@ -115,4 +115,53 @@ router.post('/login', async (req, res) => {
 	res.json({ jwtToken })
 })
 
+router.post('/loginmobile', async (req, res) => {
+	const { code } = req.body
+
+	if (!code) {
+		return res.status(400).json({ message: 'Invalid code.' })
+	}
+
+	const loginCodes = await prisma.loginCode.findMany({
+		where: {
+			usedAt: null,
+			expiresAt: { gt: new Date() },
+		},
+		include: {
+			employee: true,
+		},
+		orderBy: {
+			createdAt: 'desc',
+		},
+		take: 5,
+	})
+
+	for (const loginCode of loginCodes) {
+		const isValid = await bcrypt.compare(code, loginCode.codeHash)
+
+		if (isValid) {
+			await prisma.loginCode.update({
+				where: { id: loginCode.id },
+				data: { usedAt: new Date() },
+			})
+
+			const token = jwt.sign({ employeeId: loginCode.employee.id }, process.env.JWT_SECRET, { expiresIn: '365d' })
+
+			await prisma.loginCode.updateMany({
+				where: {
+					employeeId: loginCode.employee.id,
+					usedAt: null,
+				},
+				data: {
+					usedAt: new Date(),
+				},
+			})
+
+			return res.json({ token })
+		}
+	}
+
+	return res.status(401).json({ message: 'Invalid code.' })
+})
+
 export default router
