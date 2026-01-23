@@ -1,10 +1,10 @@
 import { View, Text, TextInput, StyleSheet } from "react-native"
 
-function InputBox({text, placeholder}) {
+function InputBox({text, placeholder, value, onChangeText}) {
     return (
         <View style={styles.container}>
             <Text style={styles.text}>{text}</Text>
-            <TextInput style={styles.input} placeholder={placeholder}></TextInput>
+            <TextInput style={styles.input} placeholder={placeholder} onChangeText={onChangeText} value={value} autoCapitalize='none'></TextInput>
         </View>
     )
 }
