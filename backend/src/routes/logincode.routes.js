@@ -1,7 +1,7 @@
 import express from 'express'
 import auth from '../middleware/auth.js'
 import prisma from '../config/prisma.js'
-import generateLoginCode from '../../utils/generateLoginCode.js'
+import generateCode from '../../utils/generateCode.js'
 
 const router = express.Router()
 router.use(auth)
@@ -12,7 +12,7 @@ router.post('/logincode', async (req, res) => {
     if(!employee) {
         return res.status(404).json({message: "Employee does not exist."})
     }
-    const {code, hash} = await generateLoginCode()
+    const {code, hash} = await generateCode()
     const expiresAt = new Date(Date.now() + expiresInMinutes * 60  * 1000)
     await prisma.loginCode.create({
         data: {
