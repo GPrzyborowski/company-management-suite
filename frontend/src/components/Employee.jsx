@@ -2,16 +2,20 @@ import EmployeeDoc from './EmployeeDoc'
 import NewDocument from './NewDocument'
 import ConfirmModal from './ConfirmModal'
 import EditModal from './EditModal'
+import RemoveModal from './RemoveModal'
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import classes from './Employee.module.css'
 
 function Employee() {
 	const { id } = useParams()
 
+	const navigate = useNavigate()
+
 	const [employee, setEmployee] = useState('')
 	const [documents, setDocuments] = useState([])
 	const [confirmVisible, setConfirmVisible] = useState(false)
+	const [removeVisible, setRemoveVisible] = useState(false)
 	const [editVisible, setEditVisible] = useState(false)
 	const [docToDelete, setDocToDelete] = useState(null)
 
@@ -130,9 +134,31 @@ function Employee() {
 		setEditVisible(false)
 	}
 
+	const removeEmployee = () => {
+		setRemoveVisible(true)
+	}
+
+	const cancelRemove = () => {
+		setRemoveVisible(false)
+	}
+
+	const confirmRemove = async () => {
+		const res = await fetch(employeeEndpoint, {
+			method: 'DELETE',
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem('token')}`,
+			},
+		})
+		if(res.ok) {
+			setRemoveVisible(false)
+			navigate('/employees')
+		}
+	}
+
 	return (
 		<>
 			<ConfirmModal confirmVisible={confirmVisible} onConfirm={confirmDelete} onCancel={cancelDelete} />
+			<RemoveModal confirmVisible={removeVisible} onConfirm={confirmRemove} onCancel={cancelRemove} />
 			<EditModal
 				editVisible={editVisible}
 				onClose={closeEdit}
@@ -161,9 +187,6 @@ function Employee() {
 							<h2 className={`${classes['info-header']} ${classes['employee-header']}`}>
 								Employee: {employee.firstName} {employee.lastName}
 							</h2>
-							<button className={classes.edit} onClick={openEdit}>
-								<img src="/edit.svg" alt="edit icon" className={classes['edit-icon']} />
-							</button>
 						</div>
 
 						<p className={classes.info}>
@@ -222,6 +245,14 @@ function Employee() {
 							<span className={classes['info-label']}>Postal code: </span>
 							{employee?.address?.postalCode}
 						</p>
+						<div className={classes['modifier-container']}>
+							<button className={classes.remove} onClick={removeEmployee}>
+								<img src="/user-x.svg" alt="edit icon" className={classes['edit-icon']} />
+							</button>
+							<button className={classes.edit} onClick={openEdit}>
+								<img src="/edit.svg" alt="edit icon" className={classes['edit-icon']} />
+							</button>
+						</div>
 					</div>
 					<div className={classes['docs-box']}>
 						<h2 className={`${classes['info-header']} ${classes['docs-header']}`}>Documents</h2>
