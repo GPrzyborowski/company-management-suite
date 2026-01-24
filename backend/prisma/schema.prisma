@@ -71,6 +71,6 @@ model LoginCode {
   expiresAt   DateTime
   usedAt      DateTime?
   employeeId  Int
-  employee    Employee @relation(fields: [employeeId], references: [id])
+  employee    Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
   createdAt   DateTime @default(now())
 }
