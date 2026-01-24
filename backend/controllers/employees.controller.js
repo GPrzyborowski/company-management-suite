@@ -34,14 +34,14 @@ export const updateEmployee = async (req, res) => {
 			where: { id },
 			data: {
 				...rest,
-                birthDate: birthDate ? new Date(birthDate) : undefined,
-                jobStart: jobStartDate ? new Date(jobStartDate) : undefined,
-                address: {
-                    upsert: {
-                        update: address,
-                        create: address,
-                    },
-                },
+				birthDate: birthDate ? new Date(birthDate) : undefined,
+				jobStart: jobStartDate ? new Date(jobStartDate) : undefined,
+				address: {
+					upsert: {
+						update: address,
+						create: address,
+					},
+				},
 			},
 			include: {
 				address: true,
@@ -52,4 +52,19 @@ export const updateEmployee = async (req, res) => {
 		console.error(err)
 		res.status(500).json({ message: 'Update failed.' })
 	}
+}
+
+export const removeEmployee = async (req, res) => {
+		try {
+			const id = Number(req.params.id)
+			const employee = await prisma.employee.findUnique({ where: { id: id } })
+			if (!employee) {
+				return res.status(404).json({message: "Employee not found."})
+			}
+			await prisma.employee.delete({ where: { id: id } })
+			res.sendStatus(204)
+		} catch(err) {
+			console.error(err)
+			res.status(500).json({message: "Server error."})
+		}
 }
