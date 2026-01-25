@@ -22,12 +22,13 @@ function LoginScreen() {
 			}
 			const data = await res.json()
 			await AsyncStorage.setItem('token', data.token)
+			await AsyncStorage.setItem('employee', JSON.stringify(data.employee))
 			navigation.reset({
 				index: 0,
 				routes: [{ name: 'EmployeeDashboard' }],
 			})
 		} catch (err) {
-			Alert.alert('Login was not successful.')
+			Alert.alert('Wrong login code.')
 		}
 	}
 
