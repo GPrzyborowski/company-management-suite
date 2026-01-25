@@ -157,7 +157,14 @@ router.post('/loginmobile', async (req, res) => {
 				},
 			})
 
-			return res.json({ token })
+			return res.json({
+				token,
+				employee: {
+					id: loginCode.employee.id,
+					firstName: loginCode.employee.firstName,
+					lastName: loginCode.employee.lastName,
+				},
+			})
 		}
 	}
 
