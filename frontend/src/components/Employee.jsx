@@ -149,7 +149,7 @@ function Employee() {
 				Authorization: `Bearer ${localStorage.getItem('token')}`,
 			},
 		})
-		if(res.ok) {
+		if (res.ok) {
 			setRemoveVisible(false)
 			navigate('/employees')
 		}
@@ -247,10 +247,13 @@ function Employee() {
 						</p>
 						<div className={classes['modifier-container']}>
 							<button className={classes.remove} onClick={removeEmployee}>
-								<img src="/user-x.svg" alt="edit icon" className={classes['edit-icon']} />
+								<img src="/user-x.svg" alt="remove icon" className={classes['edit-icon']} />
 							</button>
 							<button className={classes.edit} onClick={openEdit}>
 								<img src="/edit.svg" alt="edit icon" className={classes['edit-icon']} />
+							</button>
+							<button className={classes.edit}>
+								<img src="/key.svg" alt="key icon" className={classes['edit-icon']} />
 							</button>
 						</div>
 					</div>
