@@ -3,6 +3,7 @@ import NewDocument from './NewDocument'
 import ConfirmModal from './ConfirmModal'
 import EditModal from './EditModal'
 import RemoveModal from './RemoveModal'
+import LoginKeyModal from './LoginKeyModal'
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import classes from './Employee.module.css'
@@ -16,6 +17,7 @@ function Employee() {
 	const [documents, setDocuments] = useState([])
 	const [confirmVisible, setConfirmVisible] = useState(false)
 	const [removeVisible, setRemoveVisible] = useState(false)
+	const [loginKeyVisible, setLoginKeyVisible] = useState(true)
 	const [editVisible, setEditVisible] = useState(false)
 	const [docToDelete, setDocToDelete] = useState(null)
 
@@ -155,10 +157,23 @@ function Employee() {
 		}
 	}
 
+	const generateLoginKey = () => {
+		setLoginKeyVisible(true)
+	}
+
+	const closeGenerateLoginKey = () => {
+		setLoginKeyVisible(false)
+	}
+
+	// const confirmGenerateLoginKey = async () => {
+	// 	const  res = await fetch
+	// }
+
 	return (
 		<>
 			<ConfirmModal confirmVisible={confirmVisible} onConfirm={confirmDelete} onCancel={cancelDelete} />
 			<RemoveModal confirmVisible={removeVisible} onConfirm={confirmRemove} onCancel={cancelRemove} />
+			<LoginKeyModal name={employee.firstName} surname={employee.lastName} confirmVisible={loginKeyVisible} onConfirm={confirmRemove} onClose={closeGenerateLoginKey}/>
 			<EditModal
 				editVisible={editVisible}
 				onClose={closeEdit}
@@ -252,7 +267,7 @@ function Employee() {
 							<button className={classes.edit} onClick={openEdit}>
 								<img src="/edit.svg" alt="edit icon" className={classes['edit-icon']} />
 							</button>
-							<button className={classes.edit}>
+							<button className={classes.edit} onClick={generateLoginKey}>
 								<img src="/key.svg" alt="key icon" className={classes['edit-icon']} />
 							</button>
 						</div>
