@@ -17,13 +17,15 @@ function Employee() {
 	const [documents, setDocuments] = useState([])
 	const [confirmVisible, setConfirmVisible] = useState(false)
 	const [removeVisible, setRemoveVisible] = useState(false)
-	const [loginKeyVisible, setLoginKeyVisible] = useState(true)
+	const [loginKeyVisible, setLoginKeyVisible] = useState(false)
+	const [expiry, setExpiry] = useState(7)
 	const [editVisible, setEditVisible] = useState(false)
 	const [docToDelete, setDocToDelete] = useState(null)
 
 	const employeeEndpoint = `http://localhost:5000/api/employees/${id}`
 	const editEndpoint = `http://localhost:5000/api/employees/${id}`
 	const documentsEndpoint = `http://localhost:5000/api/employees/${id}/documents`
+	const loginCodeEndpoint = `http://localhost:5000/api/logincode`
 
 	useEffect(() => {
 		fetch(employeeEndpoint, {
@@ -157,7 +159,16 @@ function Employee() {
 		}
 	}
 
-	const generateLoginKey = () => {
+	const handleExpiryChange = e => {
+		const value = e.target.value
+		if (value >= 1 && value <= 30) {
+			setExpiry(value)
+		} else if (value == '') {
+			setExpiry('')
+		}
+	}
+
+	const showGenerateLoginKey = () => {
 		setLoginKeyVisible(true)
 	}
 
@@ -165,15 +176,31 @@ function Employee() {
 		setLoginKeyVisible(false)
 	}
 
-	// const confirmGenerateLoginKey = async () => {
-	// 	const  res = await fetch
+	// const generateLoginKey = async () => {
+	// 	const res = await fetch(loginCodeEndpoint, {
+	// 		method: 'POST',
+	// 		headers: {
+	// 			Authorization: `Bearer ${localStorage.getItem('token')}`,
+	// 		},
+	// 		body: JSON.stringify({
+
+	// 		})
+	// 	})
 	// }
 
 	return (
 		<>
 			<ConfirmModal confirmVisible={confirmVisible} onConfirm={confirmDelete} onCancel={cancelDelete} />
 			<RemoveModal confirmVisible={removeVisible} onConfirm={confirmRemove} onCancel={cancelRemove} />
-			<LoginKeyModal name={employee.firstName} surname={employee.lastName} confirmVisible={loginKeyVisible} onConfirm={confirmRemove} onClose={closeGenerateLoginKey}/>
+			<LoginKeyModal
+				name={employee.firstName}
+				surname={employee.lastName}
+				confirmVisible={loginKeyVisible}
+				expiry={expiry}
+				onChangeExpiry={handleExpiryChange}
+				onConfirm={confirmRemove}
+				onClose={closeGenerateLoginKey}
+			/>
 			<EditModal
 				editVisible={editVisible}
 				onClose={closeEdit}
@@ -267,7 +294,7 @@ function Employee() {
 							<button className={classes.edit} onClick={openEdit}>
 								<img src="/edit.svg" alt="edit icon" className={classes['edit-icon']} />
 							</button>
-							<button className={classes.edit} onClick={generateLoginKey}>
+							<button className={classes.edit} onClick={showGenerateLoginKey}>
 								<img src="/key.svg" alt="key icon" className={classes['edit-icon']} />
 							</button>
 						</div>
