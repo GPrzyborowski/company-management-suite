@@ -1,7 +1,7 @@
 import classes from './LoginKeyModal.module.css'
 import { useEffect } from 'react'
 
-function LoginKeyModal({ name, surname, confirmVisible, onConfirm, onClose }) {
+function LoginKeyModal({ name, surname, confirmVisible, expiry, onChangeExpiry, onGenerate, onClose, code }) {
 	useEffect(() => {
 		if (confirmVisible) {
 			document.body.style.overflow = 'hidden'
@@ -25,9 +25,31 @@ function LoginKeyModal({ name, surname, confirmVisible, onConfirm, onClose }) {
 						<img src="/close.svg" alt="close icon" className={classes['close-icon']} />
 					</button>
 					<p className={classes.paragraph}>
-						Generate login key for {name} {surname}
+						Generate login key for{' '}
+						<span className={classes.bold}>
+							{name} {surname}
+						</span>
 					</p>
-					<div className={classes['btn-box']}>
+					<label className={classes['expire-label']} htmlFor="expire">
+						Set expiration (1-30 days):
+					</label>
+					<input
+						className={classes['expire-input']}
+						type="number"
+						id="expire"
+						name="expire"
+						min="1"
+						max="30"
+						value={expiry}
+						onChange={onChangeExpiry}></input>
+					<div className={classes['generate-container']}>
+						<button className={classes['generate-btn']} onClick={onGenerate}>
+							Generate
+						</button>
+						<p className={classes['generate-code']}>
+							<span className={classes.bold}>Code: </span>
+							{code}
+						</p>
 					</div>
 				</div>
 			</div>
