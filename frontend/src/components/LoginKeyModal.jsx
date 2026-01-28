@@ -1,9 +1,9 @@
 import classes from './LoginKeyModal.module.css'
 import { useEffect } from 'react'
 
-function LoginKeyModal({ name, surname, confirmVisible, expiry, onChangeExpiry, onGenerate, onClose, code }) {
+function LoginKeyModal({ name, surname, visible, expiry, onChangeExpiry, onGenerate, onClose, code }) {
 	useEffect(() => {
-		if (confirmVisible) {
+		if (visible) {
 			document.body.style.overflow = 'hidden'
 		} else {
 			document.body.style.overflow = ''
@@ -11,9 +11,9 @@ function LoginKeyModal({ name, surname, confirmVisible, expiry, onChangeExpiry, 
 		return () => {
 			document.body.style.overflow = ''
 		}
-	}, [confirmVisible])
+	}, [visible])
 
-	if (!confirmVisible) {
+	if (!visible) {
 		return null
 	}
 
