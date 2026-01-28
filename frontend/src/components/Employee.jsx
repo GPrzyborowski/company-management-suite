@@ -18,6 +18,7 @@ function Employee() {
 	const [confirmVisible, setConfirmVisible] = useState(false)
 	const [removeVisible, setRemoveVisible] = useState(false)
 	const [loginKeyVisible, setLoginKeyVisible] = useState(false)
+	const [loginKey, setLoginKey] = useState('')
 	const [expiry, setExpiry] = useState(7)
 	const [editVisible, setEditVisible] = useState(false)
 	const [docToDelete, setDocToDelete] = useState(null)
@@ -176,17 +177,25 @@ function Employee() {
 		setLoginKeyVisible(false)
 	}
 
-	// const generateLoginKey = async () => {
-	// 	const res = await fetch(loginCodeEndpoint, {
-	// 		method: 'POST',
-	// 		headers: {
-	// 			Authorization: `Bearer ${localStorage.getItem('token')}`,
-	// 		},
-	// 		body: JSON.stringify({
-
-	// 		})
-	// 	})
-	// }
+	const generateLoginKey = async () => {
+		const res = await fetch(loginCodeEndpoint, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${localStorage.getItem('token')}`,
+			},
+			body: JSON.stringify({
+				employeeId: id,
+				expiresInDays: expiry,
+			}),
+		})
+		if (!res.ok) {
+			console.error(res)
+			return
+		}
+		const data = await res.json()
+		setLoginKey(data.oneTimeCode)
+	}
 
 	return (
 		<>
@@ -195,11 +204,12 @@ function Employee() {
 			<LoginKeyModal
 				name={employee.firstName}
 				surname={employee.lastName}
-				confirmVisible={loginKeyVisible}
+				visible={loginKeyVisible}
 				expiry={expiry}
 				onChangeExpiry={handleExpiryChange}
-				onConfirm={confirmRemove}
+				onGenerate={generateLoginKey}
 				onClose={closeGenerateLoginKey}
+				code={loginKey}
 			/>
 			<EditModal
 				editVisible={editVisible}
