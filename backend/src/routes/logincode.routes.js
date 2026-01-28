@@ -8,11 +8,12 @@ router.use(auth)
 
 router.post('/logincode', async (req, res) => {
 	const { employeeId, expiresInDays } = req.body
+    const employeeIdNumber = Number(employeeId)
     const days = Number(expiresInDays)
     if(!days || days <= 0 || days > 30) {
         return res.status(400).json({message: 'Invalid expiration time.'})
     }
-    const employee = await prisma.employee.findUnique({where: {id: employeeId}})
+    const employee = await prisma.employee.findUnique({where: {id: employeeIdNumber}})
     if(!employee) {
         return res.status(404).json({message: "Employee does not exist."})
     }
@@ -23,7 +24,7 @@ router.post('/logincode', async (req, res) => {
         data: {
             codeHash: hash,
             expiresAt,
-            employeeId
+            employeeId: employeeIdNumber
         }
     })
     res.json({
