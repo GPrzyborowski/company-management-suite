@@ -46,10 +46,15 @@ function LoginKeyModal({ name, surname, visible, expiry, onChangeExpiry, onGener
 						<button className={classes['generate-btn']} onClick={onGenerate}>
 							Generate
 						</button>
-						<p className={classes['generate-code']}>
-							<span className={classes.bold}>Code: </span>
-							{code}
-						</p>
+						<div className={classes['code-container']}>
+							<p className={classes['generate-code']}>
+								<span className={classes.bold}>Code: </span>
+								{code}
+							</p>
+							<button className={classes.copy}>
+								<img src="/copy.svg" alt="copy icon" className={classes['copy-icon']} />
+							</button>
+						</div>
 					</div>
 				</div>
 			</div>
