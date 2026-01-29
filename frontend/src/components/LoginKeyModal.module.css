@@ -68,7 +68,7 @@
 .generate-container {
 	margin-top: 2rem;
 	display: flex;
-	justify-content: space-between;	
+	justify-content: space-between;
 	align-items: center;
 }
 
@@ -81,10 +81,24 @@
 	cursor: pointer;
 }
 
+.code-container {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
 .generate-code {
+	display: inline-block;
+	padding: 0 2.4rem;
 	font-size: 1.4rem;
-	color: #FFFFFF;
-	/* margin-left: 5rem; */
+	color: #ffffff;
+}
+
+.copy {
+	background: none;
+	border: none;
+	outline: none;
+	cursor: pointer;
 }
 
 .cancel {
