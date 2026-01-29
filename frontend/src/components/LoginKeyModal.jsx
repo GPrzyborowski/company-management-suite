@@ -17,6 +17,12 @@ function LoginKeyModal({ name, surname, visible, expiry, onChangeExpiry, onGener
 		return null
 	}
 
+	const handleCopy = async () => {
+		if(code != '') {
+			await navigator.clipboard.writeText(code)
+		}
+	}
+
 	return (
 		<div className={classes['modal-overlay']} onClick={onClose}>
 			<div className={classes.modal} onClick={e => e.stopPropagation()}>
@@ -51,7 +57,7 @@ function LoginKeyModal({ name, surname, visible, expiry, onChangeExpiry, onGener
 								<span className={classes.bold}>Code: </span>
 								{code}
 							</p>
-							<button className={classes.copy}>
+							<button className={classes.copy} onClick={handleCopy}>
 								<img src="/copy.svg" alt="copy icon" className={classes['copy-icon']} />
 							</button>
 						</div>
