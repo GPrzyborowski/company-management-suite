@@ -1,7 +1,10 @@
 import classes from './LoginKeyModal.module.css'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
-function LoginKeyModal({ name, surname, visible, expiry, onChangeExpiry, onGenerate, onClose, code }) {
+function LoginKeyModal({ name, surname, visible, expiry, onChangeExpiry, onGenerate, onClose, codeVisible, code }) {
+
+	const [wasCopied, setWasCopied] = useState(false)
+
 	useEffect(() => {
 		if (visible) {
 			document.body.style.overflow = 'hidden'
@@ -21,6 +24,7 @@ function LoginKeyModal({ name, surname, visible, expiry, onChangeExpiry, onGener
 		if(code != '') {
 			await navigator.clipboard.writeText(code)
 		}
+		setWasCopied(true)
 	}
 
 	return (
@@ -52,13 +56,13 @@ function LoginKeyModal({ name, surname, visible, expiry, onChangeExpiry, onGener
 						<button className={classes['generate-btn']} onClick={onGenerate}>
 							Generate
 						</button>
-						<div className={classes['code-container']}>
+						<div className={`${classes['code-container']} ${codeVisible ? '' : classes['code-visible']}`}>
 							<p className={classes['generate-code']}>
 								<span className={classes.bold}>Code: </span>
 								{code}
 							</p>
 							<button className={classes.copy} onClick={handleCopy}>
-								<img src="/copy.svg" alt="copy icon" className={classes['copy-icon']} />
+								<img src={wasCopied ? '/check.svg' : '/copy.svg' } alt="copy icon" className={classes['copy-icon']} />
 							</button>
 						</div>
 					</div>
