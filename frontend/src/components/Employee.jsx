@@ -19,6 +19,7 @@ function Employee() {
 	const [removeVisible, setRemoveVisible] = useState(false)
 	const [loginKeyVisible, setLoginKeyVisible] = useState(false)
 	const [loginKey, setLoginKey] = useState('')
+	const [codeVisible, setCodeVisible] = useState(false)
 	const [expiry, setExpiry] = useState(7)
 	const [editVisible, setEditVisible] = useState(false)
 	const [docToDelete, setDocToDelete] = useState(null)
@@ -174,6 +175,7 @@ function Employee() {
 	}
 
 	const closeGenerateLoginKey = () => {
+		setCodeVisible(false)
 		setLoginKeyVisible(false)
 	}
 
@@ -195,6 +197,7 @@ function Employee() {
 		}
 		const data = await res.json()
 		setLoginKey(data.oneTimeCode)
+		setCodeVisible(true)
 	}
 
 	return (
@@ -209,6 +212,7 @@ function Employee() {
 				onChangeExpiry={handleExpiryChange}
 				onGenerate={generateLoginKey}
 				onClose={closeGenerateLoginKey}
+				codeVisible={codeVisible}
 				code={loginKey}
 			/>
 			<EditModal
