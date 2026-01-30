@@ -87,6 +87,10 @@
 	align-items: center;
 }
 
+.code-visible {
+	display: none;
+}
+
 .generate-code {
 	display: inline-block;
 	padding: 0 2.4rem;
@@ -108,7 +112,6 @@
 .close-icon {
 	position: absolute;
 	width: 3.6rem;
-	/* top: 3.9rem; */
 	right: 2.5rem;
 	cursor: pointer;
 	transition: scale 0.2s;
