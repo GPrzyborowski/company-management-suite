@@ -28,10 +28,16 @@ function LoginKeyModal({ name, surname, visible, expiry, onChangeExpiry, onGener
 	}
 
 	return (
-		<div className={classes['modal-overlay']} onClick={onClose}>
+		<div className={classes['modal-overlay']} onClick={() => {
+			onClose()
+			setWasCopied(false)
+		}}>
 			<div className={classes.modal} onClick={e => e.stopPropagation()}>
 				<div className={classes.box}>
-					<button className={classes.btn} onClick={onClose}>
+					<button className={classes.btn} onClick={() => {
+						onClose()
+						setWasCopied(false)
+					}}>
 						<img src="/close.svg" alt="close icon" className={classes['close-icon']} />
 					</button>
 					<p className={classes.paragraph}>
@@ -53,7 +59,10 @@ function LoginKeyModal({ name, surname, visible, expiry, onChangeExpiry, onGener
 						value={expiry}
 						onChange={onChangeExpiry}></input>
 					<div className={classes['generate-container']}>
-						<button className={classes['generate-btn']} onClick={onGenerate}>
+						<button className={classes['generate-btn']} onClick={() => {
+							onGenerate()
+							setWasCopied(false)
+						}}>
 							Generate
 						</button>
 						<div className={`${classes['code-container']} ${codeVisible ? '' : classes['code-visible']}`}>
