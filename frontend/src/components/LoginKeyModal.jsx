@@ -59,7 +59,7 @@ function LoginKeyModal({ name, surname, visible, expiry, onChangeExpiry, onGener
 						}}>
 							Generate
 						</button>
-						<div className={`${classes['code-container']} ${codeVisible ? '' : classes['code-visible']}`}>
+						<div className={`${classes['code-container']} ${codeVisible ? '' : classes['code-hidden']}`}>
 							<p className={classes['generate-code']}>
 								<span className={classes.bold}>Code: </span>
 								{code}
