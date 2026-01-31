@@ -87,7 +87,7 @@
 	align-items: center;
 }
 
-.code-visible {
+.code-hidden {
 	display: none;
 }
 
@@ -105,26 +105,10 @@
 	cursor: pointer;
 }
 
-.cancel {
-	background-color: #9c2727;
-}
-
 .close-icon {
 	position: absolute;
 	width: 3.6rem;
 	right: 2.5rem;
 	cursor: pointer;
 	transition: scale 0.2s;
-}
-
-.cancel:hover {
-	background-color: #8f1b1b;
-}
-
-.confirm {
-	background-color: #008141;
-}
-
-.confirm:hover {
-	background-color: #00753b;
 }
