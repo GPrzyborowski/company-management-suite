@@ -1,8 +1,11 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
 import { useEffect, useState } from 'react'
 
 function EmployeeDashboard() {
+	const navigation = useNavigation()
+
 	const [employee, setEmployee] = useState(null)
 
 	useEffect(() => {
@@ -29,8 +32,10 @@ function EmployeeDashboard() {
 				<Text style={styles.header}>Hello {employee.firstName}</Text>
 			</View>
 			<View style={styles['btn-container']}>
-				<TouchableOpacity style={styles.btn}>
-					<Text style={styles.btnText}>Scan QR</Text>
+				<TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('QrScanner')}>
+					<Text style={styles.btnText}>
+						Scan QR
+					</Text>
 				</TouchableOpacity>
 				<TouchableOpacity style={styles.btn}>
 					<Text style={styles.btnText}>Work statistics</Text>
@@ -49,7 +54,6 @@ const styles = StyleSheet.create({
 		fontSize: 24,
 	},
 	['btn-container']: {
-		marginTop: 255,
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
