@@ -6,6 +6,7 @@ import HomeScreen from './src/screens/HomeScreen'
 import HostScreen from './src/screens/HostScreen'
 import LoginScreen from './src/screens/LoginScreen'
 import EmployeeDashboard from './src/screens/EmployeeDashboard'
+import QrScannerScreen from './src/screens/QrScannerScreen'
 
 const Stack = createNativeStackNavigator()
 
@@ -17,6 +18,7 @@ export default function App() {
 				<Stack.Screen name="Login" component={LoginScreen} />
 				<Stack.Screen name="Host" component={HostScreen} />
 				<Stack.Screen name="EmployeeDashboard" component={EmployeeDashboard} />
+				<Stack.Screen name="QrScanner" component={QrScannerScreen} options={{title: 'Scan QR'}}/>
 			</Stack.Navigator>
 		</NavigationContainer>
 	)
