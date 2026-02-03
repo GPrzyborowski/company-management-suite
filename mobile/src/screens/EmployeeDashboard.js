@@ -8,6 +8,7 @@ function EmployeeDashboard() {
 	const navigation = useNavigation()
 
 	const [employee, setEmployee] = useState(null)
+	const [isWorking, setIsWorking] = useState(false)
 
 	useEffect(() => {
 		const loadEmployee = async () => {
@@ -34,6 +35,7 @@ function EmployeeDashboard() {
 			</View>
 			<View style={styles['status-container']}>
 				<Text style={styles['status-text']}>Your current work status:</Text>
+				<WorkStatus isWorking={isWorking} />
 			</View>
 			<View style={styles['btn-container']}>
 				<TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('QrScanner')}>
