@@ -2,6 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { useEffect, useState } from 'react'
+import WorkStatus from '../components/WorkStatus'
 
 function EmployeeDashboard() {
 	const navigation = useNavigation()
