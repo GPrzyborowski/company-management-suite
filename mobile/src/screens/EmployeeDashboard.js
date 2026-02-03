@@ -31,11 +31,12 @@ function EmployeeDashboard() {
 			<View style={styles['header-container']}>
 				<Text style={styles.header}>Hello {employee.firstName}</Text>
 			</View>
+			<View style={styles['status-container']}>
+				<Text style={styles['status-text']}>Your current work status:</Text>
+			</View>
 			<View style={styles['btn-container']}>
 				<TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('QrScanner')}>
-					<Text style={styles.btnText}>
-						Scan QR
-					</Text>
+					<Text style={styles.btnText}>Scan QR</Text>
 				</TouchableOpacity>
 				<TouchableOpacity style={styles.btn}>
 					<Text style={styles.btnText}>Work statistics</Text>
@@ -53,10 +54,17 @@ const styles = StyleSheet.create({
 		textAlign: 'center',
 		fontSize: 24,
 	},
+	['status-container']: {
+		marginTop: 32,
+	},
+	['status-text']: {
+		textAlign: 'center',
+	},
 	['btn-container']: {
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
+		marginTop: 180,
 	},
 	btn: {
 		backgroundColor: '#0f52ba',
