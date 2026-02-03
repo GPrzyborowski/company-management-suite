@@ -1,9 +1,10 @@
 import { View, Text } from 'react-native'
 
-function WorkStatus({ status }) {
+function WorkStatus({ isWorking }) {
+
 	return (
         <View>
-            <Text></Text>
+            <Text>{isWorking ? 'Active' : 'Not active'}</Text>
         </View>
     )
 }
