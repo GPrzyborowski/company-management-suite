@@ -17,7 +17,7 @@ export default function App() {
 				<Stack.Screen name="Home" component={HomeScreen} />
 				<Stack.Screen name="Login" component={LoginScreen} />
 				<Stack.Screen name="Host" component={HostScreen} />
-				<Stack.Screen name="EmployeeDashboard" component={EmployeeDashboard} />
+				<Stack.Screen name="EmployeeDashboard" component={EmployeeDashboard} options={{title: 'Employee dashboard'}}/>
 				<Stack.Screen name="QrScanner" component={QrScannerScreen} options={{title: 'Scan QR'}}/>
 			</Stack.Navigator>
 		</NavigationContainer>
