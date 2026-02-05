@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import classes from './LoginForm.module.css'
 
 function LoginForm({ onSubmit, login, setLogin, password, setPassword, warningMsg }) {
