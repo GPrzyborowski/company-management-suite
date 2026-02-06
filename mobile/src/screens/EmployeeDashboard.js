@@ -41,7 +41,7 @@ function EmployeeDashboard() {
 				<TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('QrScanner')}>
 					<Text style={styles.btnText}>Scan QR</Text>
 				</TouchableOpacity>
-				<TouchableOpacity style={styles.btn}>
+				<TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('WorkStats')}>
 					<Text style={styles.btnText}>Work statistics</Text>
 				</TouchableOpacity>
 			</View>
