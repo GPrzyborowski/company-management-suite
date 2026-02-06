@@ -46,6 +46,7 @@ model Admin {
   login         String        @unique
   password      String
   phoneNumber   String        @unique
+  hostDevices  HostDevice[]
 }
 
 model AllowedPhones {
@@ -72,5 +73,18 @@ model LoginCode {
   usedAt      DateTime?
   employeeId  Int
   employee    Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
-  createdAt   DateTime @default(now())
+    createdAt   DateTime @default(now())
+  }
+
+model HostDevice {
+  id            Int       @id @default(autoincrement())
+  deviceName    String?
+  deviceCode    String    @unique
+  isActive      Boolean   @default(true)
+  createdById   Int
+  createdBy     Admin     @relation(fields: [createdById], references: [id])
+  createdAt     DateTime  @default(now())
+  activatedAt   DateTime?
+  revokedAt     DateTime?
+  lastUsedAt    DateTime?
 }
