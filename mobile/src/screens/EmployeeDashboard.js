@@ -64,8 +64,6 @@ const styles = StyleSheet.create({
 		textAlign: 'center',
 	},
 	['btn-container']: {
-		flex: 1,
-		justifyContent: 'center',
 		alignItems: 'center',
 		marginTop: 120,
 	},
