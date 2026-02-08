@@ -15,6 +15,7 @@ function WorkStatus({ isWorking }) {
 const styles = StyleSheet.create({
 	status: {
 		marginTop: 24,
+		fontSize: 18,
 		textAlign: 'center',
 	},
 

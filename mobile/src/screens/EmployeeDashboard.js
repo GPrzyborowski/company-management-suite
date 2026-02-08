@@ -55,13 +55,14 @@ const styles = StyleSheet.create({
 	},
 	header: {
 		textAlign: 'center',
-		fontSize: 24,
+		fontSize: 32,
 	},
 	['status-container']: {
 		marginTop: 32,
 	},
 	['status-text']: {
 		textAlign: 'center',
+		fontSize: 18,
 	},
 	['btn-container']: {
 		alignItems: 'center',
