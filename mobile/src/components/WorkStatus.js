@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
 
 	dotWrapper: {
 		alignItems: 'center',
-		marginTop: 15,
+		marginTop: 20,
 	},
 
 	statusDot: {
