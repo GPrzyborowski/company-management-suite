@@ -8,8 +8,6 @@ import Employees from './pages/Employees'
 import EmployeeInformation from './pages/EmployeeInformation'
 import ProtectedRoute from './components/ProtectedRoute'
 
-import './App.css'
-
 function App() {
 	return (
 		<BrowserRouter>
