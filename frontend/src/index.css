@@ -18,7 +18,7 @@ body {
 }
 
 :focus-visible {
-	outline: 1px dashed #FFFFFF;
+	outline: 2px dashed #FFFFFF;
 }
 
 input:focus-visible {
