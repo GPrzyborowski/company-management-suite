@@ -2,6 +2,7 @@ import Wrapper from '../components/Wrapper'
 import Navigation from '../components/Navigation'
 import EmployeesViewport from '../components/EmployeesViewport'
 import EmployeeCard from '../components/EmployeeCard'
+import NewEmployeeCard from '../components/NewEmployeeCard'
 import { useState, useEffect } from 'react'
 
 function Employees() {
@@ -43,6 +44,7 @@ function Employees() {
 				{employees.map(element => {
 					return <EmployeeCard key={element.id} employee={element} />
 				})}
+			<NewEmployeeCard />
 			</EmployeesViewport>
 		</Wrapper>
 
