@@ -2,6 +2,6 @@
 
 A management suite designed for small and medium businesses.
 
-🔧 Tech stack: React, React Native, Vite, Node.js, Express, Prisma, SQLite, JWT, AsyncStorage, Multer.
+🔧 Tech stack: React, React Native, Vite, Node.js, Express, Prisma, SQLite, JWT, Multer.
 
 In development.
