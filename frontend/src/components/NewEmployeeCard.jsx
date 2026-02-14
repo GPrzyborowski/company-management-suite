@@ -5,7 +5,11 @@ function NewEmployeeCard() {
 	const navigate = useNavigate()
 
 	return (
-		<div className={classes.card}>
+		<div
+			className={classes.card}
+			onClick={() => {
+				navigate(`/newemployee`)
+			}}>
 			<p className={classes.name}>Add a new employee</p>
 			<div className={classes.container}>
 				<img className={classes['plus-circle']} src="/plus-circle.svg" alt="plus circle" />
