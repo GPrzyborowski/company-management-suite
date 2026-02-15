@@ -10,7 +10,7 @@ function NewEmployeeCard() {
 			onClick={() => {
 				navigate(`/newemployee`)
 			}}>
-			<p className={classes.name}>Add a new employee</p>
+			<p className={classes.name}>New employee</p>
 			<div className={classes.container}>
 				<img className={classes['plus-circle']} src="/plus-circle.svg" alt="plus circle" />
 			</div>
