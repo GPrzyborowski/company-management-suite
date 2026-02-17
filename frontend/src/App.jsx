@@ -7,6 +7,7 @@ import NewEmployee from './pages/NewEmployee'
 import Employees from './pages/Employees'
 import EmployeeInformation from './pages/EmployeeInformation'
 import ProtectedRoute from './components/ProtectedRoute'
+import Management from './pages/Management'
 
 function App() {
 	return (
@@ -18,6 +19,13 @@ function App() {
 					element={
 						<ProtectedRoute>
 							<Dashboard />
+						</ProtectedRoute>
+					}></Route>
+				<Route
+					path="/management"
+					element={
+						<ProtectedRoute>
+							<Management />
 						</ProtectedRoute>
 					}></Route>
 				<Route
