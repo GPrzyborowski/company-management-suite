@@ -1,9 +1,13 @@
-import Navigation from "../components/Navigation"
+import Navigation from '../components/Navigation'
+import ManagementViewport from '../components/ManagementViewport'
 
 function Management() {
-    return (
-        <Navigation />
-    )
+	return (
+		<>
+			<Navigation />
+			<ManagementViewport />
+		</>
+	)
 }
 
 export default Management
