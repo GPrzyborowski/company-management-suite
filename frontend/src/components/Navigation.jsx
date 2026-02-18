@@ -70,6 +70,13 @@ function Navigation() {
 						</li>
 						<li className={classes['list-item']}>
 							<NavLink
+								to="/management"
+								className={({ isActive }) => `${classes['list-item-link']} ${isActive ? classes.active : ''}`}>
+								Management
+							</NavLink>
+						</li>
+						<li className={classes['list-item']}>
+							<NavLink
 								to="/employees"
 								className={({ isActive }) => `${classes['list-item-link']} ${isActive ? classes.active : ''}`}>
 								Employees
