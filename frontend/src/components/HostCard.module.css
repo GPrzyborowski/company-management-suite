@@ -1,0 +1,76 @@
+.card {
+	position: relative;
+	padding: 1.2em 2.4em;
+	margin-bottom: 1.5rem;
+	background-color: rgba(15, 82, 186, 1);
+	box-shadow: 1px 0px 26px 2px rgba(0, 51, 102, 1);
+	border-radius: 8px;
+	font-size: 1.6rem;
+	color: white;
+	transition: transform 0.2s ease;
+}
+
+.card:hover {
+	transform: translateY(-5px);
+	cursor: pointer;
+}
+
+.card-mail-phone {
+	display: flex;
+	justify-content: space-around;
+}
+
+.card-email {
+	position: absolute;
+	display: flex;
+	bottom: 7rem;
+	left: 3rem;
+	font-size: 1.8rem;
+}
+
+.mail-icon {
+	max-width: 2rem;
+	margin-right: 0.4rem;
+}
+
+.name {
+	position: absolute;
+	top: 3rem;
+	left: 3rem;
+	font-size: 2.2rem;
+}
+
+.card-phone {
+	position: absolute;
+	bottom: 2rem;
+	left: 3rem;
+	display: flex;
+	font-size: 1.8rem;
+}
+
+.phone-icon {
+	max-width: 1.6rem;
+	margin-right: 0.4rem;
+}
+
+@media (min-width: 768px) {
+	.phone-icon {
+		max-width: 1.6rem;
+		margin-right: 0.8rem;
+	}
+	.card-phone,
+	.card-email {
+		font-size: 2rem;
+	}
+}
+
+@media (min-width: 992px) {
+	.name {
+		font-size: 2.4rem;
+	}
+	.phone-icon,
+	.mail-icon {
+		max-width: 1.8rem;
+		margin-right: 0.8rem;
+	}
+}
