@@ -1,3 +1,7 @@
 .main {
-    height: 100vh;
+	height: 100vh;
+	margin: 15rem 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
 }
