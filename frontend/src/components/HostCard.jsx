@@ -5,12 +5,11 @@ function HostCard() {
 		<div className={classes.card}>
 			<p className={classes.name}></p>
 			<div className={classes['card-mail-phone']}>
-				<div className={classes['card-email']}>
-					<img src="/mail.svg" alt="mail icon" className={classes['mail-icon']} />
+				<div className={classes['card-activated']}>
+					<img src="/calendar.svg" alt="mail icon" className={classes['mail-icon']} />
 					<p></p>
 				</div>
-				<div className={classes['card-phone']}>
-					<img src="/phone.svg" alt="phone icon" className={classes['phone-icon']} />
+				<div className={classes['card-active']}>
 					<p></p>
 				</div>
 			</div>
