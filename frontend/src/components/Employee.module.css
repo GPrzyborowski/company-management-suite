@@ -33,11 +33,6 @@
 
 .edit,
 .remove {
-	/* margin-top: 2rem;
-	margin-left: 50%;
-	transform: translateX(-50%);
-	display: block;
-	padding: 0.2rem; */
 	border: none;
 	padding: 1.5rem 3rem;
 	border-radius: 8px;
