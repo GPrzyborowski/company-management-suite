@@ -3,14 +3,15 @@ import classes from './HostCard.module.css'
 function HostCard() {
 	return (
 		<div className={classes.card}>
-			<p className={classes.name}></p>
-			<div className={classes['card-mail-phone']}>
+			<p className={classes.name}>Tablet</p>
+			<div className={classes.container}>
 				<div className={classes['card-activated']}>
-					<img src="/calendar.svg" alt="mail icon" className={classes['mail-icon']} />
-					<p></p>
+					<img src="/calendar.svg" alt="calendar icon" className={classes['calendar-icon']} />
+					<p className={classes.date}>01.01.2025</p>
 				</div>
 				<div className={classes['card-active']}>
-					<p></p>
+					<div className={classes.dot}></div>
+					<p>Active</p>
 				</div>
 			</div>
 		</div>
