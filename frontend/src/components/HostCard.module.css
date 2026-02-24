@@ -10,11 +10,6 @@
 	transition: transform 0.2s ease;
 }
 
-.card:hover {
-	transform: translateY(-5px);
-	cursor: pointer;
-}
-
 .container {
 
 }
@@ -27,10 +22,6 @@
 .calendar-icon {
 	margin-left: -.6rem;
 	margin-right: .8rem;
-}
-
-.date {
-	/* margin-left: 1rem; */
 }
 
 .card-activated {
