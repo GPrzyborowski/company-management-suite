@@ -1,14 +1,28 @@
 .container {
-    margin-left: 4rem;
+	margin: 0 4rem;
 }
 
 .header {
-    font-size: 2.4rem;
-    font-weight: bold;
-    color: #FFFFFF;
+	font-size: 2.4rem;
+	font-weight: bold;
+	color: #ffffff;
 }
 
 .device-container {
-    display: flex;
-    margin-top: 2rem;
+	display: grid;
+	margin-top: 2rem;
+}
+
+@media (min-width: 576px) {
+	.device-container {
+		grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+	}
+}
+
+@media (min-width: 1200px) {
+	.device-container {
+		grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+	}
 }
