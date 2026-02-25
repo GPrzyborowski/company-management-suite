@@ -7,6 +7,9 @@ function HostPanel() {
             <h2 className={classes.header}>Host devices</h2>
             <div className={classes['device-container']}>
                 <HostCard />
+                <HostCard />
+                <HostCard />
+                <HostCard />
             </div>
         </div>
     )
