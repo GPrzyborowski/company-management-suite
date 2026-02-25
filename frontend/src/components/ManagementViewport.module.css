@@ -1,7 +1,18 @@
 .main {
 	height: 100vh;
 	margin: 15rem 1rem;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: auto;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: auto;
+}
+
+.host {
+	grid-column: 1 / 2;
+}
+
+@media (min-width: 768px) {
+	.main {
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: auto;
+	}
 }
