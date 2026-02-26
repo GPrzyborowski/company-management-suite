@@ -1,4 +1,5 @@
 import HostCard from "./HostCard"
+import NewHostCard from "./NewHostCard"
 import classes from './HostPanel.module.css'
 
 function HostPanel() {
@@ -10,6 +11,7 @@ function HostPanel() {
                 <HostCard />
                 <HostCard />
                 <HostCard />
+                <NewHostCard />
             </div>
         </div>
     )
