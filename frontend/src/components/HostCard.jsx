@@ -13,6 +13,14 @@ function HostCard() {
 					<div className={classes.dot}></div>
 					<p>Active</p>
 				</div>
+				<div className={classes['btn-container']}>
+					<button className={classes.btn}>
+						<img src="/power.svg" alt="" />
+					</button>
+					<button className={classes.btn}>
+						<img src="/key.svg" alt="" />
+					</button>
+				</div>
 			</div>
 		</div>
 	)
