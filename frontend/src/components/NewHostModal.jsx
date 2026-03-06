@@ -27,7 +27,7 @@ function NewHostModal({ confirmVisible, onCancel }) {
 						<label htmlFor="hostName" className={classes.label}>
 							Host name:
 						</label>
-						<input id="hostName" type="text" className={classes.input} placeholder="Enter host name" />
+						<input id="hostName" type="text" className={classes.input} />
 					</div>
 					<div className={classes['btn-box']}>
 						<button className={`${classes.btn} ${classes.confirm}`}>Confirm</button>
