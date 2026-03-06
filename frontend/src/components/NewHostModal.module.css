@@ -42,7 +42,7 @@
 }
 
 .btn-box {
-	margin-top: 3rem;
+	margin-top: 2.5rem;
 	display: flex;
 	justify-content: center;
 }
@@ -61,4 +61,35 @@
 
 .confirm:hover {
 	background-color: #00753b;
+}
+
+.input-container {
+	margin-top: 2rem;
+	display: flex;
+	flex-direction: column;
+}
+
+.label {
+	margin-bottom: 0.5rem;
+	font-size: 1.4rem;
+	color: #ffffff;
+}
+
+.input {
+	padding: 0.8rem 1rem;
+	border-radius: 6px;
+	border: none;
+	outline: none;
+	font-size: 1.4rem;
+	background-color: rgba(255, 255, 255, 0.95);
+	color: #000;
+	transition: box-shadow 0.2s, transform 0.1s;
+}
+
+.input:focus {
+	box-shadow: 0 0 0 2px rgba(0, 51, 102, 0.6);
+}
+
+.input::placeholder {
+	color: #666;
 }
