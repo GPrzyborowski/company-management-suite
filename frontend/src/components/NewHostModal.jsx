@@ -2,7 +2,6 @@ import { useEffect } from 'react'
 import classes from './NewHostModal.module.css'
 
 function NewHostModal({ confirmVisible, onCancel }) {
-
 	useEffect(() => {
 		if (confirmVisible) {
 			document.body.style.overflow = 'hidden'
@@ -21,22 +20,19 @@ function NewHostModal({ confirmVisible, onCancel }) {
 
 	return (
 		<div className={classes['modal-overlay']} onClick={onCancel}>
-			<div
-				className={classes.modal}
-				onClick={(e) => e.stopPropagation()}
-			>
+			<div className={classes.modal} onClick={e => e.stopPropagation()}>
 				<div className={classes.box}>
 					<p className={classes.paragraph}>Add new host device</p>
-
+					<div className={classes['input-container']}>
+						<label htmlFor="hostName" className={classes.label}>
+							Host name:
+						</label>
+						<input id="hostName" type="text" className={classes.input} placeholder="Enter host name" />
+					</div>
 					<div className={classes['btn-box']}>
-						<button className={`${classes.btn} ${classes.confirm}`}>
-							Confirm
-						</button>
+						<button className={`${classes.btn} ${classes.confirm}`}>Confirm</button>
 
-						<button
-							className={`${classes.btn} ${classes.cancel}`}
-							onClick={onCancel}
-						>
+						<button className={`${classes.btn} ${classes.cancel}`} onClick={onCancel}>
 							Cancel
 						</button>
 					</div>
