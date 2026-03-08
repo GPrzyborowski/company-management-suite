@@ -4,6 +4,7 @@ import employeesRoutes from './routes/employees.routes.js'
 import authRoutes from './routes/auth.routes.js'
 import employeeDocumentsRoutes from './routes/employeedocs.routes.js'
 import loginCode from './routes/logincode.routes.js'
+import hosts from './routes/hosts.routes.js'
 
 const app = express()
 
@@ -15,5 +16,6 @@ app.use('/api/auth', authRoutes)
 app.use('/api/employees', employeesRoutes)
 app.use('/api', employeeDocumentsRoutes)
 app.use('/api', loginCode)
+app.use('/api', hosts)
 
 app.listen(5000, () => console.log("Server running"))
