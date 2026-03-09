@@ -85,7 +85,6 @@ model HostDevice {
   createdAt     DateTime          @default(now())
   activatedAt   DateTime?
   revokedAt     DateTime?
-
   loginCodes    DeviceLoginCode[]
 }
 
