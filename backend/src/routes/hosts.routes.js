@@ -6,7 +6,15 @@ const router = express.Router()
 router.use(auth)
 
 router.post('/newhost', async (req, res) => {
-    const deviceName = req.body
+	const { deviceName } = req.body
+    const adminId = req.user.id
+    const device = await prisma.hostDevice.create({
+        data: {
+            deviceName,
+            createdById: adminId
+        }
+    })
+    res.json(device)
 })
 
 export default router
