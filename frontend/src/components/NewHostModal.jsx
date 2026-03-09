@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import classes from './NewHostModal.module.css'
 
-function NewHostModal({ confirmVisible, onCancel }) {
+function NewHostModal({ confirmVisible, onSubmit, onCancel, hostName, onChange }) {
 	useEffect(() => {
 		if (confirmVisible) {
 			document.body.style.overflow = 'hidden'
@@ -27,10 +27,10 @@ function NewHostModal({ confirmVisible, onCancel }) {
 						<label htmlFor="hostName" className={classes.label}>
 							Host name:
 						</label>
-						<input id="hostName" type="text" className={classes.input} />
+						<input id="hostName" type="text" className={classes.input} value={hostName} onChange={onChange}/>
 					</div>
 					<div className={classes['btn-box']}>
-						<button className={`${classes.btn} ${classes.confirm}`}>Confirm</button>
+						<button className={`${classes.btn} ${classes.confirm}`} onClick={onSubmit}>Confirm</button>
 
 						<button className={`${classes.btn} ${classes.cancel}`} onClick={onCancel}>
 							Cancel
