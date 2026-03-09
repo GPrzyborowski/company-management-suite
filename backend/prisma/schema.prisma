@@ -77,13 +77,24 @@ model LoginCode {
   }
 
 model HostDevice {
-  id            Int       @id @default(autoincrement())
+  id            Int               @id @default(autoincrement())
   deviceName    String?
-  deviceCode    String    @unique
-  isActive      Boolean   @default(true)
+  isActive      Boolean           @default(true)
   createdById   Int
-  createdBy     Admin     @relation(fields: [createdById], references: [id])
-  createdAt     DateTime  @default(now())
+  createdBy     Admin             @relation(fields: [createdById], references: [id])
+  createdAt     DateTime          @default(now())
   activatedAt   DateTime?
   revokedAt     DateTime?
+
+  loginCodes    DeviceLoginCode[]
+}
+
+model DeviceLoginCode {
+  id         Int        @id @default(autoincrement())
+  codeHash   String
+  expiresAt  DateTime
+  usedAt     DateTime?
+  deviceId   Int
+  device     HostDevice @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+  createdAt  DateTime   @default(now())
 }
