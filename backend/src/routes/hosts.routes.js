@@ -5,7 +5,7 @@ import auth from '../middleware/auth.js'
 const router = express.Router()
 router.use(auth)
 
-router.get('/gethosts', async (req, res) => {
+router.get('/gethosts', auth, async (req, res) => {
 	try {
 		const hosts = await prisma.hostDevice.findMany()
 		res.json(hosts)
@@ -15,7 +15,7 @@ router.get('/gethosts', async (req, res) => {
 	}
 })
 
-router.post('/newhost', async (req, res) => {
+router.post('/newhost', auth, async (req, res) => {
 	const { deviceName } = req.body
 	const adminId = req.user.id
 	const device = await prisma.hostDevice.create({
