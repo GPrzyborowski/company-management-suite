@@ -79,7 +79,7 @@ model LoginCode {
 model HostDevice {
   id            Int               @id @default(autoincrement())
   deviceName    String?
-  isActive      Boolean           @default(true)
+  isActive      Boolean           @default(false)
   createdById   Int
   createdBy     Admin             @relation(fields: [createdById], references: [id])
   createdAt     DateTime          @default(now())
