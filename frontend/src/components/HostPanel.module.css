@@ -10,19 +10,15 @@
 
 .device-container {
 	display: grid;
-	margin-top: 2rem;
+	gap: 2rem;
+	grid-template-columns: 1fr;
 }
 
 @media (min-width: 576px) {
 	.device-container {
-		grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
-	}
-}
-
-@media (min-width: 1200px) {
-	.device-container {
-		grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
+		display: grid;
+		margin-top: 2rem;
+		gap: 2rem;
+		grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 	}
 }
