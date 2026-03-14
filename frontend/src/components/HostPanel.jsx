@@ -3,6 +3,11 @@ import NewHostCard from './NewHostCard'
 import classes from './HostPanel.module.css'
 
 function HostPanel({ onNewHostClick, hosts }) {
+
+	const toggleActivated = (id) => {
+		console.log(id);
+	}
+
 	return (
 		<div className={classes.container}>
 			<h2 className={classes.header}>Host devices</h2>
@@ -14,6 +19,7 @@ function HostPanel({ onNewHostClick, hosts }) {
 							hostName={host.deviceName}
 							createdDate={host.createdAt}
 							isActivated={host.isActive}
+							onClick={() => toggleActivated(host.id)}
 						/>
 					)
 				})}
