@@ -53,8 +53,8 @@
 
 .btn-container {
     display: flex;
-    gap: 1.5rem;
-    margin-top: 0.5rem;
+    gap: 2.5rem;
+    margin-top: 1rem;
 }
 
 .btn {
