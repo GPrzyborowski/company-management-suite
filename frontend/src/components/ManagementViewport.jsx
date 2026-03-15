@@ -56,7 +56,7 @@ function ManagementViewport() {
 
 	return (
 		<main className={classes.main}>
-			<HostPanel className={classes.host} onNewHostClick={openModal} hosts={hosts} />
+			<HostPanel className={classes.host} onNewHostClick={openModal} hosts={hosts} fetchHosts={fetchHosts}/>
 			<NewHostModal
 				confirmVisible={confirmVisible}
 				onSubmit={createNewHost}
