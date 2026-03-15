@@ -27,4 +27,21 @@ router.post('/newhost', auth, async (req, res) => {
 	res.json(device)
 })
 
+router.patch('/togglehost/:id', async (req, res) => {
+	const id = parseInt(req.params.id)
+	const host = await prisma.hostDevice.findUnique({
+		where: { id }
+	})
+	if (!host) {
+		return res.status(404).json({ error: "Host not found" })
+	}
+	const updatedHost = await prisma.hostDevice.update({
+		where: { id },
+		data: {
+			isActive: !host.isActive
+		}
+	})
+	res.json(updatedHost)
+})
+
 export default router
