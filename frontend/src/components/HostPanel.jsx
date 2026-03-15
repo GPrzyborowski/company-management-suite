@@ -2,10 +2,20 @@ import HostCard from './HostCard'
 import NewHostCard from './NewHostCard'
 import classes from './HostPanel.module.css'
 
-function HostPanel({ onNewHostClick, hosts }) {
-
-	const toggleActivated = (id) => {
-		console.log(id);
+function HostPanel({ onNewHostClick, hosts, fetchHosts }) {
+	const toggleActivated = async id => {
+		const res = await fetch(`http://localhost:5000/api/togglehost/${id}`, {
+			method: 'PATCH',
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem('token')}`,
+			},
+		})
+		if (!res.ok) {
+			console.error(res.message)
+			return
+		}
+		await res.json()
+		fetchHosts()
 	}
 
 	return (
