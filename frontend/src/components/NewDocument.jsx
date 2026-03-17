@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react'
 import classes from './NewDocument.module.css'
+import { API_URL } from '../config/env'
 
 function NewDocument({ id, onUploaded }) {
 	const inputRef = useRef(null)
@@ -8,7 +9,7 @@ function NewDocument({ id, onUploaded }) {
 	const handleFile = async newFile => {
 		const form = new FormData()
 		form.append('file', newFile)
-		const res = await fetch(`http://localhost:5000/api/employees/${id}/documents`, {
+		const res = await fetch(`${API_URL}/employees/${id}/documents`, {
 			method: 'POST',
 			headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
 			body: form,

@@ -4,13 +4,15 @@ import EmployeesViewport from '../components/EmployeesViewport'
 import EmployeeCard from '../components/EmployeeCard'
 import NewEmployeeCard from '../components/NewEmployeeCard'
 import { useState, useEffect } from 'react'
+import { API_URL } from '../config/env'
 
 function Employees() {
 	const [employees, setEmployees] = useState([])
-	const localEndpoint = `http://localhost:5000/api/employees`
+
+	const ENDPOINT = `${API_URL}/employees`
 
 	useEffect(() => {
-		fetch(localEndpoint, {
+		fetch(ENDPOINT, {
 			headers: {
 				Authorization: `Bearer ${localStorage.getItem('token')}`,
 			},

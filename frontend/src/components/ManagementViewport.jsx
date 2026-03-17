@@ -2,14 +2,15 @@ import { useState, useEffect } from 'react'
 import HostPanel from './HostPanel'
 import NewHostModal from './NewHostModal'
 import classes from './ManagementViewport.module.css'
+import { API_URL } from '../config/env'
 
 function ManagementViewport() {
-	const localEndpointPost = `http://localhost:5000/api/newhost`
-	const localEndpointGet = `http://localhost:5000/api/gethosts`
-
 	const [confirmVisible, setConfirmVisible] = useState(false)
 	const [hostNameValue, setHostNameValue] = useState('')
 	const [hosts, setHosts] = useState([])
+
+	const NEW_HOST_ENDPOINT = `${API_URL}/newhost`
+	const GET_HOSTS_ENDPOINT = `${API_URL}/gethosts`
 
 	const openModal = () => setConfirmVisible(true)
 	const closeModal = () => setConfirmVisible(false)
@@ -19,7 +20,7 @@ function ManagementViewport() {
 	}
 
 	const createNewHost = async () => {
-		const res = await fetch(localEndpointPost, {
+		const res = await fetch(NEW_HOST_ENDPOINT, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -40,7 +41,7 @@ function ManagementViewport() {
 	}
 
 	const fetchHosts = async () => {
-		const res = await fetch(localEndpointGet, {
+		const res = await fetch(GET_HOSTS_ENDPOINT, {
 			headers: {
 				Authorization: `Bearer ${localStorage.getItem('token')}`,
 			},

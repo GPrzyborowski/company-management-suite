@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Navigation from '../components/Navigation'
 import RegisterForm from '../components/RegisterForm'
+import { API_URL } from '../config/env'
 
 function Register() {
 	const [login, setLogin] = useState('')
@@ -8,12 +9,12 @@ function Register() {
 	const [phone, setPhone] = useState('')
 	const [warningMsg, setWarningMsg] = useState('')
 
-	const localEndpoint = 'http://localhost:5000/api/auth/registeradmin'
+	const REGISTER_ADMIN = `${API_URL}/auth/registeradmin`
 
 	async function submit(e) {
 		e.preventDefault()
 		try {
-			const res = await fetch(localEndpoint, {
+			const res = await fetch(REGISTER_ADMIN, {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({ login, password, phone }),

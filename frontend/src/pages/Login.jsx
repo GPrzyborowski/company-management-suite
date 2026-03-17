@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Navigate } from 'react-router-dom'
 import Navigation from '../components/Navigation'
 import LoginForm from '../components/LoginForm'
+import { API_URL } from '../config/env'
 
 function Login() {
 	const [login, setLogin] = useState('')
@@ -9,11 +10,11 @@ function Login() {
 	const [hasToken, setHasToken] = useState('')
 	const [warningMsg, setWarningMsg] = useState('')
 
-	const localEndpoint = 'http://localhost:5000/api/auth/login'
+	const LOGIN_ENDPOINT = `${API_URL}/auth/login`
 
 	async function submit(e) {
 		e.preventDefault()
-		const res = await fetch(localEndpoint, {
+		const res = await fetch(LOGIN_ENDPOINT, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ login, password }),
