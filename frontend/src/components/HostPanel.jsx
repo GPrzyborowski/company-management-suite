@@ -1,10 +1,14 @@
 import HostCard from './HostCard'
 import NewHostCard from './NewHostCard'
 import classes from './HostPanel.module.css'
+import { API_URL } from "../config/env"
 
 function HostPanel({ onNewHostClick, hosts, fetchHosts }) {
+
+	const TOGGLE_ENDPOINT = `${API_URL}/togglehost`
+
 	const toggleActivated = async id => {
-		const res = await fetch(`http://localhost:5000/api/togglehost/${id}`, {
+		const res = await fetch(`${TOGGLE_ENDPOINT}/${id}`, {
 			method: 'PATCH',
 			headers: {
 				Authorization: `Bearer ${localStorage.getItem('token')}`,

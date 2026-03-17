@@ -7,13 +7,14 @@ import LoginKeyModal from './LoginKeyModal'
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import classes from './Employee.module.css'
+import { API_URL } from '../config/env'
 
 function Employee() {
 	const { id } = useParams()
 
 	const navigate = useNavigate()
 
-	const [employee, setEmployee] = useState('')
+	const [employee, setEmployee] = useState()
 	const [documents, setDocuments] = useState([])
 	const [confirmVisible, setConfirmVisible] = useState(false)
 	const [removeVisible, setRemoveVisible] = useState(false)
@@ -24,13 +25,12 @@ function Employee() {
 	const [editVisible, setEditVisible] = useState(false)
 	const [docToDelete, setDocToDelete] = useState(null)
 
-	const employeeEndpoint = `http://localhost:5000/api/employees/${id}`
-	const editEndpoint = `http://localhost:5000/api/employees/${id}`
-	const documentsEndpoint = `http://localhost:5000/api/employees/${id}/documents`
-	const loginCodeEndpoint = `http://localhost:5000/api/logincode`
+	const EMPLOYEE_ENDPOINT = `${API_URL}/employees/${id}`
+	const DOCUMENTS_ENDPOINT = `${API_URL}/employees/${id}/documents`
+	const LOGIN_CODE_ENDPOINT = `${API_URL}/logincode`
 
 	useEffect(() => {
-		fetch(employeeEndpoint, {
+		fetch(`${API_URL}/employees/${id}`, {
 			headers: {
 				Authorization: `Bearer ${localStorage.getItem('token')}`,
 			},
@@ -42,7 +42,7 @@ function Employee() {
 	}, [id])
 
 	const loadDocuments = async () => {
-		fetch(documentsEndpoint, {
+		fetch(DOCUMENTS_ENDPOINT, {
 			headers: {
 				Authorization: `Bearer ${localStorage.getItem('token')}`,
 			},
@@ -70,7 +70,7 @@ function Employee() {
 	})
 
 	const downloadFile = async (id, fileName) => {
-		const res = await fetch(`http://localhost:5000/api/documents/${id}/download`, {
+		const res = await fetch(`${API_URL}/documents/${id}/download`, {
 			headers: {
 				Authorization: `Bearer ${localStorage.getItem('token')}`,
 			},
@@ -101,7 +101,7 @@ function Employee() {
 	}
 
 	const confirmDelete = async () => {
-		const res = await fetch(`http://localhost:5000/api/documents/${docToDelete}`, {
+		const res = await fetch(`${API_URL}/documents/${docToDelete}`, {
 			method: 'DELETE',
 			headers: {
 				Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -123,7 +123,7 @@ function Employee() {
 	}
 
 	const submitEdit = async data => {
-		const res = await fetch(editEndpoint, {
+		const res = await fetch(`${API_URL}/employees/${id}`, {
 			method: 'PUT',
 			headers: {
 				'Content-type': 'application/json',
@@ -149,7 +149,7 @@ function Employee() {
 	}
 
 	const confirmRemove = async () => {
-		const res = await fetch(employeeEndpoint, {
+		const res = await fetch(EMPLOYEE_ENDPOINT, {
 			method: 'DELETE',
 			headers: {
 				Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -180,7 +180,7 @@ function Employee() {
 	}
 
 	const generateLoginKey = async () => {
-		const res = await fetch(loginCodeEndpoint, {
+		const res = await fetch(LOGIN_CODE_ENDPOINT, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
