@@ -14,7 +14,7 @@ function Employee() {
 
 	const navigate = useNavigate()
 
-	const [employee, setEmployee] = useState()
+	const [employee, setEmployee] = useState(null)
 	const [documents, setDocuments] = useState([])
 	const [confirmVisible, setConfirmVisible] = useState(false)
 	const [removeVisible, setRemoveVisible] = useState(false)
@@ -54,7 +54,7 @@ function Employee() {
 	useEffect(() => {
 		loadDocuments()
 	}, [id])
-
+	if (!employee) return null
 	const birthDate = new Date(employee.birthDate)
 	const birthDateFormatted = birthDate.toLocaleDateString('pl-PL', {
 		day: 'numeric',
