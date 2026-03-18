@@ -205,8 +205,7 @@ function Employee() {
 			<ConfirmModal confirmVisible={confirmVisible} onConfirm={confirmDelete} onCancel={cancelDelete} />
 			<RemoveModal confirmVisible={removeVisible} onConfirm={confirmRemove} onCancel={cancelRemove} />
 			<LoginKeyModal
-				name={employee.firstName}
-				surname={employee.lastName}
+				name={`${employee.firstName} ${employee.lastName}`}
 				visible={loginKeyVisible}
 				expiry={expiry}
 				onChangeExpiry={handleExpiryChange}
