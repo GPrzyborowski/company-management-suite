@@ -1,7 +1,7 @@
 import classes from './LoginKeyModal.module.css'
 import { useEffect, useState } from 'react'
 
-function LoginKeyModal({ name, surname, visible, expiry, onChangeExpiry, onGenerate, onClose, codeVisible, code }) {
+function LoginKeyModal({ name, visible, expiry, onChangeExpiry, onGenerate, onClose, codeVisible, code }) {
 
 	const [wasCopied, setWasCopied] = useState(false)
 
@@ -37,7 +37,7 @@ function LoginKeyModal({ name, surname, visible, expiry, onChangeExpiry, onGener
 					<p className={classes.paragraph}>
 						Generate login key for{' '}
 						<span className={classes.bold}>
-							{name} {surname}
+							{name}
 						</span>
 					</p>
 					<label className={classes['expire-label']} htmlFor="expire">
