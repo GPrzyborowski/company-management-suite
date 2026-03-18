@@ -1,6 +1,6 @@
 import classes from './HostCard.module.css'
 
-function HostCard({ hostName, createdDate, isActivated, onClick }) {
+function HostCard({ hostName, createdDate, isActivated, onPowerClick }) {
 	const newCreateDate = new Date(createdDate)
 	const createdDateFormatted = newCreateDate.toLocaleDateString('pl-PL', {
 		day: 'numeric',
@@ -21,7 +21,7 @@ function HostCard({ hostName, createdDate, isActivated, onClick }) {
 					<p>{isActivated ? 'Active' : 'Not active'}</p>
 				</div>
 				<div className={classes['btn-container']}>
-					<button className={classes.btn} onClick={onClick}>
+					<button className={classes.btn} onClick={onPowerClick}>
 						<img src="/power.svg" alt="" />
 					</button>
 					<button className={classes.btn}>

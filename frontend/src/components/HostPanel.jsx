@@ -33,7 +33,7 @@ function HostPanel({ onNewHostClick, hosts, fetchHosts }) {
 							hostName={host.deviceName}
 							createdDate={host.createdAt}
 							isActivated={host.isActive}
-							onClick={() => toggleActivated(host.id)}
+							onPowerClick={() => toggleActivated(host.id)}
 						/>
 					)
 				})}
