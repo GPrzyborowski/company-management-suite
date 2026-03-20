@@ -1,7 +1,7 @@
 import classes from './LoginKeyModal.module.css'
 import { useEffect, useState } from 'react'
 
-function LoginKeyModal({ name, visible, expiry, onChangeExpiry, onGenerate, onClose, codeVisible, code }) {
+function LoginKeyModal({ name, visible, expiry, onChangeExpiry, onGenerate, onClose, codeVisible, code, title }) {
 
 	const [wasCopied, setWasCopied] = useState(false)
 
@@ -35,7 +35,7 @@ function LoginKeyModal({ name, visible, expiry, onChangeExpiry, onGenerate, onCl
 						<img src="/close.svg" alt="close icon" className={classes['close-icon']} />
 					</button>
 					<p className={classes.paragraph}>
-						Generate login key for{' '}
+						Generate {title} key for{' '}
 						<span className={classes.bold}>
 							{name}
 						</span>
