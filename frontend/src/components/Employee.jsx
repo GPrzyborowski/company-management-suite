@@ -213,6 +213,7 @@ function Employee() {
 				onClose={closeGenerateLoginKey}
 				codeVisible={codeVisible}
 				code={loginKey}
+				title='login'
 			/>
 			<EditModal
 				editVisible={editVisible}
