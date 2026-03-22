@@ -7,6 +7,7 @@ import { API_URL } from '../config/env'
 
 function HostPanel({ onNewHostClick, hosts, fetchHosts }) {
 	const [name, setName] = useState('')
+	const [devId, setDevId] = useState(null)
 	const [loginKeyVisible, setLoginKeyVisible] = useState(false)
 	const [loginKey, setLoginKey] = useState('')
 	const [codeVisible, setCodeVisible] = useState(false)
@@ -41,7 +42,7 @@ function HostPanel({ onNewHostClick, hosts, fetchHosts }) {
 				Authorization: `Bearer ${localStorage.getItem('token')}`,
 			},
 			body: JSON.stringify({
-				deviceId: id,
+				deviceId: devId,
 				expiresInDays: expiry,
 			}),
 		})
@@ -98,6 +99,7 @@ function HostPanel({ onNewHostClick, hosts, fetchHosts }) {
 							onPowerClick={() => toggleActivated(host.id)}
 							onKeyClick={() => {
 								setName(host.deviceName)
+								setDevId(host.id)
 								toggleKeyModal()
 							}}
 						/>
