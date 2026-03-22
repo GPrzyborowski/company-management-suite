@@ -13,7 +13,7 @@ function HostPanel({ onNewHostClick, hosts, fetchHosts }) {
 	const [expiry, setExpiry] = useState(7)
 
 	const TOGGLE_ENDPOINT = `${API_URL}/togglehost`
-	const LOGIN_CODE_ENDPOINT = `${API_URL}/logincode`
+	const DEVICE_LOGIN_CODE_ENDPOINT = `${API_URL}/devicelogincode`
 
 	const handleExpiryChange = e => {
 		const value = e.target.value
@@ -34,14 +34,14 @@ function HostPanel({ onNewHostClick, hosts, fetchHosts }) {
 	}
 
 	const generateLoginKey = async () => {
-		const res = await fetch(LOGIN_CODE_ENDPOINT, {
+		const res = await fetch(DEVICE_LOGIN_CODE_ENDPOINT, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 				Authorization: `Bearer ${localStorage.getItem('token')}`,
 			},
 			body: JSON.stringify({
-				employeeId: id,
+				deviceId: id,
 				expiresInDays: expiry,
 			}),
 		})
