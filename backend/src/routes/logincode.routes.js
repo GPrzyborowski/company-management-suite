@@ -40,8 +40,8 @@ router.post('/devicelogincode', async (req, res) => {
     if(!days || days <= 0 || days > 30) {
         return res.status(400).json({message: 'Invalid expiration time.'})
     }
-    const device = await prisma.employee.findUnique({where: {id: deviceIdNumber}})
-    if(!employee) {
+    const device = await prisma.hostDevice.findUnique({where: {id: deviceIdNumber}})
+    if(!device) {
         return res.status(404).json({message: "Device does not exist."})
     }
     const {code, hash} = await generateCode()
