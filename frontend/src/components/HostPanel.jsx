@@ -1,6 +1,7 @@
 import HostCard from './HostCard'
 import NewHostCard from './NewHostCard'
 import LoginKeyModal from './LoginKeyModal'
+import RemoveModal from './RemoveModal'
 import classes from './HostPanel.module.css'
 import { useState } from 'react'
 import { API_URL } from '../config/env'
@@ -12,9 +13,11 @@ function HostPanel({ onNewHostClick, hosts, fetchHosts }) {
 	const [loginKey, setLoginKey] = useState('')
 	const [codeVisible, setCodeVisible] = useState(false)
 	const [expiry, setExpiry] = useState(7)
+	const [removeVisible, setRemoveVisible] = useState(false)
 
-	const TOGGLE_ENDPOINT = `${API_URL}/togglehost`
+	const TOGGLE_ENDPOINT = `${API_URL}/hosts/togglehost`
 	const DEVICE_LOGIN_CODE_ENDPOINT = `${API_URL}/devicelogincode`
+	const DEVICE_ENDPOINT = `${API_URL}/hosts/${devId}`
 
 	const handleExpiryChange = e => {
 		const value = e.target.value
@@ -74,6 +77,27 @@ function HostPanel({ onNewHostClick, hosts, fetchHosts }) {
 		showGenerateLoginKey()
 	}
 
+	const removeDevice = () => {
+		setRemoveVisible(true)
+	}
+
+	const cancelRemove = () => {
+		setRemoveVisible(false)
+	}
+
+	const confirmRemove = async () => {
+		const res = await fetch(DEVICE_ENDPOINT, {
+			method: 'DELETE',
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem('token')}`,
+			},
+		})
+		if (res.ok) {
+			setRemoveVisible(false)
+			fetchHosts()
+		}
+	}
+
 	return (
 		<div className={classes.container}>
 			<LoginKeyModal
@@ -86,6 +110,12 @@ function HostPanel({ onNewHostClick, hosts, fetchHosts }) {
 				codeVisible={codeVisible}
 				code={loginKey}
 				title="activation"
+			/>
+			<RemoveModal
+				confirmVisible={removeVisible}
+				onConfirm={confirmRemove}
+				onCancel={cancelRemove}
+				objectType="device"
 			/>
 			<h2 className={classes.header}>Host devices</h2>
 			<div className={classes['device-container']}>
@@ -101,6 +131,10 @@ function HostPanel({ onNewHostClick, hosts, fetchHosts }) {
 								setName(host.deviceName)
 								setDevId(host.id)
 								toggleKeyModal()
+							}}
+							onRemoveClick={() => {
+								setDevId(host.id)
+								removeDevice()
 							}}
 						/>
 					)
