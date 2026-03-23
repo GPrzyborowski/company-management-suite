@@ -1,6 +1,6 @@
 import classes from './HostCard.module.css'
 
-function HostCard({ hostName, createdDate, isActivated, onPowerClick, onKeyClick }) {
+function HostCard({ hostName, createdDate, isActivated, onPowerClick, onKeyClick, onRemoveClick }) {
 	const newCreateDate = new Date(createdDate)
 	const createdDateFormatted = newCreateDate.toLocaleDateString('pl-PL', {
 		day: 'numeric',
@@ -26,6 +26,9 @@ function HostCard({ hostName, createdDate, isActivated, onPowerClick, onKeyClick
 					</button>
 					<button className={classes.btn} onClick={onKeyClick}>
 						<img src="/key.svg" alt="" />
+					</button>
+					<button className={classes.btn} onClick={onRemoveClick}>
+						<img src="/bin.svg" alt="" />
 					</button>
 				</div>
 			</div>
