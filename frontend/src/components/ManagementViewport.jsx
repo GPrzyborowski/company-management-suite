@@ -9,8 +9,8 @@ function ManagementViewport() {
 	const [hostNameValue, setHostNameValue] = useState('')
 	const [hosts, setHosts] = useState([])
 
-	const NEW_HOST_ENDPOINT = `${API_URL}/newhost`
-	const GET_HOSTS_ENDPOINT = `${API_URL}/gethosts`
+	const NEW_HOST_ENDPOINT = `${API_URL}/hosts/newhost`
+	const GET_HOSTS_ENDPOINT = `${API_URL}/hosts/gethosts`
 
 	const openModal = () => setConfirmVisible(true)
 	const closeModal = () => setConfirmVisible(false)
