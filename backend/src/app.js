@@ -16,6 +16,6 @@ app.use('/api/auth', authRoutes)
 app.use('/api/employees', employeesRoutes)
 app.use('/api', employeeDocumentsRoutes)
 app.use('/api', loginCode)
-app.use('/api', hosts)
+app.use('/api/hosts', hosts)
 
 app.listen(5000, () => console.log("Server running"))
