@@ -203,7 +203,7 @@ function Employee() {
 	return (
 		<>
 			<ConfirmModal confirmVisible={confirmVisible} onConfirm={confirmDelete} onCancel={cancelDelete} />
-			<RemoveModal confirmVisible={removeVisible} onConfirm={confirmRemove} onCancel={cancelRemove} />
+			<RemoveModal confirmVisible={removeVisible} onConfirm={confirmRemove} onCancel={cancelRemove} objectType='employee' />
 			<LoginKeyModal
 				name={`${employee.firstName} ${employee.lastName}`}
 				visible={loginKeyVisible}
