@@ -53,8 +53,7 @@ router.delete('/:id', async (req, res) => {
 		}
 		await prisma.hostDevice.delete({ where: { id: id } })
 		res.sendStatus(204)
-	} catch (err) {
-		console.error(err)
+	} catch {
 		res.status(500).json({ message: 'Server error.' })
 	}
 })
