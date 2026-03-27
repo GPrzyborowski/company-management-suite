@@ -6,6 +6,7 @@ import employeeDocumentsRoutes from './routes/employeedocs.routes.js'
 import loginCode from './routes/logincode.routes.js'
 import hosts from './routes/hosts.routes.js'
 import device from './routes/device.routes.js'
+import work from './routes/work.routes.js'
 
 const app = express()
 
@@ -19,6 +20,7 @@ app.use('/api', employeeDocumentsRoutes)
 app.use('/api', loginCode)
 app.use('/api/hosts', hosts)
 app.use('/api/device', device)
+app.use('/api/work', work)
 
 app.get('/health', (req, res) => {
     res.json({message: "Server OK"})
