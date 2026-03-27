@@ -74,7 +74,7 @@ model LoginCode {
   usedAt      DateTime?
   employeeId  Int
   employee    Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
-    createdAt   DateTime @default(now())
+  createdAt   DateTime @default(now())
   }
 
 model HostDevice {
@@ -95,8 +95,8 @@ model DeviceLoginCode {
   codeHash   String
   expiresAt  DateTime
   usedAt     DateTime?
-  deviceId   Int
-  device     HostDevice @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+  deviceId   Int?
+  device     HostDevice? @relation(fields: [deviceId], references: [id], onDelete: Cascade)
   createdAt  DateTime   @default(now())
 }
 
