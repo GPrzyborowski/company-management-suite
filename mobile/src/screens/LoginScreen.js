@@ -9,7 +9,7 @@ import { API_URL } from '../config/env'
 function LoginScreen() {
 	const [code, setCode] = useState('')
 	const navigation = useNavigation()
-	const localEndpoint = `${API_URL}/auth/loginmobile`
+	const localEndpoint = `http://192.168.137.1:5000/api/auth/loginmobile`
 
 	const handleLogin = async () => {
 		try {
@@ -29,7 +29,7 @@ function LoginScreen() {
 				routes: [{ name: 'EmployeeDashboard' }],
 			})
 		} catch (err) {
-			Alert.alert('Wrong login code.')
+			Alert.alert('Error', err.message || 'Something went wrong')
 		}
 	}
 
