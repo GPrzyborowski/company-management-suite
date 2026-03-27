@@ -171,4 +171,58 @@ router.post('/loginmobile', async (req, res) => {
 	return res.status(401).json({ message: 'Invalid code.' })
 })
 
+router.post('/activatehost', async (req, res) => {
+	const { code, deviceName } = req.body
+
+	if (!code) {
+		return res.status(400).json({ message: 'Invalid code.' })
+	}
+
+	const codes = await prisma.deviceLoginCode.findMany({
+		where: {
+			usedAt: null,
+			expiresAt: { gt: new Date() },
+		},
+		orderBy: {
+			createdAt: 'desc',
+		},
+		take: 5,
+	})
+
+	for (const c of codes) {
+		const isValid = await bcrypt.compare(code, c.codeHash)
+
+		if (isValid) {
+			const device = await prisma.hostDevice.create({
+				data: {
+					deviceName: deviceName || 'Tablet',
+					isActive: true,
+					activatedAt: new Date(),
+					createdById: 1,
+				},
+			})
+
+			await prisma.deviceLoginCode.update({
+				where: { id: c.id },
+				data: {
+					usedAt: new Date(),
+					deviceId: device.id,
+				},
+			})
+
+			const token = jwt.sign({ deviceId: device.id }, process.env.JWT_SECRET, { expiresIn: '365d' })
+
+			return res.json({
+				token,
+				device: {
+					id: device.id,
+					name: device.deviceName,
+				},
+			})
+		}
+	}
+
+	return res.status(401).json({ message: 'Invalid code.' })
+})
+
 export default router
