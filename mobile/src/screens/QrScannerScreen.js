@@ -1,8 +1,9 @@
 import { Text, View, StyleSheet, Button, Dimensions } from 'react-native'
 import { CameraView, useCameraPermissions } from 'expo-camera'
 import { useState, useEffect } from 'react'
+import { API_URL } from '../config/env'
 
-const { width } = Dimensions.get('window');
+const { width } = Dimensions.get('window')
 const scannerSize = width * 0.7
 
 function QrScannerScreen({ navigation }) {
@@ -26,9 +27,26 @@ function QrScannerScreen({ navigation }) {
 		)
 	}
 
-	const handleScan = ({ data }) => {
+	const handleScan = async ({ data }) => {
 		setScanned(true)
-		console.log(data)
+
+		const parsed = JSON.parse(data)
+
+		const employee = JSON.parse(await AsyncStorage.getItem('employee'))
+
+		await fetch(`${API_URL}/work/scan`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				token: parsed.token,
+				type: parsed.type,
+				deviceId: parsed.deviceId,
+				employeeId: employee.id,
+			}),
+		})
+
 		navigation.goBack()
 	}
 
@@ -127,12 +145,12 @@ const styles = StyleSheet.create({
 		borderLeftWidth: 0,
 		borderTopWidth: 0,
 	},
-    instructionText: {
-        color: 'white',
-        marginTop: 20,
-        fontSize: 16,
-        fontWeight: 'bold',
-    }
+	instructionText: {
+		color: 'white',
+		marginTop: 20,
+		fontSize: 16,
+		fontWeight: 'bold',
+	},
 })
 
 export default QrScannerScreen
