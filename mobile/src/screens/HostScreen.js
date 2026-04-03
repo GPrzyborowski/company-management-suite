@@ -1,14 +1,15 @@
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet, Alert } from 'react-native'
 import { useState } from 'react'
 import Banner from '../components/Banner'
 import InputBox from '../components/InputBox'
+import { useNavigation } from '@react-navigation/native'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { API_URL } from '../config/env'
 
 function HostScreen() {
-
 	const [code, setCode] = useState('')
-
-	const localEndpoint = `http://192.168.137.1:5000/api/auth/loginmobile`;
+	const navigation = useNavigation()
+	const localEndpoint = `http://192.168.137.1:5000/api/auth/activatehost`
 
 	const handleLogin = async () => {
 		try {
@@ -17,25 +18,33 @@ function HostScreen() {
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({ code }),
 			})
-			if (!res.ok) {
-				throw new Error('Invalid activation code.')
-			}
+
 			const data = await res.json()
-			await AsyncStorage.setItem('token', data.token)
-			await AsyncStorage.setItem('host', JSON.stringify(data.host))
-			navigation.reset({
-				index: 0,
-				routes: [{ name: 'HostDashboard' }],
-			})
+
+			if (!res.ok) {
+				console.log('Server error:', data)
+				throw new Error(data.message || 'Invalid activation code.')
+			}
+
+			if (data.token && data.device) {
+				await AsyncStorage.setItem('token', data.token)
+				await AsyncStorage.setItem('host', JSON.stringify(data.device))
+
+				navigation.reset({
+					index: 0,
+					routes: [{ name: 'HostDashboard' }],
+				})
+			}
 		} catch (err) {
-			Alert.alert('Wrong activation code.')
+			console.error('Error:', err)
+			Alert.alert('Error', err.message || 'Something went wrong')
 		}
 	}
 
 	return (
 		<View>
 			<Banner text={'Please provide a host code.'} />
-			<InputBox text="Host code" placeholder="Enter your host code..." value={code} onChangeText={setCode}/>
+			<InputBox text="Host code" placeholder="Enter your host code..." value={code} onChangeText={setCode} />
 			<TouchableOpacity style={styles.btn} onPress={handleLogin}>
 				<Text style={styles.btnText}>Submit</Text>
 			</TouchableOpacity>
