@@ -10,7 +10,7 @@ function HostDashboard() {
 	const generateQR = async actionType => {
 		setType(actionType)
 
-		const res = await fetch(`${API_URL}/api/device/generateQr`, {
+		const res = await fetch(`http://10.23.29.243:5000/api/device/generateQr`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({
