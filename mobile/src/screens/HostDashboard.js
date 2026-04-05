@@ -63,18 +63,18 @@ function HostDashboard() {
 			<Text style={styles.title}>Host Device</Text>
 
 			<View style={styles.btnContainer}>
-				<TouchableOpacity style={styles.btn} onPress={() => generateQR('START')}>
+				<TouchableOpacity style={styles.btn} onPress={() => generateQR('start')}>
 					<Text style={styles.btnText}>Start Work</Text>
 				</TouchableOpacity>
 
-				<TouchableOpacity style={styles.btn} onPress={() => generateQR('END')}>
+				<TouchableOpacity style={styles.btn} onPress={() => generateQR('end')}>
 					<Text style={styles.btnText}>End Work</Text>
 				</TouchableOpacity>
 			</View>
 
 			{qrData && (
 				<View style={styles.qrContainer}>
-					<Text style={styles.qrLabel}>{type === 'START' ? 'Scan to START' : 'Scan to END'}</Text>
+					<Text style={styles.qrLabel}>{type === 'start' ? 'Scan to start the shift' : 'Scan to end the shift'}</Text>
 
 					<QRCode value={JSON.stringify(qrData)} size={250} />
 				</View>
