@@ -33,10 +33,7 @@ function HostDashboard() {
 				}),
 			})
 
-			console.log('STATUS:', res.status)
-
 			const data = await res.json()
-			console.log('DATA:', data)
 
 			if (!res.ok) {
 				throw new Error(data.message || 'Request failed')
@@ -44,7 +41,7 @@ function HostDashboard() {
 
 			setQrData(data.qrData)
 		} catch (err) {
-			console.error('QR ERROR:', err)
+			console.log(`Error: ${err}`);
 		}
 	}
 
