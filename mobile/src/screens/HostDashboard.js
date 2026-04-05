@@ -1,4 +1,5 @@
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useState, useEffect } from 'react'
 import QRCode from 'react-native-qrcode-svg'
 import { API_URL } from '../config/env'
@@ -6,21 +7,45 @@ import { API_URL } from '../config/env'
 function HostDashboard() {
 	const [qrData, setQrData] = useState(null)
 	const [type, setType] = useState(null)
+	const [token, setToken] = useState(null)
+
+	useEffect(() => {
+		const loadToken = async () => {
+			const storedToken = await AsyncStorage.getItem('token')
+			setToken(storedToken)
+		}
+		loadToken()
+	}, [])
 
 	const generateQR = async actionType => {
-		setType(actionType)
+		try {
+			setType(actionType)
 
-		const res = await fetch(`http://10.23.29.243:5000/api/device/generateQr`, {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({
-				deviceId: 1,
-				type: actionType,
-			}),
-		})
+			const res = await fetch(`http://10.23.29.243:5000/api/device/generateQr`, {
+				method: 'POST',
+				headers: {
+					Authorization: `Bearer ${token}`,
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					deviceId: 1,
+					type: actionType,
+				}),
+			})
 
-		const data = await res.json()
-		setQrData(data.qrData)
+			console.log('STATUS:', res.status)
+
+			const data = await res.json()
+			console.log('DATA:', data)
+
+			if (!res.ok) {
+				throw new Error(data.message || 'Request failed')
+			}
+
+			setQrData(data.qrData)
+		} catch (err) {
+			console.error('QR ERROR:', err)
+		}
 	}
 
 	useEffect(() => {
