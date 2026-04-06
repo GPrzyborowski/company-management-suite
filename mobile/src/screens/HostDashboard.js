@@ -8,13 +8,22 @@ function HostDashboard() {
 	const [qrData, setQrData] = useState(null)
 	const [type, setType] = useState(null)
 	const [token, setToken] = useState(null)
+	const [deviceId, setDeviceId] = useState(null)
 
 	useEffect(() => {
-		const loadToken = async () => {
+		const loadAsyncStorage = async () => {
 			const storedToken = await AsyncStorage.getItem('token')
 			setToken(storedToken)
+
+			const hostString = await AsyncStorage.getItem('host')
+
+			if (hostString) {
+				const host = JSON.parse(hostString)
+				setDeviceId(host.id)
+			}
 		}
-		loadToken()
+
+		loadAsyncStorage()
 	}, [])
 
 	const generateQR = async actionType => {
@@ -28,7 +37,7 @@ function HostDashboard() {
 					'Content-Type': 'application/json',
 				},
 				body: JSON.stringify({
-					deviceId: 1,
+					deviceId: deviceId,
 					type: actionType,
 				}),
 			})
@@ -41,7 +50,7 @@ function HostDashboard() {
 
 			setQrData(data.qrData)
 		} catch (err) {
-			console.log(`Error: ${err}`);
+			console.log(`Error: ${err}`)
 		}
 	}
 
