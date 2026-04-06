@@ -9,6 +9,7 @@ function HostDashboard() {
 	const [type, setType] = useState(null)
 	const [token, setToken] = useState(null)
 	const [deviceId, setDeviceId] = useState(null)
+	const [timer, setTimer] = useState(10)
 
 	useEffect(() => {
 		const loadAsyncStorage = async () => {
@@ -25,6 +26,24 @@ function HostDashboard() {
 
 		loadAsyncStorage()
 	}, [])
+
+	useEffect(() => {
+		if (!qrData) return
+
+		setTimer(10)
+
+		const interval = setInterval(() => {
+			setTimer(prev => {
+				if (prev <= 1) {
+					clearInterval(interval)
+					return 0
+				}
+				return prev - 1
+			})
+		}, 1000)
+
+		return () => clearInterval(interval)
+	}, [qrData])
 
 	const generateQR = async actionType => {
 		try {
@@ -47,7 +66,6 @@ function HostDashboard() {
 			if (!res.ok) {
 				throw new Error(data.message || 'Request failed')
 			}
-
 			setQrData(data.qrData)
 		} catch (err) {
 			console.log(`Error: ${err}`)
@@ -59,7 +77,7 @@ function HostDashboard() {
 
 		const interval = setInterval(() => {
 			generateQR(type)
-		}, 50000)
+		}, 10000)
 
 		return () => clearInterval(interval)
 	}, [type])
@@ -80,7 +98,9 @@ function HostDashboard() {
 
 			{qrData && (
 				<View style={styles.qrContainer}>
-					<Text style={styles.qrLabel}>{type === 'start' ? 'Scan to start the shift' : 'Scan to end the shift'}</Text>
+					<Text style={styles.qrLabel}>
+						{type === 'start' ? `Scan to start the shift (${timer}s)` : `Scan to end the shift (${timer}s)`}
+					</Text>
 
 					<QRCode value={JSON.stringify(qrData)} size={250} />
 				</View>
