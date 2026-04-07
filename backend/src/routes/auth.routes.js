@@ -193,12 +193,11 @@ router.post('/activatehost', async (req, res) => {
 		const isValid = await bcrypt.compare(code, c.codeHash)
 
 		if (isValid) {
-			const device = await prisma.hostDevice.create({
+			const device = await prisma.hostDevice.update({
+				where: { id: c.deviceId },
 				data: {
-					deviceName: deviceName || 'Tablet',
 					isActive: true,
-					activatedAt: new Date(),
-					createdById: 1,
+					activatedAt: new Date()
 				},
 			})
 
