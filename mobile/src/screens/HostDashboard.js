@@ -90,11 +90,11 @@ function HostDashboard() {
 
 			<View style={styles.btnContainer}>
 				<TouchableOpacity style={styles.btn} onPress={() => generateQR('start')}>
-					<Text style={styles.btnText}>Start Work</Text>
+					<Text style={styles.btnText}>Start shift</Text>
 				</TouchableOpacity>
 
 				<TouchableOpacity style={styles.btn} onPress={() => generateQR('end')}>
-					<Text style={styles.btnText}>End Work</Text>
+					<Text style={styles.btnText}>End shift</Text>
 				</TouchableOpacity>
 			</View>
 
