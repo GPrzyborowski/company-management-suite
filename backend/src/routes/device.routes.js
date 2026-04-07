@@ -7,7 +7,7 @@ const router = express.Router()
 router.post('/generateQr', async (req, res) => {
 	const { deviceId, type } = req.body
 	const token = crypto.randomBytes(32).toString('hex')
-	const expiresAt = new Date(Date.now() + 60 * 1000)
+	const expiresAt = new Date(Date.now() + 10 * 1000)
 
 	const code = await prisma.deviceLoginCode.create({
 		data: {
