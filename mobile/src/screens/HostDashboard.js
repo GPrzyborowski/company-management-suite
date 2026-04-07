@@ -9,6 +9,7 @@ function HostDashboard() {
 	const [type, setType] = useState(null)
 	const [token, setToken] = useState(null)
 	const [deviceId, setDeviceId] = useState(null)
+	const [deviceName, setDeviceName] = useState(null)
 	const [timer, setTimer] = useState(10)
 
 	useEffect(() => {
@@ -21,6 +22,7 @@ function HostDashboard() {
 			if (hostString) {
 				const host = JSON.parse(hostString)
 				setDeviceId(host.id)
+				setDeviceName(host.name)
 			}
 		}
 
@@ -84,7 +86,7 @@ function HostDashboard() {
 
 	return (
 		<View style={styles.container}>
-			<Text style={styles.title}>Host Device</Text>
+			<Text style={styles.title}>{deviceName}</Text>
 
 			<View style={styles.btnContainer}>
 				<TouchableOpacity style={styles.btn} onPress={() => generateQR('start')}>
