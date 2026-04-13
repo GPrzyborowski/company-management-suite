@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import QRCode from 'react-native-qrcode-svg'
 import { API_URL } from '../config/env'
 
@@ -11,6 +11,8 @@ function HostDashboard() {
 	const [deviceId, setDeviceId] = useState(null)
 	const [deviceName, setDeviceName] = useState(null)
 	const [timer, setTimer] = useState(10)
+
+	const refreshCount = useRef(0)
 
 	useEffect(() => {
 		const loadAsyncStorage = async () => {
@@ -30,22 +32,34 @@ function HostDashboard() {
 	}, [])
 
 	useEffect(() => {
-		if (!qrData) return
+		if (!type) return
 
+		refreshCount.current = 0
 		setTimer(10)
 
-		const interval = setInterval(() => {
-			setTimer(prev => {
-				if (prev <= 1) {
-					clearInterval(interval)
-					return 0
-				}
-				return prev - 1
-			})
+		const countdown = setInterval(() => {
+			setTimer(prev => (prev <= 1 ? 10 : prev - 1))
 		}, 1000)
 
-		return () => clearInterval(interval)
-	}, [qrData])
+		const refresh = setInterval(() => {
+			refreshCount.current += 1
+
+			if (refreshCount.current >= 3) {
+				clearInterval(refresh)
+				clearInterval(countdown)
+				setQrData(null)
+				setType(null)
+				return
+			}
+
+			generateQR(type)
+		}, 10000)
+
+		return () => {
+			clearInterval(countdown)
+			clearInterval(refresh)
+		}
+	}, [type])
 
 	const generateQR = async actionType => {
 		try {
@@ -73,16 +87,6 @@ function HostDashboard() {
 			console.log(`Error: ${err}`)
 		}
 	}
-
-	useEffect(() => {
-		if (!type) return
-
-		const interval = setInterval(() => {
-			generateQR(type)
-		}, 10000)
-
-		return () => clearInterval(interval)
-	}, [type])
 
 	return (
 		<View style={styles.container}>
