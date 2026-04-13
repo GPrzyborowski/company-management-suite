@@ -114,22 +114,31 @@ function HostDashboard() {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		justifyContent: 'center',
+		justifyContent: 'start',
 		alignItems: 'center',
+		marginTop: '48',
 	},
 	title: {
 		fontSize: 28,
-		marginBottom: 20,
+		marginBottom: 64,
 	},
 	btnContainer: {
-		flexDirection: 'row',
-		marginBottom: 30,
+		alignItems: 'center',
+		width: '95%',
+		marginBottom: 64,
 	},
 	btn: {
 		backgroundColor: '#0f52ba',
-		padding: 20,
-		marginHorizontal: 10,
+		paddingVertical: 25,
+		paddingHorizontal: 10,
 		borderRadius: 8,
+		width: '80%',
+		alignItems: 'center',
+		marginVertical: 10,
+		elevation: 3,
+		shadowColor: '#000',
+		shadowOffset: { width: 0, height: 2 },
+		shadowOpacity: 0.25,
 	},
 	btnText: {
 		color: '#fff',
