@@ -9,7 +9,7 @@ function HostDashboard() {
 	const [token, setToken] = useState(null)
 	const [deviceId, setDeviceId] = useState(null)
 	const [deviceName, setDeviceName] = useState(null)
-	const [timer, setTimer] = useState(10)
+	const [timer, setTimer] = useState(4)
 
 	const refreshCount = useRef(0)
 
@@ -34,10 +34,10 @@ function HostDashboard() {
 		if (!type) return
 
 		refreshCount.current = 0
-		setTimer(10)
+		setTimer(4)
 
 		const countdown = setInterval(() => {
-			setTimer(prev => (prev <= 1 ? 10 : prev - 1))
+			setTimer(prev => (prev <= 1 ? 4 : prev - 1))
 		}, 1000)
 
 		const refresh = setInterval(() => {
@@ -52,7 +52,7 @@ function HostDashboard() {
 			}
 
 			generateQR(type)
-		}, 10000)
+		}, 4000)
 
 		return () => {
 			clearInterval(countdown)
@@ -92,7 +92,7 @@ function HostDashboard() {
 
 		const poll = setInterval(async () => {
 			try {
-				const res = await fetch(`http://10.23.29.243:5000/api/device/qrStatus/${deviceId}`, {
+				const res = await fetch(`http://10.23.29.243:5000/api/device/qrStatus/${qrData.codeId}`, {
 					headers: { Authorization: `Bearer ${token}` },
 				})
 				const data = await res.json()
