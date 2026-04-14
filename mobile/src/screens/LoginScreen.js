@@ -4,7 +4,6 @@ import Banner from '../components/Banner'
 import InputBox from '../components/InputBox'
 import { useNavigation } from '@react-navigation/native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { API_URL } from '../config/env'
 
 function LoginScreen() {
 	const [code, setCode] = useState('')

@@ -2,7 +2,6 @@ import { Text, View, StyleSheet, Button, Dimensions } from 'react-native'
 import { CameraView, useCameraPermissions } from 'expo-camera'
 import { useState, useEffect } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { API_URL } from '../config/env'
 
 const { width } = Dimensions.get('window')
 const scannerSize = width * 0.7

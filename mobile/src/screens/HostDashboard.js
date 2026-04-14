@@ -2,7 +2,6 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useState, useEffect, useRef } from 'react'
 import QRCode from 'react-native-qrcode-svg'
-import { API_URL } from '../config/env'
 
 function HostDashboard() {
 	const [qrData, setQrData] = useState(null)
