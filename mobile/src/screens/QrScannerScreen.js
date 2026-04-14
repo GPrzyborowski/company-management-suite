@@ -1,6 +1,7 @@
 import { Text, View, StyleSheet, Button, Dimensions } from 'react-native'
 import { CameraView, useCameraPermissions } from 'expo-camera'
 import { useState, useEffect } from 'react'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { API_URL } from '../config/env'
 
 const { width } = Dimensions.get('window')
@@ -30,24 +31,34 @@ function QrScannerScreen({ navigation }) {
 	const handleScan = async ({ data }) => {
 		setScanned(true)
 
-		const parsed = JSON.parse(data)
+		try {
+			const parsed = JSON.parse(data)
+			const employee = JSON.parse(await AsyncStorage.getItem('employee'))
 
-		const employee = JSON.parse(await AsyncStorage.getItem('employee'))
+			const res = await fetch('http://10.23.29.243:5000/api/work/scan', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					token: parsed.token,
+					type: parsed.type,
+					deviceId: parsed.deviceId,
+					employeeId: employee.id,
+				}),
+			})
 
-		await fetch(`${API_URL}/work/scan`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({
-				token: parsed.token,
-				type: parsed.type,
-				deviceId: parsed.deviceId,
-				employeeId: employee.id,
-			}),
-		})
+			const responseData = await res.json()
+			console.log('Status:', res.status)
+			console.log('Response:', responseData)
 
-		navigation.goBack()
+			if (!res.ok) {
+				console.log('Error:', responseData.error)
+				return
+			}
+
+			navigation.goBack()
+		} catch (err) {
+			console.log('Fetch error:', err)
+		}
 	}
 
 	return (
