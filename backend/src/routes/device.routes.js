@@ -8,7 +8,7 @@ const router = express.Router()
 router.post('/generateQr', async (req, res) => {
 	const { deviceId, type } = req.body
 	const token = crypto.randomBytes(32).toString('hex')
-	const expiresAt = new Date(Date.now() + 10 * 1000)
+	const expiresAt = new Date(Date.now() + 4 * 1000)
 
 	const code = await prisma.deviceLoginCode.create({
 		data: {
@@ -23,26 +23,21 @@ router.post('/generateQr', async (req, res) => {
 			type,
 			deviceId,
 			token,
+			codeId: code.id
 		},
 	})
 })
 
-router.get('/qrStatus/:deviceId', auth, async (req, res) => {
-	try {
-		const deviceId = Number(req.params.deviceId)
-
-		const code = await prisma.deviceLoginCode.findFirst({
-			where: {
-				deviceId,
-				expiresAt: { gt: new Date() },
-			},
-			orderBy: { createdAt: 'desc' },
-		})
-
-		res.json({ scanned: !!code?.usedAt })
-	} catch (err) {
-		res.status(500).json({ error: err.message })
-	}
+router.get('/qrStatus/:codeId', auth, async (req, res) => {
+    try {
+        const codeId = Number(req.params.codeId)
+        const code = await prisma.deviceLoginCode.findUnique({
+            where: { id: codeId },
+        })
+        res.json({ scanned: !!code?.usedAt })
+    } catch (err) {
+        res.status(500).json({ error: err.message })
+    }
 })
 
 export default router
