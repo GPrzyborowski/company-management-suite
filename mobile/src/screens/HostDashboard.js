@@ -88,6 +88,29 @@ function HostDashboard() {
 		}
 	}
 
+	useEffect(() => {
+		if (!qrData) return
+
+		const poll = setInterval(async () => {
+			try {
+				const res = await fetch(`http://10.23.29.243:5000/api/device/qrStatus/${deviceId}`, {
+					headers: { Authorization: `Bearer ${token}` },
+				})
+				const data = await res.json()
+
+				if (data.scanned) {
+					clearInterval(poll)
+					setQrData(null)
+					setType(null)
+				}
+			} catch (err) {
+				console.log('Poll error:', err)
+			}
+		}, 1500)
+
+		return () => clearInterval(poll)
+	}, [qrData])
+
 	return (
 		<View style={styles.container}>
 			<Text style={styles.title}>{deviceName}</Text>
