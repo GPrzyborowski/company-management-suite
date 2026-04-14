@@ -9,7 +9,7 @@ import { API_URL } from '../config/env'
 function LoginScreen() {
 	const [code, setCode] = useState('')
 	const navigation = useNavigation()
-	const localEndpoint = `http://10.23.29.243:5000/api/auth/activatehost`
+	const localEndpoint = `http://10.23.29.243:5000/api/auth/loginmobile`
 
 	const handleLogin = async () => {
 		try {
