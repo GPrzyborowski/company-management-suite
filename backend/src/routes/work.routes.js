@@ -74,7 +74,7 @@ router.post('/scan', async (req, res) => {
 router.get('/data/:id', async (req, res) => {
 	const id = Number(req.params.id)
 	if (!id) {
-		return res.status(404).json({ error: 'ID was not provided.' })
+		return res.status(404).json({ error: 'Employee ID was not provided.' })
 	}
 	const workData = await prisma.workSession.findMany({ where: {employeeId: id} })
 	return res.status(200).json({ data: workData })
