@@ -4,6 +4,7 @@ import ConfirmModal from './ConfirmModal'
 import EditModal from './EditModal'
 import RemoveModal from './RemoveModal'
 import LoginKeyModal from './LoginKeyModal'
+import WorkGraph from './WorkGraph'
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import classes from './Employee.module.css'
@@ -24,10 +25,19 @@ function Employee() {
 	const [expiry, setExpiry] = useState(7)
 	const [editVisible, setEditVisible] = useState(false)
 	const [docToDelete, setDocToDelete] = useState(null)
+	const [workData, setWorkData] = useState(null)
 
 	const EMPLOYEE_ENDPOINT = `${API_URL}/employees/${id}`
 	const DOCUMENTS_ENDPOINT = `${API_URL}/employees/${id}/documents`
 	const LOGIN_CODE_ENDPOINT = `${API_URL}/logincode`
+	const WORK_DATA_ENDPOINT = `${API_URL}/work/data/${id}`
+
+	const getEmployeeWorkData = async () => {
+		const res = await fetch(WORK_DATA_ENDPOINT)
+		const data = await res.json()
+		console.log('workData:', data)
+		setWorkData(data)
+	}
 
 	useEffect(() => {
 		fetch(`${API_URL}/employees/${id}`, {
@@ -38,6 +48,7 @@ function Employee() {
 			.then(res => res.json())
 			.then(data => {
 				setEmployee(data)
+				getEmployeeWorkData()
 			})
 	}, [id])
 
@@ -203,7 +214,12 @@ function Employee() {
 	return (
 		<>
 			<ConfirmModal confirmVisible={confirmVisible} onConfirm={confirmDelete} onCancel={cancelDelete} />
-			<RemoveModal confirmVisible={removeVisible} onConfirm={confirmRemove} onCancel={cancelRemove} objectType='employee' />
+			<RemoveModal
+				confirmVisible={removeVisible}
+				onConfirm={confirmRemove}
+				onCancel={cancelRemove}
+				objectType="employee"
+			/>
 			<LoginKeyModal
 				name={`${employee.firstName} ${employee.lastName}`}
 				visible={loginKeyVisible}
@@ -213,7 +229,7 @@ function Employee() {
 				onClose={closeGenerateLoginKey}
 				codeVisible={codeVisible}
 				code={loginKey}
-				title='login'
+				title="login"
 			/>
 			<EditModal
 				editVisible={editVisible}
@@ -343,6 +359,7 @@ function Employee() {
 					</div>
 					<div className={classes['work-box']}>
 						<h2 className={`${classes['info-header']} ${classes['work-header']}`}>Work information</h2>
+						<WorkGraph data={workData}/>
 					</div>
 				</div>
 			</main>
