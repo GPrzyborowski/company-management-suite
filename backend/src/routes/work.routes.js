@@ -77,7 +77,7 @@ router.get('/data/:id', async (req, res) => {
 		return res.status(404).json({ error: 'Employee ID was not provided.' })
 	}
 	const workData = await prisma.workSession.findMany({ where: {employeeId: id} })
-	return res.status(200).json({ data: workData })
+	return res.status(200).json(workData)
 })
 
 export default router
