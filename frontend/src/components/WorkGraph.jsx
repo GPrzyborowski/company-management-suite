@@ -25,10 +25,10 @@ function WorkGraph({ data }) {
 
 	return (
 		<LineChart width={500} height={300} data={chartData}>
-			<XAxis dataKey="name" />
-			<YAxis unit=" h" />
+			<XAxis dataKey="name" tickMargin={10} tick={{ fill: 'white' }} stroke="white" />
+			<YAxis unit=" h" tickMargin={5} tick={{ fill: 'white' }} stroke="white"/>
 			<Tooltip
-                separator=": "
+				separator=": "
 				labelFormatter={label => `Data: ${label}`}
 				formatter={value => [`${value.toFixed(1)} h`, 'Przepracowano']}
 				contentStyle={{ color: '#000' }}
