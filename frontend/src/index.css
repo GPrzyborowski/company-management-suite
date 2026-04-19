@@ -15,17 +15,23 @@ body {
 	background: linear-gradient(21deg, rgba(0, 51, 102, 1), rgba(15, 82, 186, 1));
 	-webkit-background: linear-gradient(21deg, rgba(0, 51, 102, 1), rgba(15, 82, 186, 1));
 	-moz-background: linear-gradient(21deg, rgba(0, 51, 102, 1), rgba(15, 82, 186, 1));
+	overflow-x: hidden;
 }
 
 :focus-visible {
-	outline: 2px dashed #FFFFFF;
+	outline: 2px dashed #ffffff;
 }
 
 input:focus-visible {
 	outline: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-size: inherit;
-    font-weight: inherit;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size: inherit;
+	font-weight: inherit;
 }
