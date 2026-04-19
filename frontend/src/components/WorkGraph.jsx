@@ -1,4 +1,4 @@
-import { Line, LineChart, XAxis, YAxis, Tooltip } from 'recharts'
+import { Line, LineChart, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts'
 
 function WorkGraph({ data }) {
 	if (!Array.isArray(data) || data.length == 0) return null
@@ -24,19 +24,21 @@ function WorkGraph({ data }) {
 	})
 
 	return (
-		<LineChart width={500} height={300} data={chartData}>
-			<XAxis dataKey="name" tickMargin={10} tick={{ fill: 'white' }} stroke="white" />
-			<YAxis unit=" h" tickMargin={5} tick={{ fill: 'white' }} stroke="white"/>
-			<Tooltip
-				separator=": "
-				labelFormatter={label => `Data: ${label}`}
-				formatter={value => [`${value.toFixed(1)} h`, 'Przepracowano']}
-				contentStyle={{ color: '#000' }}
-				itemStyle={{ color: '#000' }}
-				labelStyle={{ color: '#000' }}
-			/>
-			<Line dataKey="duration" type="monotone" stroke="white" strokeWidth={2} />
-		</LineChart>
+		<ResponsiveContainer width="100%" height={300}>
+			<LineChart data={chartData} margin={{ bottom: 20 }}>
+				<XAxis dataKey="name" tick={{ fill: 'white' }} stroke="white" tickMargin={10} />
+				<YAxis unit=" h" tick={{ fill: 'white' }} stroke="white" />
+				<Tooltip
+					separator=": "
+					labelFormatter={label => `Data: ${label}`}
+					formatter={value => [`${value.toFixed(1)} h`, 'Przepracowano']}
+					contentStyle={{ color: '#000' }}
+					itemStyle={{ color: '#000' }}
+					labelStyle={{ color: '#000' }}
+				/>
+				<Line dataKey="duration" type="monotone" stroke="white" strokeWidth={2} />
+			</LineChart>
+		</ResponsiveContainer>
 	)
 }
 
