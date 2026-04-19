@@ -1,5 +1,7 @@
 .main {
 	height: 300vh;
+	overflow-x: hidden;
+	position: relative;
 }
 
 .box {
@@ -15,6 +17,8 @@
 	margin: 0 auto;
 	padding: 0 2em;
 	text-align: center;
+	max-width: 100%;
+	width: 100%;
 }
 
 .header-box {
@@ -29,6 +33,7 @@
 	font-weight: bold;
 	text-align: center;
 	color: #ffffff;
+	word-break: break-word;
 }
 
 .edit,
@@ -59,6 +64,7 @@
 	margin-bottom: 1rem;
 	font-size: 2rem;
 	color: #ffffff;
+	word-break: break-word;
 }
 
 .info:last-child {
@@ -87,6 +93,7 @@
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-template-rows: repeat(2, 1fr);
+	margin: 0 2rem;
 }
 
 .work-header {
