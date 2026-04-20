@@ -25,7 +25,7 @@ function WorkGraph({ data }) {
 
 	return (
 		<ResponsiveContainer width="100%" height={300}>
-			<LineChart data={chartData} margin={{ bottom: 20 }}>
+			<LineChart data={chartData} margin={{ top: 5, right: 5, bottom: 5, left: -30 } }>
 				<XAxis dataKey="name" tick={{ fill: 'white' }} stroke="white" tickMargin={10} />
 				<YAxis unit=" h" tick={{ fill: 'white' }} stroke="white" />
 				<Tooltip
