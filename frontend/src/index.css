@@ -6,7 +6,7 @@
 
 html {
 	font-size: 62.5%;
-	scrollbar-gutter: stable;
+	/* scrollbar-gutter: stable; */
 }
 
 body {
