@@ -35,7 +35,6 @@ function Employee() {
 	const getEmployeeWorkData = async () => {
 		const res = await fetch(WORK_DATA_ENDPOINT)
 		const data = await res.json()
-		console.log('workData:', data)
 		setWorkData(data)
 	}
 

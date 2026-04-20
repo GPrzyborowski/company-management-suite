@@ -28,7 +28,6 @@ function Employees() {
 					setEmployees(data)
 				} else {
 					setEmployees([])
-					console.log(data)
 					console.error('Wrong data format.')
 				}
 			})

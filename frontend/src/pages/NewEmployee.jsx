@@ -21,7 +21,6 @@ function NewEmployee() {
 		const data = await res.json()
 
 		if (res.ok) {
-			console.log('Success.')
 			setFormKey(prev => prev + 1)
 		} else {
 			console.error(data)
