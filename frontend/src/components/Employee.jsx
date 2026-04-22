@@ -356,9 +356,12 @@ function Employee() {
 							<NewDocument id={id} onUploaded={loadDocuments} />
 						</div>
 					</div>
+					<h2 className={`${classes['info-header']} ${classes['work-header']}`}>Work information</h2>
 					<div className={classes['work-box']}>
-						<h2 className={`${classes['info-header']} ${classes['work-header']}`}>Work information</h2>
-						<WorkGraph data={workData}/>
+						<div>
+							<h3 className={classes['work-box-header']}>Hours worked</h3>
+							<WorkGraph data={workData} />
+						</div>
 					</div>
 				</div>
 			</main>
