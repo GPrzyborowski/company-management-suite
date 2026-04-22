@@ -7,6 +7,14 @@ router.post('/scan', async (req, res) => {
 	try {
 		const { token, type, deviceId, employeeId } = req.body
 
+		const device = await prisma.hostDevice.findFirst({where: {
+			deviceId: deviceId
+		}})
+
+		if(!device.isActive) {
+			return res.status(400).json({message: 'The device is not activated.'})
+		}
+
 		const code = await prisma.deviceLoginCode.findFirst({
 			where: {
 				codeHash: token,
