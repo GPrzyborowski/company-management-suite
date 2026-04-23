@@ -362,6 +362,9 @@ function Employee() {
 							<h3 className={classes['work-box-header']}>Hours worked</h3>
 							<WorkGraph data={workData} />
 						</div>
+						<div>
+							<h3 className={classes['work-box-header']}>Statistics</h3>
+						</div>
 					</div>
 				</div>
 			</main>
