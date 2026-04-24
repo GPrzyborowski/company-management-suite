@@ -1,6 +1,6 @@
 import classes from './WorkStats.module.css'
 
-function WorkStats({ data }) {
+function WorkStats({ data, salary }) {
 	if (!Array.isArray(data) || data.length == 0) return null
 
 	const workData = data.reduce((acc, session) => {
@@ -25,16 +25,33 @@ function WorkStats({ data }) {
 
 	const avgTime = (hours / days).toFixed(1)
 
+    const earned = (salary * hours).toFixed(2)
+
 	return (
 		<div className={classes['work-stats-box']}>
 			<div className={classes['work-stats-box-element']}>
-				<p className={classes['work-stats-box-text']}><span className={classes.bold}>Days at work: </span>{days}</p>
+				<p className={classes['work-stats-box-text']}>
+					<span className={classes.bold}>Days at work: </span>
+					{days}
+				</p>
 			</div>
 			<div className={classes['work-stats-box-element']}>
-				<p className={classes['work-stats-box-text']}><span className={classes.bold}>Total time worked: </span>{hours.toFixed(1)} hours</p>
+				<p className={classes['work-stats-box-text']}>
+					<span className={classes.bold}>Total time worked: </span>
+					{hours.toFixed(1)} hours
+				</p>
 			</div>
 			<div className={classes['work-stats-box-element']}>
-				<p className={classes['work-stats-box-text']}><span className={classes.bold}>Average time at work: </span>{avgTime} hours</p>
+				<p className={classes['work-stats-box-text']}>
+					<span className={classes.bold}>Average time at work: </span>
+					{avgTime} hours
+				</p>
+			</div>
+			<div className={classes['work-stats-box-element']}>
+				<p className={classes['work-stats-box-text']}>
+					<span className={classes.bold}>Earned: </span>
+					{earned} PLN
+				</p>
 			</div>
 		</div>
 	)
