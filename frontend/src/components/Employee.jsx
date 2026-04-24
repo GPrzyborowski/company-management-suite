@@ -5,6 +5,7 @@ import EditModal from './EditModal'
 import RemoveModal from './RemoveModal'
 import LoginKeyModal from './LoginKeyModal'
 import WorkGraph from './WorkGraph'
+import WorkStats from './WorkStats'
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import classes from './Employee.module.css'
@@ -364,6 +365,7 @@ function Employee() {
 						</div>
 						<div>
 							<h3 className={classes['work-box-header']}>Statistics</h3>
+							<WorkStats data={workData} />
 						</div>
 					</div>
 				</div>
