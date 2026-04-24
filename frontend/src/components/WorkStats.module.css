@@ -1,0 +1,23 @@
+.work-stats-box {
+    text-align: center;
+}
+
+.work-stats-box-text {
+    font-size: 2rem;
+    color: #FFFFFF;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.work-stats-box-element {
+    margin: 1rem 0;
+}
+
+@media(min-width: 992px) {
+    .work-stats-box-element {
+        margin: 1rem 0 0 16rem;
+        text-align: left;
+    }
+}
