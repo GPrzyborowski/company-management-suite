@@ -290,7 +290,7 @@ function Employee() {
 						</p>
 						<p className={classes.info}>
 							<span className={classes['info-label']}>Salary rate: </span>
-							{employee.salaryRate}pln / hour
+							{employee.salaryRate} PLN / hour
 						</p>
 						<p className={classes.info}>
 							<span className={classes['info-label']}>Position: </span>
@@ -365,7 +365,7 @@ function Employee() {
 						</div>
 						<div>
 							<h3 className={classes['work-box-header']}>Statistics</h3>
-							<WorkStats data={workData} />
+							<WorkStats data={workData} salary={employee.salaryRate}/>
 						</div>
 					</div>
 				</div>
