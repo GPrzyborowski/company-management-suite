@@ -1,5 +1,7 @@
 import express from 'express'
 import cors from 'cors'
+import { createServer } from 'http'
+import { Server } from 'socket.io'
 import employeesRoutes from './routes/employees.routes.js'
 import authRoutes from './routes/auth.routes.js'
 import employeeDocumentsRoutes from './routes/employeedocs.routes.js'
@@ -9,10 +11,24 @@ import device from './routes/device.routes.js'
 import work from './routes/work.routes.js'
 
 const app = express()
+const server = createServer(app)
+
+const io = new Server(server, {
+    cors: {
+        origin: "*"
+    }
+})
 
 app.use(cors())
-
 app.use(express.json())
+
+io.on('connection', (socket) => {
+    console.log(`Connected: ${socket.id}`)
+
+    socket.on("disconnect", () => {
+        console.log(`Disconnected: ${socket.id}`)
+    })
+})
 
 app.use('/api/auth', authRoutes)
 app.use('/api/employees', employeesRoutes)
