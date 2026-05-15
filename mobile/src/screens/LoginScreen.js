@@ -28,7 +28,7 @@ function LoginScreen() {
 				routes: [{ name: 'EmployeeDashboard' }],
 			})
 		} catch (err) {
-			Alert.alert('Error', err.message || 'Something went wrong')
+			Alert.alert(`Error: ${err.message}` || 'Something went wrong')
 		}
 	}
 

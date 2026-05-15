@@ -50,13 +50,13 @@ function QrScannerScreen({ navigation }) {
 			console.log('Response:', responseData)
 
 			if (!res.ok) {
-				console.log('Error:', responseData.error)
+				console.error(`Error: ${responseData.error}`)
 				return
 			}
 
 			navigation.goBack()
 		} catch (err) {
-			console.log('Fetch error:', err)
+			console.error(`Fetch error: ${err}`)
 		}
 	}
 

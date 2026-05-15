@@ -83,7 +83,7 @@ function HostDashboard() {
 			}
 			setQrData(data.qrData)
 		} catch (err) {
-			console.log(`Error: ${err}`)
+			console.error(`Error: ${err}`)
 		}
 	}
 
@@ -103,7 +103,7 @@ function HostDashboard() {
 					setType(null)
 				}
 			} catch (err) {
-				console.log('Poll error:', err)
+				console.error(`Error: ${err}`)
 			}
 		}, 1500)
 
