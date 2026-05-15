@@ -35,8 +35,8 @@ function HostScreen() {
 				})
 			}
 		} catch (err) {
-			console.error('Error:', err)
-			Alert.alert('Error', err.message || 'Something went wrong')
+			console.error(err)
+			Alert.alert(`Error: ${err.message}` || 'Something went wrong')
 		}
 	}
 
