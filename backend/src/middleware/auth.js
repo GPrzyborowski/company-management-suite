@@ -3,7 +3,7 @@ import prisma from '../config/prisma.js'
 
 const auth = async (req, res, next) => {
 	const header = req.headers.authorization
-	if (!header) {
+	if (!header || !header.startsWith('Bearer ')) {
 		return res.status(401).json({ error: 'Token not provided.' })
 	}
 	const token = header.split(' ')[1]
