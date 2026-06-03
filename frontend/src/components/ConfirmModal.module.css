@@ -14,13 +14,10 @@
 }
 
 .box {
-	display: inline-block;
-	position: relative;
-	padding: 1.5rem 3rem;
-	margin-left: 50px;
-	border-radius: 8px;
-	background-color: rgba(15, 82, 186, 1);
-	border: 1px solid rgba(0, 51, 102, 1);
+    padding: 1.5rem 3rem;
+    border-radius: 8px;
+    background-color: rgba(15, 82, 186, 1);
+    border: 1px solid rgba(0, 51, 102, 1);
 }
 
 .paragraph {
