@@ -34,7 +34,9 @@ function DashboardMain() {
 	return (
 		<main className={classes['dashboard-container']}>
 			<h1 className={classes['main-header']}>{getGreeting()}</h1>
-			<h2 className={`${classes['active-employees-header']} ${activeEmployees.length == 0 ? classes.hidden : ''}`}>Currently at work</h2>
+			<h2 className={`${classes['active-employees-header']} ${activeEmployees.length == 0 ? classes.hidden : ''}`}>
+				Currently at work
+			</h2>
 			<div className={classes['active-employees-container']}></div>
 		</main>
 	)
