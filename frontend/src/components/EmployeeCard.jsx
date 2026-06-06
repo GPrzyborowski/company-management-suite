@@ -13,15 +13,13 @@ function EmployeeCard({ employee }) {
 			<p className={classes.name}>
 				{employee.firstName} {employee.lastName}
 			</p>
-			<div className={classes['card-mail-phone']}>
-				<div className={classes['card-email']}>
-					<img src="/mail.svg" alt="mail icon" className={classes['mail-icon']} />
-					<p>{employee.email}</p>
-				</div>
-				<div className={classes['card-phone']}>
-					<img src="/phone.svg" alt="phone icon" className={classes['phone-icon']} />
-					<p>{employee.phoneNumber}</p>
-				</div>
+			<div className={classes['card-email']}>
+				<img src="/mail.svg" alt="mail icon" className={classes['mail-icon']} />
+				<p>{employee.email}</p>
+			</div>
+			<div className={classes['card-phone']}>
+				<img src="/phone.svg" alt="phone icon" className={classes['phone-icon']} />
+				<p>{employee.phoneNumber}</p>
 			</div>
 		</div>
 	)
