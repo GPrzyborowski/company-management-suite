@@ -15,11 +15,6 @@
 	cursor: pointer;
 }
 
-.card-mail-phone {
-	display: flex;
-	justify-content: space-around;
-}
-
 .card-email {
 	position: absolute;
 	display: flex;
