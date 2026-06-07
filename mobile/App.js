@@ -5,7 +5,6 @@ import HostScreen from './src/screens/HostScreen'
 import LoginScreen from './src/screens/LoginScreen'
 import EmployeeDashboard from './src/screens/EmployeeDashboard'
 import QrScannerScreen from './src/screens/QrScannerScreen'
-import WorkStatsScreen from './src/screens/WorkStatsScreen'
 import HostDashboard from './src/screens/HostDashboard'
 
 const Stack = createNativeStackNavigator()
