@@ -11,18 +11,22 @@ export const getEmployees = async (req, res) => {
 }
 
 export const getEmployeeById = async (req, res) => {
-	const id = Number(req.params.id)
-	const employee = await prisma.employee.findUnique({
-		where: { id },
-		include: {
-			address: true,
-		},
-	})
+	try {
+		const id = Number(req.params.id)
+		const employee = await prisma.employee.findUnique({
+			where: { id },
+			include: {
+				address: true,
+			},
+		})
 
-	if (!employee) {
-		return res.status(404).json({ message: 'User not found.' })
+		if (!employee) {
+			return res.status(404).json({ message: 'User not found.' })
+		}
+		res.json(employee)
+	} catch (err) {
+		return res.status(500).json({message: "Server error."})
 	}
-	res.json(employee)
 }
 
 export const updateEmployee = async (req, res) => {
@@ -55,16 +59,16 @@ export const updateEmployee = async (req, res) => {
 }
 
 export const removeEmployee = async (req, res) => {
-		try {
-			const id = Number(req.params.id)
-			const employee = await prisma.employee.findUnique({ where: { id: id } })
-			if (!employee) {
-				return res.status(404).json({message: "Employee not found."})
-			}
-			await prisma.employee.delete({ where: { id: id } })
-			res.sendStatus(204)
-		} catch(err) {
-			console.error(err)
-			res.status(500).json({message: "Server error."})
+	try {
+		const id = Number(req.params.id)
+		const employee = await prisma.employee.findUnique({ where: { id: id } })
+		if (!employee) {
+			return res.status(404).json({ message: 'Employee not found.' })
 		}
+		await prisma.employee.delete({ where: { id: id } })
+		res.sendStatus(204)
+	} catch (err) {
+		console.error(err)
+		res.status(500).json({ message: 'Server error.' })
+	}
 }
