@@ -6,38 +6,42 @@ import auth from '../middleware/auth.js'
 const router = express.Router()
 
 router.post('/generateQr', async (req, res) => {
-	const { deviceId, type } = req.body
-	const token = crypto.randomBytes(32).toString('hex')
-	const expiresAt = new Date(Date.now() + 4 * 1000)
+	try {
+		const { deviceId, type } = req.body
+		const token = crypto.randomBytes(32).toString('hex')
+		const expiresAt = new Date(Date.now() + 4 * 1000)
 
-	const code = await prisma.deviceLoginCode.create({
-		data: {
-			deviceId,
-			codeHash: token,
-			expiresAt,
-		},
-	})
+		const code = await prisma.deviceLoginCode.create({
+			data: {
+				deviceId,
+				codeHash: token,
+				expiresAt,
+			},
+		})
 
-	res.json({
-		qrData: {
-			type,
-			deviceId,
-			token,
-			codeId: code.id
-		},
-	})
+		return res.json({
+			qrData: {
+				type,
+				deviceId,
+				token,
+				codeId: code.id,
+			},
+		})
+	} catch (err) {
+		return res.status(500).json({ message: 'Server error.' })
+	}
 })
 
 router.get('/qrStatus/:codeId', auth, async (req, res) => {
-    try {
-        const codeId = Number(req.params.codeId)
-        const code = await prisma.deviceLoginCode.findUnique({
-            where: { id: codeId },
-        })
-        res.json({ scanned: !!code?.usedAt })
-    } catch (err) {
-        res.status(500).json({ error: err.message })
-    }
+	try {
+		const codeId = Number(req.params.codeId)
+		const code = await prisma.deviceLoginCode.findUnique({
+			where: { id: codeId },
+		})
+		res.json({ scanned: !!code?.usedAt })
+	} catch (err) {
+		res.status(500).json({ error: err.message })
+	}
 })
 
 export default router
