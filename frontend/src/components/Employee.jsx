@@ -364,7 +364,7 @@ function Employee() {
 							<WorkGraph data={workData} />
 						</div>
 						<div>
-							<h3 className={classes['work-box-header']}>Statistics</h3>
+							<h3 className={classes['work-box-header']}>Stats</h3>
 							<WorkStats data={workData} salary={employee.salaryRate}/>
 						</div>
 					</div>
