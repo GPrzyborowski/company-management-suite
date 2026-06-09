@@ -17,9 +17,7 @@ function HostDashboard() {
 		const loadAsyncStorage = async () => {
 			const storedToken = await AsyncStorage.getItem('token')
 			setToken(storedToken)
-
 			const hostString = await AsyncStorage.getItem('host')
-
 			if (hostString) {
 				const host = JSON.parse(hostString)
 				setDeviceId(host.id)
